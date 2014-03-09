@@ -3,7 +3,7 @@
 namespace Underscore\Test;
 
 /**
- * Class UnderscoreArraysTest
+ * Class UnderscoreObjectTest
  * @package Underscore\Test
  */
 class UnderscoreObjectTest extends MasterTest
