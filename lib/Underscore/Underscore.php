@@ -288,4 +288,18 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Gets the size of the collection by returning length for arrays or number of enumerable properties for objects.
+     *
+     * Returns int
+     *
+     * @return Underscore
+     */
+    public function size()
+    {
+        $this->wrapped = $this->wrapped->count();
+
+        return $this;
+    }
 }

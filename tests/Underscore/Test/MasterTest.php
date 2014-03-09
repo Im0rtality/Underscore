@@ -173,4 +173,13 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(false, $value);
     }
+
+    public function testSize()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->size()
+            ->value();
+
+        $this->assertSame(3, $value);
+    }
 }

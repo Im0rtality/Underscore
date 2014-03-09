@@ -90,4 +90,13 @@ class Collection implements \ArrayAccess, \IteratorAggregate
     {
         return new \ArrayIterator(array_reverse($this->toArray(), true));
     }
+
+    /**
+     * Gets the size of the collection by returning length for arrays or number of enumerable properties for objects.
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->toArray());
+    }
 }

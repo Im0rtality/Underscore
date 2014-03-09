@@ -33,6 +33,8 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     {
         $collection = new Collection($item);
 
+        // count
+        $this->assertSame(2, $collection->count());
         // ArrayAccess test
 
         // isset
@@ -46,9 +48,11 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $collection['foo'] = 'bar';
         $this->assertTrue(isset($collection['foo']));
         $this->assertSame('bar', $collection['foo']);
+        $this->assertSame(3, $collection->count());
         // unset
         unset($collection['foo']);
         $this->assertFalse(isset($collection['foo']));
+        $this->assertSame(2, $collection->count());
 
         // Iterator test
         $this->assertInstanceOf('\Traversable', $collection->getIterator());
