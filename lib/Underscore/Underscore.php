@@ -154,7 +154,7 @@ class Underscore
     }
 
     /**
-     * Searches array for $needle using strict comparison.
+     * Checks if a given value is present in a collection using strict equality for comparisons.
      *
      * Returns bool
      *
@@ -178,7 +178,7 @@ class Underscore
     }
 
     /**
-     * Filters array leaving values, for which $iterator returns truey values
+     * Iterates over elements of a collection, returning an array of all elements the callback returns truey for.
      *
      * @param \Closure $iterator
      * @return Underscore
