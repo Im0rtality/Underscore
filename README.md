@@ -7,6 +7,9 @@
 Functional programming library for PHP
 
 # Code example
+
+Library aims to be as easy to use as possible. Here is example of doing some not-so-meaningful operations to show off:
+
 ```php
     Underscore::from([1,2,3,4,5])
             // convert array format
@@ -23,7 +26,9 @@ Functional programming library for PHP
         ->value();
             // should be 1006
 ```
+
 # Motivation
+
 Originaly I needed functional programming magic for other project, so had to pick one lib or write my own.
 
 There is several PHP ports of UnderscoreJS, however none of those fit my requirements (nice code, easy to write, standardized):
@@ -31,6 +36,7 @@ There is several PHP ports of UnderscoreJS, however none of those fit my require
  - [Anahkiasen/underscore-php](https://github.com/Anahkiasen/underscore-php) - Laravel4 package => incompatible with PSR-2
 
 # Installation
+
 Via composer:
 
     $ composer require Im0rtality/Underscore:dev-master
@@ -52,8 +58,11 @@ Composer docs recommend to use specific version. You can look them up in [Releas
 Check open [issues](https://github.com/Im0rtality/Underscore/issues)
 
 # Tests
-Tests generate coverage reports
+
+Tests generate coverage reports in clover.xml format
+
     $ phpunit
 
 # License
+
 MIT License: You can do whatever you want as long as you include the original copyright.
