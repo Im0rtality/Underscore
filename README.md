@@ -15,7 +15,7 @@ Library aims to be as easy to use as possible. Here is example of doing some not
             // convert array format
         ->map(function($num) { return ['number' => $num];})
             // filter out odd elements
-        ->filter(function($item) { return $item['num'] % 2;})
+        ->filter(function($item) { return ($item['number'] % 2) == 0;})
             // vardump elements
         ->each(function($item) { var_dump($item);})
             // changed my mind, I only want numbers
@@ -24,7 +24,7 @@ Library aims to be as easy to use as possible. Here is example of doing some not
         ->reduce(function($sum, $num) { $sum += $num; return $sum; }, 1000)
             // take result
         ->value();
-            // should be 1006
+            // 1006
 ```
 
 # Motivation
