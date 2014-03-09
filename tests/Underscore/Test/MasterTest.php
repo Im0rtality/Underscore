@@ -4,6 +4,10 @@ namespace Underscore\Test;
 
 use Underscore\Underscore;
 
+/**
+ * Class MasterTest
+ * @package Underscore\Test
+ */
 abstract class MasterTest extends \PHPUnit_Framework_TestCase
 {
     /**

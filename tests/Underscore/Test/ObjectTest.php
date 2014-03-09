@@ -2,7 +2,11 @@
 
 namespace Underscore\Test;
 
-class UnderscoreArraysTest extends MasterTest
+/**
+ * Class UnderscoreArraysTest
+ * @package Underscore\Test
+ */
+class UnderscoreObjectTest extends MasterTest
 {
     /**
      * @inheritDoc
