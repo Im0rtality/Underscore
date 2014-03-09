@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Underscore\\": ["lib", "tests"]
+            "Underscore\\": ["lib/", "tests/"]
         }
     },
     "require":  {
