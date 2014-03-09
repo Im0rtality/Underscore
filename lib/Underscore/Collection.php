@@ -2,11 +2,18 @@
 
 namespace Underscore;
 
+/**
+ * Class Collection
+ * @package Underscore
+ */
 class Collection implements \ArrayAccess, \IteratorAggregate
 {
     /** @var  mixed */
     protected $wrapped;
 
+    /**
+     * @param Object|array $object
+     */
     public function __construct($object)
     {
         $this->wrapped = $object;
