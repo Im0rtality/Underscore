@@ -1,4 +1,5 @@
 <?php
+
 namespace Underscore\Test;
 
 class UnderscoreArraysTest extends MasterTest

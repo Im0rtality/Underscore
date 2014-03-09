@@ -1,4 +1,5 @@
 <?php
+
 namespace Underscore\Test;
 
 use Underscore\Underscore;
