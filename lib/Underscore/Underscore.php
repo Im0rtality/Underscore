@@ -144,7 +144,11 @@ class Underscore
     {
         return $this->map(
             function ($value) use ($key) {
-                return isset($value->{$key}) ? $value->{$key} : null;
+                if (is_object($value)) {
+                    return isset($value->{$key}) ? $value->{$key} : null;
+                } else {
+                    return isset($value[$key]) ? $value[$key] : null;
+                }
             }
         );
     }
