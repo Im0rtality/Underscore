@@ -55,7 +55,7 @@ class Underscore
      *
      * $iterator = function($value, $key, $collection)
      *
-     * @param $iterator
+     * @param \Closure $iterator
      * @return Underscore
      */
     public function each($iterator)
@@ -72,7 +72,7 @@ class Underscore
      *
      * $iterator = function($value, $key, $collection)
      *
-     * @param $iterator
+     * @param \Closure $iterator
      * @return Underscore
      */
     public function map($iterator)
@@ -93,7 +93,7 @@ class Underscore
      *
      * $iterator = function($accumulator, $value)
      *
-     * @param Callable $iterator
+     * @param \Closure $iterator
      * @param mixed    $initial
      * @return Underscore
      */
@@ -115,7 +115,7 @@ class Underscore
      *
      * $iterator = function($accumulator, $value)
      *
-     * @param Callable $iterator
+     * @param \Closure $iterator
      * @param mixed    $initial
      * @return Underscore
      */
