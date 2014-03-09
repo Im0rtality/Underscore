@@ -26,7 +26,7 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
         $buffer = '';
         Underscore::from($this->getDummy())
             ->invoke(
-            function ($value, $key) use (&$buffer) {
+                function ($value, $key) use (&$buffer) {
                     $buffer .= sprintf('%s:%s|', $key, $value);
                 }
             );
