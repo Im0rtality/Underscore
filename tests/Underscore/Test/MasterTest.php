@@ -101,6 +101,19 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
             )
             ->toArray();
 
+        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
+    }
+
+    public function testReject()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->reject(
+                function ($value) {
+                    return 3 < strlen($value);
+                }
+            )
+            ->toArray();
+
         $this->assertSame(array('name' => 'dummy'), $value);
     }
 

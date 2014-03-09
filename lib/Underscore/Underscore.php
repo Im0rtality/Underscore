@@ -188,6 +188,28 @@ class Underscore
         $collection = clone $this->wrapped;
 
         foreach ($this->wrapped as $k => $v) {
+            if (call_user_func($iterator, $v, $k)) {
+                unset($collection[$k]);
+            }
+        }
+
+        $this->wrapped = $collection;
+
+        return $this;
+    }
+
+    /**
+     * The opposite of filter(). This method returns the elements of a collection that the callback
+     * does **not** return truey for.
+     *
+     * @param \Closure $iterator
+     * @return Underscore
+     */
+    public function reject($iterator)
+    {
+        $collection = clone $this->wrapped;
+
+        foreach ($this->wrapped as $k => $v) {
             if (!call_user_func($iterator, $v, $k)) {
                 unset($collection[$k]);
             }
