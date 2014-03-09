@@ -10,7 +10,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     public function getTestCollectionData()
     {
         $dummy = new Dummy();
-        $data  = [];
+        $data = array();
         // case #0
         $data[] = array($dummy);
         // case #1
