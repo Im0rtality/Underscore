@@ -46,7 +46,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         // Iterator test
         $this->assertInstanceOf('\Traversable', $collection->getIterator());
 
-        $out = [];
+        $out = array();
         foreach ($collection as $key => $value) {
             $out[$key] = $value;
         }
@@ -55,7 +55,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         // Reversed iterator test
         $this->assertInstanceOf('\Traversable', $collection->getIteratorReversed());
 
-        $out = [];
+        $out = array();
         foreach ($collection->getIteratorReversed() as $key => $value) {
             $out[$key] = $value;
         }
