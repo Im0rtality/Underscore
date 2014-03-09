@@ -48,62 +48,8 @@ Composer docs recommend to use specific version. You can look them up in [Releas
 - contains
 
 ## TODO
-- invoke
-- any
-- all
-- filter
-- reject
-- find
-- size
-- head
-- tail
-- initial
-- last
-- compact
-- flatten
-- without
-- uniq
-- intersection
-- union
-- difference
-- indexOf
-- lastIndexOf
-- range
-- zip
-- max
-- min
-- sortBy
-- groupBy
-- sortedIndex
-- shuffle
-- keys
-- values
-- extend
-- defaults
-- methods
-- clone
-- tap
-- has
-- isEqual
-- isEmpty
-- isObject
-- isArray
-- isString
-- isNumber
-- isBoolean
-- isFunction
-- isDate
-- isNaN
-- identity
-- uniqueId
-- times
-- mixin
-- memoize
-- throttle
-- once
-- wrap
-- compose
-- after
+
+Check open [issues](https://github.com/Im0rtality/Underscore/issues)
 
 # Tests
 Tests generate coverage reports
