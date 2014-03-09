@@ -79,7 +79,7 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
 
     public function testPluck()
     {
-        $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
+        $value = Underscore::from(array($this->getDummy(), $this->getDummy(), $this->getDummy()))
             ->pluck('foo')
             ->toArray();
 
