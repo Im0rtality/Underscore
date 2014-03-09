@@ -235,9 +235,9 @@ class Underscore
      */
     public function all($iterator)
     {
-        $this->map($iterator)->reduce(
-            function ($accumulator, $item) {
-                $accumulator = $accumulator && $item;
+        $this->reduce(
+            function ($accumulator, $item) use ($iterator) {
+                $accumulator = $accumulator && $iterator($item);
                 return $accumulator;
             },
             true
