@@ -5,20 +5,21 @@ namespace Underscore\Test;
 use Underscore\Underscore;
 
 /**
- * Class UnderscoreObjectTest
+ * Class UnderscoreArrayTest
  * @package Underscore\Test
  */
-class UnderscoreObjectTest extends MasterTest
+class UnderscoreArrayTest extends MasterTest
 {
     /**
      * @inheritDoc
      */
     protected function getDummy()
     {
-        $dummy       = new \stdClass();
-        $dummy->name = 'dummy';
-        $dummy->foo  = 'bar';
-        $dummy->baz  = 'qux';
+        $dummy = array(
+            'name' => 'dummy',
+            'foo'  => 'bar',
+            'baz'  => 'qux',
+        );
 
         return $dummy;
     }
@@ -26,6 +27,6 @@ class UnderscoreObjectTest extends MasterTest
     public function testToArray()
     {
         $value = Underscore::from($this->getDummy())->toArray();
-        $this->assertSame(get_object_vars($this->getDummy()), $value);
+        $this->assertSame($this->getDummy(), $value);
     }
 }

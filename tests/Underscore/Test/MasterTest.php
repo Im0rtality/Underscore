@@ -21,12 +21,6 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->getDummy(), $value);
     }
 
-    public function testToArray()
-    {
-        $value = Underscore::from($this->getDummy())->toArray();
-        $this->assertSame(get_object_vars($this->getDummy()), $value);
-    }
-
     public function testEach()
     {
         $buffer = '';
@@ -95,5 +89,18 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertFalse(Underscore::from($this->getDummy())->contains('foo')->value());
         $this->assertTrue(Underscore::from($this->getDummy())->contains('bar')->value());
+    }
+
+    public function testFilter()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->filter(
+                function ($value) {
+                    return 3 < strlen($value);
+                }
+            )
+            ->toArray();
+
+        $this->assertSame(array('name' => 'dummy'), $value);
     }
 }

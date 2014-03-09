@@ -176,4 +176,25 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Filters array leaving values, for which $iterator returns true-ish values
+     *
+     * @param \Closure $iterator
+     * @return Underscore
+     */
+    public function filter($iterator)
+    {
+        $collection = clone $this->wrapped;
+
+        foreach ($this->wrapped as $k => $v) {
+            if (!call_user_func($iterator, $v, $k)) {
+                unset($collection[$k]);
+            }
+        }
+
+        $this->wrapped = $collection;
+
+        return $this;
+    }
 }
