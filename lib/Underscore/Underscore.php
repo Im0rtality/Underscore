@@ -178,7 +178,7 @@ class Underscore
     }
 
     /**
-     * Filters array leaving values, for which $iterator returns true-ish values
+     * Filters array leaving values, for which $iterator returns truey values
      *
      * @param \Closure $iterator
      * @return Underscore
