@@ -13,11 +13,11 @@ Library aims to be as easy to use as possible. Here is example of doing some not
 ```php
     Underscore::from([1,2,3,4,5])
             // convert array format
-        ->map(function($num) { return ['number' => $num]];})
+        ->map(function($num) { return ['number' => $num];})
             // filter out odd elements
         ->filter(function($item) { return $item['num'] % 2;})
             // vardump elements
-        ->each('vardump')
+        ->each(function($item) { var_dump($item);})
             // changed my mind, I only want numbers
         ->pluck('number')
             // add numbers to 1000
