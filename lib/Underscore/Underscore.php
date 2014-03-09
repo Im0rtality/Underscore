@@ -163,16 +163,13 @@ class Underscore
      */
     public function contains($needle)
     {
-        $collection = clone $this->wrapped;
+        $finder = function ($needle) {
+            return function ($value) use ($needle) {
+                return $value === $needle;
+            };
+        };
 
-        $found = false;
-        foreach ($collection as $value) {
-            if ($value === $needle) {
-                $found = true;
-                break;
-            }
-        }
-        $this->wrapped = $found;
+        $this->find($finder($needle));
 
         return $this;
     }

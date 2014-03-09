@@ -87,8 +87,8 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
 
     public function testContains()
     {
-        $this->assertFalse(Underscore::from($this->getDummy())->contains('foo')->value());
-        $this->assertTrue(Underscore::from($this->getDummy())->contains('bar')->value());
+        $this->assertTrue(Underscore::from($this->getDummy())->contains('foo')->value());
+        $this->assertFalse(Underscore::from($this->getDummy())->contains('bar')->value());
     }
 
     public function testFind()
