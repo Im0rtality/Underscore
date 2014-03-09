@@ -197,4 +197,31 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Checks if the $iterator returns a truey value for ANY element of a collection.
+     * The function returns as soon as it finds a passing value and does not iterate
+     * over entire collection.
+     *
+     * Returns boolean
+     *
+     * @param \Closure $iterator
+     * @return Underscore
+     */
+    public function any($iterator)
+    {
+        $collection = clone $this->wrapped;
+
+        $found = false;
+        foreach ($collection as $k => $v) {
+            if (call_user_func($iterator, $v, $k)) {
+                $found = true;
+                break;
+            }
+        }
+
+        $this->wrapped = $found;
+
+        return $this;
+    }
 }
