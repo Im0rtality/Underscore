@@ -4,4 +4,4 @@ Underscore
 
 Underscore is library for easier approach to functional programming in PHP.
 
-This is continuation of work done by Brian Haveri (https://github.com/brianhaveri) back in 2011.
+Inspired by [brianhaveri/Underscore.php](https://github.com/brianhaveri/Underscore.php)

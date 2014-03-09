@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit bootstrap="tests/bootstrap.php"
          colors="true"
          processIsolation="false"
          stopOnFailure="false"
@@ -14,7 +14,7 @@
 
   <filter>
     <whitelist>
-      <directory>src/Underscore</directory>
+      <directory>lib</directory>
     </whitelist>
   </filter>
 
