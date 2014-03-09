@@ -224,4 +224,25 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Checks if the $iterator returns a truey value for ALL element of a collection.
+     *
+     * Returns boolean
+     *
+     * @param \Closure $iterator
+     * @return Underscore
+     */
+    public function all($iterator)
+    {
+        $this->map($iterator)->reduce(
+            function ($accumulator, $item) {
+                $accumulator = $accumulator && $item;
+                return $accumulator;
+            },
+            true
+        );
+
+        return $this;
+    }
 }
