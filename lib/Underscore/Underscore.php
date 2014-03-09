@@ -58,7 +58,7 @@ class Underscore
      * @param \Closure $iterator
      * @return Underscore
      */
-    public function each($iterator)
+    public function invoke($iterator)
     {
         foreach ($this->wrapped as $k => $v) {
             call_user_func($iterator, $v, $k, $this->wrapped);

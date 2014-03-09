@@ -17,7 +17,7 @@ Library aims to be as easy to use as possible. Here is example of doing some not
             // filter out odd elements
         ->filter(function($item) { return ($item['number'] % 2) == 0;})
             // vardump elements
-        ->each(function($item) { var_dump($item);})
+        ->invoke(function($item) { var_dump($item);})
             // changed my mind, I only want numbers
         ->pluck('number')
             // add numbers to 1000
@@ -46,7 +46,7 @@ Composer docs recommend to use specific version. You can look them up in [Releas
 # API Reference
 
 - toArray
-- each
+- invoke
 - map
 - reduce
 - reduceRight

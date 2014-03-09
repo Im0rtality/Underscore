@@ -21,12 +21,12 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->getDummy(), $value);
     }
 
-    public function testEach()
+    public function testInvoke()
     {
         $buffer = '';
         Underscore::from($this->getDummy())
-            ->each(
-                function ($value, $key) use (&$buffer) {
+            ->invoke(
+            function ($value, $key) use (&$buffer) {
                     $buffer .= sprintf('%s:%s|', $key, $value);
                 }
             );
