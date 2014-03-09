@@ -91,6 +91,17 @@ abstract class MasterTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(Underscore::from($this->getDummy())->contains('bar')->value());
     }
 
+    public function testFind()
+    {
+        $iterator = function ($needle) {
+            return function ($value) use ($needle) {
+                return $value === $needle;
+            };
+        };
+        $this->assertTrue(Underscore::from($this->getDummy())->find($iterator('foo'))->value());
+        $this->assertFalse(Underscore::from($this->getDummy())->find($iterator('bar'))->value());
+    }
+
     public function testFilter()
     {
         $value = Underscore::from($this->getDummy())
