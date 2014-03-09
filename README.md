@@ -43,15 +43,9 @@ Via composer:
 
 Composer docs recommend to use specific version. You can look them up in [Releases](https://github.com/Im0rtality/Underscore/releases).
 
-# API Reference
+# Documentation
 
-- toArray
-- invoke
-- map
-- reduce
-- reduceRight
-- pluck
-- contains
+Will be added later
 
 ## TODO
 
