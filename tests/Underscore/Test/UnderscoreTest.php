@@ -182,4 +182,13 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(3, $value);
     }
+
+    public function testHead()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->head(2)
+            ->value();
+
+        $this->assertSame(array('name' => 'dummy', 'foo' => 'bar'), $value);
+    }
 }
