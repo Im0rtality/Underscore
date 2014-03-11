@@ -8,7 +8,7 @@ use Underscore\Underscore;
  * Class UnderscoreArrayTest
  * @package Underscore\Test
  */
-class UnderscoreArrayTest extends MasterTest
+class UnderscoreArrayTest extends UnderscoreTest
 {
     /**
      * @inheritDoc
