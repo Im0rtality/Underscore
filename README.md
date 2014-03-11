@@ -54,6 +54,8 @@ Check open [issues](https://github.com/Im0rtality/Underscore/issues)
 
 # Tests
 
+Each commit is tested on TRAVIS using multiple PHP versions (5.3, 5.4, 5.5; plus 5.6, hhvm which are being run but not checked for failures) to ensure compatibility.
+
 Tests generate coverage reports in clover.xml format
 
     $ phpunit
