@@ -318,4 +318,20 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Gets all but the first element or first n elements of collection.
+     *
+     * Returns mixed[]
+     *
+     * @param int $count
+     *
+     * @return $this
+     */
+    public function tail($count = 1)
+    {
+        $this->wrapped = array_slice($this->wrapped->toArray(), $count);
+
+        return $this;
+    }
 }
