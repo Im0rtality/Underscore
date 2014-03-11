@@ -185,7 +185,7 @@ class Underscore
         $collection = clone $this->wrapped;
 
         foreach ($this->wrapped as $k => $v) {
-            if (call_user_func($iterator, $v, $k)) {
+            if (!call_user_func($iterator, $v, $k)) {
                 unset($collection[$k]);
             }
         }
@@ -207,7 +207,7 @@ class Underscore
         $collection = clone $this->wrapped;
 
         foreach ($this->wrapped as $k => $v) {
-            if (!call_user_func($iterator, $v, $k)) {
+            if (call_user_func($iterator, $v, $k)) {
                 unset($collection[$k]);
             }
         }
@@ -374,9 +374,26 @@ class Underscore
      */
     public function compact()
     {
-        $this->reject(
-            function ($item) {
+        $this->filter(
+        function ($item) {
                 return $item;
+            }
+        );
+        return $this;
+    }
+
+    /**
+     * Removes all provided values using strict comparison.
+     *
+     * @param mixed[] $values
+     *
+     * @return $this
+     */
+    public function without($values = [])
+    {
+        $this->reject(
+            function ($item) use ($values) {
+                return in_array($item, $values, true);
             }
         );
         return $this;

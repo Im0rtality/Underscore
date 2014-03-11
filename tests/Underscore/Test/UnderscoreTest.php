@@ -117,7 +117,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             )
             ->toArray();
 
-        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
+        $this->assertSame(array('name' => 'dummy'), $value);
     }
 
     public function testReject()
@@ -130,7 +130,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             )
             ->toArray();
 
-        $this->assertSame(array('name' => 'dummy'), $value);
+        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
     }
 
     public function testAny()
@@ -231,5 +231,14 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->toArray();
 
         $this->assertSame(array('name' => 'dummy', 'foo' => 'bar', 'baz' => 'qux'), $value);
+    }
+
+    public function testWithout()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->without(['dummy'])
+            ->toArray();
+
+        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
     }
 }
