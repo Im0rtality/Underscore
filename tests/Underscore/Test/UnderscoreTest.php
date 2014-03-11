@@ -241,4 +241,23 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
     }
+
+    public function testMerge()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->merge(Underscore::from($this->getDummy2()))
+            ->toArray();
+
+        $this->assertSame(
+            array(
+                'name'  => 'dummy',
+                'foo'   => 'bar',
+                'baz'   => 'qux',
+                'false' => false,
+                'null'  => null,
+                'zero'  => 0,
+            ),
+            $value
+        );
+    }
 }

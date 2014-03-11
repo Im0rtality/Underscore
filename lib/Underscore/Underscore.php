@@ -398,4 +398,20 @@ class Underscore
         );
         return $this;
     }
+
+    /**
+     * Merges two collections. If keys collide, new value overwrites older.
+     *
+     * @param Underscore $values
+     *
+     * @return $this
+     */
+    public function merge(Underscore $values)
+    {
+        foreach ($values->wrapped as $key => $value) {
+            $this->wrapped[$key] = $value;
+        }
+
+        return $this;
+    }
 }
