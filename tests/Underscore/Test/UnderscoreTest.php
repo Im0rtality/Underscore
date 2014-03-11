@@ -200,4 +200,13 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
     }
+
+    public function testInitial()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->initial(2)
+            ->value();
+
+        $this->assertSame(array('name' => 'dummy'), $value);
+    }
 }
