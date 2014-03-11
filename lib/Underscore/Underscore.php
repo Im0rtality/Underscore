@@ -320,6 +320,22 @@ class Underscore
     }
 
     /**
+     * Gets the last element or last n elements of collection.
+     *
+     * Returns mixed[]
+     *
+     * @param int $count
+     *
+     * @return $this
+     */
+    public function last($count = 1)
+    {
+        $this->wrapped = array_slice($this->wrapped->toArray(), -$count);
+
+        return $this;
+    }
+
+    /**
      * Gets all but the first element or first n elements of collection.
      *
      * Returns mixed[]
