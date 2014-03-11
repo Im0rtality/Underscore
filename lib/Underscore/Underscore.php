@@ -375,7 +375,7 @@ class Underscore
     public function compact()
     {
         $this->filter(
-        function ($item) {
+            function ($item) {
                 return $item;
             }
         );
@@ -389,7 +389,7 @@ class Underscore
      *
      * @return $this
      */
-    public function without($values = [])
+    public function without($values = array())
     {
         $this->reject(
             function ($item) use ($values) {

@@ -236,7 +236,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testWithout()
     {
         $value = Underscore::from($this->getDummy())
-            ->without(['dummy'])
+            ->without(array('dummy'))
             ->toArray();
 
         $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
