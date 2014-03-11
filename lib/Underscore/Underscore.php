@@ -366,4 +366,19 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Removes all falsey values.
+     *
+     * @return $this
+     */
+    public function compact()
+    {
+        $this->reject(
+            function ($item) {
+                return $item;
+            }
+        );
+        return $this;
+    }
 }

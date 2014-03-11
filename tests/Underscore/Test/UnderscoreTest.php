@@ -15,6 +15,11 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
      */
     abstract protected function getDummy();
 
+    /**
+     * @return mixed
+     */
+    abstract protected function getDummy2();
+
     public function testValue()
     {
         $value = Underscore::from($this->getDummy())->value();
@@ -217,5 +222,14 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->value();
 
         $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
+    }
+
+    public function testCompact()
+    {
+        $value = Underscore::from($this->getDummy2())
+            ->compact()
+            ->toArray();
+
+        $this->assertSame(array('name' => 'dummy', 'foo' => 'bar', 'baz' => 'qux'), $value);
     }
 }
