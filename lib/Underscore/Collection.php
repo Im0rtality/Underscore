@@ -40,10 +40,22 @@ class Collection implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetSet($offset, $value)
     {
-        if (is_object($this->wrapped)) {
-            $this->wrapped->{$offset} = $value;
+        if (null !== $offset) {
+            if (is_object($this->wrapped)) {
+                $this->wrapped->{$offset} = $value;
+            } else {
+                $this->wrapped[$offset] = $value;
+            }
         } else {
-            $this->wrapped[$offset] = $value;
+            if (is_object($this->wrapped)) {
+                $offset = 0;
+                while ($this->offsetExists($offset)) {
+                    $offset++;
+                }
+                $this->wrapped->{$offset} = $value;
+            } else {
+                $this->wrapped[] = $value;
+            }
         }
     }
 

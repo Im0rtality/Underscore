@@ -87,4 +87,19 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
             $this->assertNotEquals($item, $collection->value());
         }
     }
+
+    /**
+     * @dataProvider getTestCollectionData
+     */
+    public function testSetValueOnNullKey($item)
+    {
+        $collection = new Collection($item);
+
+        $this->assertEquals(2, $collection->count());
+
+        $collection[] = 'foo';
+        /** @var $collection Collection */
+
+        $this->assertEquals(3, $collection->count());
+    }
 }
