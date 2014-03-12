@@ -414,4 +414,22 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Creates an collection composed of the enumerable property values of object.
+     *
+     * @return $this
+     */
+    public function values()
+    {
+        $collection = array();
+
+        foreach ($this->wrapped as $value) {
+            $collection[] = $value;
+        }
+
+        $this->wrapped = Underscore::from($collection);
+
+        return $this;
+    }
 }
