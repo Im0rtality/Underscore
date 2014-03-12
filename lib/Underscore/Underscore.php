@@ -450,4 +450,15 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Clones makes clone of collection
+     *
+     * @return $this
+     */
+    public function clon()
+    {
+        $this->wrapped = clone $this->wrapped;
+        return $this;
+    }
 }

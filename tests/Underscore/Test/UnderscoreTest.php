@@ -292,4 +292,18 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             $value
         );
     }
+
+    public function testClon()
+    {
+        $original = $this->getDummy();
+        $cloned   = Underscore::from($original)
+            ->clon()
+            ->without(['dummy'])
+            ->value();
+
+        $this->assertNotEquals(
+            Underscore::from($original)->value(),
+            $cloned
+        );
+    }
 }

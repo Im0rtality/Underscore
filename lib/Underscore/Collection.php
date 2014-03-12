@@ -111,4 +111,19 @@ class Collection implements \ArrayAccess, \IteratorAggregate
     {
         return count($this->toArray());
     }
+
+    public function __clone()
+    {
+        if (is_object($this->wrapped)) {
+            $this->wrapped = clone $this->wrapped;
+        } else {
+            $this->wrapped = array_map(
+                function ($item) {
+                    return $item;
+                },
+                $this->wrapped
+            );
+        }
+
+    }
 }
