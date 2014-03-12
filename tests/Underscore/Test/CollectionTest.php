@@ -94,12 +94,15 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     public function testSetValueOnNullKey($item)
     {
         $collection = new Collection($item);
+        /** @var $collection Collection */
 
         $this->assertEquals(2, $collection->count());
 
         $collection[] = 'foo';
-        /** @var $collection Collection */
-
         $this->assertEquals(3, $collection->count());
+
+        // test finding next free numeric key
+        $collection[] = 'foo';
+        $this->assertEquals(4, $collection->count());
     }
 }
