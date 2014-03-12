@@ -442,7 +442,7 @@ class Underscore
     {
         $collection = array();
 
-        foreach ($this->wrapped as $key => $_) {
+        foreach ($this->wrapped as $key => $value) {
             $collection[] = $key;
         }
 
