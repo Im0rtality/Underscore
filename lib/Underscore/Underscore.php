@@ -428,7 +428,7 @@ class Underscore
             $collection[] = $value;
         }
 
-        $this->wrapped = Underscore::from($collection);
+        $this->wrapped = self::from($collection);
 
         return $this;
     }
@@ -446,7 +446,7 @@ class Underscore
             $collection[] = $key;
         }
 
-        $this->wrapped = Underscore::from($collection);
+        $this->wrapped = self::from($collection);
 
         return $this;
     }
