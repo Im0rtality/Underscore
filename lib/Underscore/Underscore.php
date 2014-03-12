@@ -432,4 +432,22 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Creates an collection composed of the enumerable property keys of object.
+     *
+     * @return $this
+     */
+    public function keys()
+    {
+        $collection = array();
+
+        foreach ($this->wrapped as $key => $_) {
+            $collection[] = $key;
+        }
+
+        $this->wrapped = Underscore::from($collection);
+
+        return $this;
+    }
 }

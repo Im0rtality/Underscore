@@ -276,4 +276,20 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             $value
         );
     }
+
+    public function testKeys()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->keys()
+            ->toArray();
+
+        $this->assertSame(
+            array(
+                'name',
+                'foo',
+                'baz',
+            ),
+            $value
+        );
+    }
 }
