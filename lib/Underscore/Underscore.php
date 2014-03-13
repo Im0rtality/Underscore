@@ -437,6 +437,7 @@ class Underscore
      * Creates an collection composed of the enumerable property keys of object.
      *
      * @return $this
+     * @SuppressWarnings(UnusedLocalVariable)
      */
     public function keys()
     {
