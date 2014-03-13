@@ -298,7 +298,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $original = $this->getDummy();
         $cloned   = Underscore::from($original)
             ->clon()
-            ->without(['dummy'])
+            ->without(array('dummy'))
             ->value();
 
         $this->assertNotEquals(
