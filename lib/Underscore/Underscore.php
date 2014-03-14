@@ -319,7 +319,7 @@ class Underscore
      *
      * @param int $count
      *
-     * @return $this
+     * @return Underscore
      */
     public function head($count = 1)
     {
@@ -335,7 +335,7 @@ class Underscore
      *
      * @param int $count
      *
-     * @return $this
+     * @return Underscore
      */
     public function last($count = 1)
     {
@@ -351,7 +351,7 @@ class Underscore
      *
      * @param int $count
      *
-     * @return $this
+     * @return Underscore
      */
     public function tail($count = 1)
     {
@@ -367,7 +367,7 @@ class Underscore
      *
      * @param int $count
      *
-     * @return $this
+     * @return Underscore
      */
     public function initial($count = 1)
     {
@@ -379,7 +379,7 @@ class Underscore
     /**
      * Removes all falsey values.
      *
-     * @return $this
+     * @return Underscore
      */
     public function compact()
     {
@@ -396,7 +396,7 @@ class Underscore
      *
      * @param mixed[] $values
      *
-     * @return $this
+     * @return Underscore
      */
     public function without($values = array())
     {
@@ -413,7 +413,7 @@ class Underscore
      *
      * @param Underscore $values
      *
-     * @return $this
+     * @return Underscore
      */
     public function merge(Underscore $values)
     {
@@ -427,7 +427,7 @@ class Underscore
     /**
      * Creates an collection composed of the enumerable property values of object.
      *
-     * @return $this
+     * @return Underscore
      */
     public function values()
     {
@@ -445,8 +445,8 @@ class Underscore
     /**
      * Creates an collection composed of the enumerable property keys of object.
      *
-     * @return $this
-     * @SuppressWarnings(UnusedLocalVariable)
+     * @return Underscore
+     * @SuppressWarnings(UnusedLocalVariable) - $value in foreach
      */
     public function keys()
     {
@@ -464,7 +464,7 @@ class Underscore
     /**
      * Clones makes clone of collection
      *
-     * @return $this
+     * @return Underscore
      */
     public function clon()
     {
@@ -478,7 +478,7 @@ class Underscore
      * @param mixed[] $keys
      *
      * @throws \LogicException
-     * @return $this
+     * @return Underscore
      */
     public function combineWithKeys($keys)
     {
@@ -504,7 +504,7 @@ class Underscore
      *
      * @param \Closure $callback
      *
-     * @return $this
+     * @return Underscore
      */
     public function groupBy($callback)
     {
