@@ -481,7 +481,7 @@ class Underscore
      * @throws \LogicException
      * @return Underscore
      */
-    public function combineWithKeys($keys)
+    public function zip($keys)
     {
         $values = $this->values()->toArray();
         $keys = self::from($keys)->values()->toArray();

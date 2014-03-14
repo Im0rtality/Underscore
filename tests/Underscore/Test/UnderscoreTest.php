@@ -306,10 +306,10 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testCombineWithKeys()
+    public function testZip()
     {
         $value = Underscore::from($this->getDummy())
-            ->combineWithKeys(array('a', 1, '42'))
+            ->zip(array('a', 1, '42'))
             ->toArray();
 
         $this->assertSame(
@@ -323,7 +323,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         $this->setExpectedException('\LogicException');
         Underscore::from($this->getDummy())
-            ->combineWithKeys(array('a'));
+            ->zip(array('a'));
     }
 
     public function testGroupBy()
