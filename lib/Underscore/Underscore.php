@@ -5,6 +5,7 @@ namespace Underscore;
 /**
  * Class Underscore
  * @package Underscore
+ * @SuppressWarnings(TooManyMethods) - these methods belong here
  */
 class Underscore
 {
