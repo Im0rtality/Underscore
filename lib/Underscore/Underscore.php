@@ -311,9 +311,7 @@ class Underscore
      */
     public function size()
     {
-        $this->wrapped = $this->wrapped->count();
-
-        return $this;
+        return $this->wrapped->count();
     }
 
     /**

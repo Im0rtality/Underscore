@@ -182,8 +182,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testSize()
     {
         $value = Underscore::from($this->getDummy())
-            ->size()
-            ->value();
+            ->size();
 
         $this->assertSame(3, $value);
     }
