@@ -9,6 +9,10 @@ tools:
     php_cs_fixer:           true
     php_hhvm:               true
     php_mess_detector:      true
+        config:
+            code_size_rules:
+                too_many_methods:     false
+
     php_pdepend:            true
     php_loc:                true
     php_analyzer:
