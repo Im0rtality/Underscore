@@ -22,9 +22,17 @@ class Underscore
     {
         $underscore = new Underscore();
 
-        $underscore->wrapped = new Collection($item);
+        $underscore->wrap($item);
 
         return $underscore;
+    }
+
+    /**
+     * @param mixed $item
+     */
+    protected function wrap($item)
+    {
+        $this->wrapped = new Collection($item);
     }
 
     /**
@@ -461,6 +469,32 @@ class Underscore
     public function clon()
     {
         $this->wrapped = clone $this->wrapped;
+        return $this;
+    }
+
+    /**
+     * Combines current collection values with given keys to produce new collection
+     *
+     * @param mixed[] $keys
+     *
+     * @throws \LogicException
+     * @return $this
+     */
+    public function combineWithKeys($keys)
+    {
+        $values = $this->values()->toArray();
+        $keys   = Underscore::from($keys)->values()->toArray();
+
+        if (count($values) !== count($keys)) {
+            throw new \LogicException('Keys and values count must match');
+        }
+        $collection = array();
+        foreach ($values as $index => $value) {
+            $collection[$keys[$index]] = $value;
+        }
+
+        $this->wrap($collection);
+
         return $this;
     }
 }

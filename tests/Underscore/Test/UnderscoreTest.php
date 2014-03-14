@@ -306,4 +306,24 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             $cloned
         );
     }
+
+    public function testCombineWithKeys()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->combineWithKeys(array('a', 1, '42'))
+            ->toArray();
+
+        $this->assertSame(
+            array(
+                'a'  => 'dummy',
+                1    => 'bar',
+                '42' => 'qux',
+            ),
+            $value
+        );
+
+        $this->setExpectedException('\LogicException');
+        Underscore::from($this->getDummy())
+            ->combineWithKeys(array('a'));
+    }
 }
