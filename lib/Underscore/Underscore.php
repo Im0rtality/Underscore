@@ -497,4 +497,27 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Creates an object composed of keys generated from the results
+     * of running each element of a collection through the callback
+     *
+     * @param \Closure $callback
+     *
+     * @return $this
+     */
+    public function groupBy($callback)
+    {
+        $collection = clone $this->wrapped;
+
+        $result = [];
+        foreach ($collection as $value) {
+            $key            = call_user_func($callback, $value);
+            $result[$key][] = $value;
+        }
+
+        $this->wrap($result);
+
+        return $this;
+    }
 }

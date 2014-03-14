@@ -326,4 +326,19 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         Underscore::from($this->getDummy())
             ->combineWithKeys(array('a'));
     }
+
+    public function testGroupBy()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->groupBy('strlen')
+            ->toArray();
+
+        $this->assertSame(
+            array(
+                5 => ['dummy'],
+                3 => ['bar', 'qux'],
+            ),
+            $value
+        );
+    }
 }
