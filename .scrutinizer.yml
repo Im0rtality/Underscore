@@ -7,7 +7,6 @@ tools:
     php_code_sniffer:       true
     php_cpd:                true
     php_cs_fixer:           true
-    php_hhvm:               true
     php_mess_detector:      true
     php_pdepend:            true
     php_loc:                true
