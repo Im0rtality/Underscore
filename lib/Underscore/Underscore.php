@@ -514,7 +514,7 @@ class Underscore
     {
         $collection = clone $this->wrapped;
 
-        $result = [];
+        $result = array();
         foreach ($collection as $value) {
             $key            = call_user_func($callback, $value);
             $result[$key][] = $value;
