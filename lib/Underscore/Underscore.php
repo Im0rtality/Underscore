@@ -483,7 +483,7 @@ class Underscore
     public function combineWithKeys($keys)
     {
         $values = $this->values()->toArray();
-        $keys   = Underscore::from($keys)->values()->toArray();
+        $keys = self::from($keys)->values()->toArray();
 
         if (count($values) !== count($keys)) {
             throw new \LogicException('Keys and values count must match');
