@@ -20,7 +20,7 @@ Library aims to be as easy to use as possible. Here is example of doing some not
             // vardump elements
         ->invoke(function($item) { var_dump($item);})
             // changed my mind, I only want numbers
-        ->pluck('number')
+        ->pick('number')
             // add numbers to 1000
         ->reduce(function($sum, $num) { $sum += $num; return $sum; }, 1000)
             // take result

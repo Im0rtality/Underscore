@@ -149,7 +149,7 @@ class Underscore
      * @param mixed $key
      * @return Underscore
      */
-    public function pluck($key)
+    public function pick($key)
     {
         return $this->map(
             function ($value) use ($key) {

@@ -81,10 +81,10 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('qux bar dummy ', $value);
     }
 
-    public function testPluck()
+    public function testPick()
     {
         $value = Underscore::from(array($this->getDummy(), $this->getDummy(), $this->getDummy()))
-            ->pluck('foo')
+            ->pick('foo')
             ->toArray();
 
         $this->assertSame(array('bar', 'bar', 'bar'), $value);
