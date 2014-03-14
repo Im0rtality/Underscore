@@ -154,7 +154,11 @@ class Underscore
         return $this->map(
             function ($value) use ($key) {
                 if (is_object($value)) {
-                    return isset($value->{$key}) ? $value->{$key} : null;
+                    if (is_callable(array($value, $key))) {
+                        return call_user_func(array($value, $key));
+                    } else {
+                        return isset($value->{$key}) ? $value->{$key} : null;
+                    }
                 } else {
                     return isset($value[$key]) ? $value[$key] : null;
                 }
@@ -468,8 +472,7 @@ class Underscore
      */
     public function clon()
     {
-        $this->wrapped = clone $this->wrapped;
-        return $this;
+        return self::from(unserialize(serialize($this->wrapped->value())));
     }
 
     /**
@@ -488,6 +491,7 @@ class Underscore
         if (count($values) !== count($keys)) {
             throw new \LogicException('Keys and values count must match');
         }
+
         $collection = array();
         foreach ($values as $index => $value) {
             $collection[$keys[$index]] = $value;
