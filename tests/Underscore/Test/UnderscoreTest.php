@@ -90,6 +90,15 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(array('bar', 'bar', 'bar'), $value);
     }
 
+    public function testPickGetter()
+    {
+        $value = Underscore::from(array(new Dummy()))
+            ->pick('getFoo')
+            ->toArray();
+
+        $this->assertSame(array('foo'), $value);
+    }
+
     public function testContains()
     {
         $this->assertTrue(Underscore::from($this->getDummy())->contains('foo')->value());
