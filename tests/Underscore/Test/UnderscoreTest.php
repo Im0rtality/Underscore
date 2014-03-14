@@ -335,8 +335,8 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             array(
-                5 => ['dummy'],
-                3 => ['bar', 'qux'],
+                5 => array('dummy'),
+                3 => array('bar', 'qux'),
             ),
             $value
         );
