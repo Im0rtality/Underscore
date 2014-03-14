@@ -21,6 +21,8 @@ class Collection implements \ArrayAccess, \IteratorAggregate
 
     /**
      * @inheritdoc
+     *
+     * @param int $offset
      */
     public function offsetExists($offset)
     {
@@ -29,6 +31,8 @@ class Collection implements \ArrayAccess, \IteratorAggregate
 
     /**
      * @inheritdoc
+     *
+     * @param int $offset
      */
     public function offsetGet($offset)
     {
@@ -37,6 +41,9 @@ class Collection implements \ArrayAccess, \IteratorAggregate
 
     /**
      * @inheritdoc
+     *
+     * @param int   $offset
+     * @param mixed $value
      */
     public function offsetSet($offset, $value)
     {
@@ -61,6 +68,8 @@ class Collection implements \ArrayAccess, \IteratorAggregate
 
     /**
      * @inheritdoc
+     *
+     * @param int $offset
      */
     public function offsetUnset($offset)
     {
