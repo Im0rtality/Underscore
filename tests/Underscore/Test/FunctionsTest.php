@@ -28,4 +28,13 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(1, $counter);
     }
+
+    public function testNop()
+    {
+        $nop = Functions::nop();
+
+        $ref = new \stdClass();
+
+        $this->assertSame($ref, $nop($ref));
+    }
 }

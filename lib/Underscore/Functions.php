@@ -30,4 +30,16 @@ class Functions
 
         return $function;
     }
+
+    /**
+     * Creates function that simply returns given argument
+     *
+     * @return \Closure
+     */
+    public static function nop()
+    {
+        return function ($item) {
+            return $item;
+        };
+    }
 }
