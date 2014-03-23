@@ -489,7 +489,7 @@ class Underscore
             $collection[] = $key;
         }
 
-        $this->wrapped = self::from($collection);
+        $this->wrap($collection);
 
         return $this;
     }
