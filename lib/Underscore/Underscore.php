@@ -588,7 +588,7 @@ class Underscore
      */
     public function flatten()
     {
-        $result = [];
+        $result = array();
         foreach ($this->wrapped as $value) {
             $result = array_merge($result, is_array($value) ? $value : array($value));
         }
