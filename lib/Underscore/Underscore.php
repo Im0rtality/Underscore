@@ -553,4 +553,70 @@ class Underscore
 
         return $this;
     }
+
+    /**
+     * Creates an array of elements, sorted in ascending order by the results
+     * of running each element in a collection through the callback
+     *
+     * When values returned by $callback are equal the order is undefined
+     * i.e. the sorting is not stable
+     *
+     * @param \Closure $callback
+     *
+     * @return Underscore
+     */
+    public function sortBy($callback)
+    {
+        $collection = clone $this->groupBy($callback);
+        $this
+            ->keys()
+            ->tap('sort')
+            ->map(
+                function ($key) use ($collection) {
+                    return $collection->wrapped[$key];
+                }
+            )
+            ->flatten(true);
+
+        return $this;
+    }
+
+    /**
+     * Performs shallow flatten operation on collection (unwraps first level of array)
+     *
+     * @return Underscore
+     */
+    public function flatten()
+    {
+        $result = [];
+        foreach ($this->wrapped as $value) {
+            $result = array_merge($result, is_array($value) ? $value : array($value));
+        }
+
+        $this->wrap($result);
+
+        return $this;
+    }
+
+    /**
+     * Invokes $callback with the wrapped value of collection as the first argument
+     * and then wraps it back.
+     *
+     * The purpose of this method is to "tap into" a method chain in order to
+     * perform operations on intermediate results within the chain.
+     *
+     * @param \Closure $callback
+     *
+     * @return Underscore
+     */
+    public function tap($callback)
+    {
+        $raw = $this->wrapped->value();
+
+        $callback($raw);
+
+        $this->wrap($raw);
+
+        return $this;
+    }
 }

@@ -384,4 +384,56 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             $value
         );
     }
+
+    public function testSortBy()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->sortBy('strlen')
+            ->toArray();
+
+        $this->assertSame(
+            array(
+                'bar',
+                'qux',
+                'dummy',
+            ),
+            $value
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function getTestFlattenData()
+    {
+        $out = array();
+        // case #0
+        $out[] = array(
+            array(1, 2, array(3, 4)),
+            array(1, 2, 3, 4),
+        );
+        return $out;
+    }
+
+    /**
+     * @dataProvider getTestFlattenData
+     */
+    public function testFlatten($input, $expected)
+    {
+        $value = Underscore::from($input)
+            ->flatten()
+            ->toArray();
+
+        $this->assertSame($expected, $value);
+    }
+
+    public function testTap()
+    {
+        $dummy = $this->getDummy();
+
+        $mock = $this->getMock('stdClass', array('test'));
+        $mock->expects($this->once())->method('test')->with($dummy);
+
+        Underscore::from($dummy)->tap(array($mock, 'test'));
+    }
 }
