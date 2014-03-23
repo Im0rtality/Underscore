@@ -3,17 +3,29 @@ imports:
 
 tools:
     external_code_coverage: true
-    # PHP
+
     php_code_sniffer:       true
+
     php_cpd:                true
+
     php_cs_fixer:           true
-    php_mess_detector:      true
+
+    php_mess_detector:
+        config:
+            code_size_rules:
+                too_many_methods:     false
+                excessive_class_complexity:  false
+
     php_pdepend:            true
+
     php_loc:                true
+
     php_analyzer:
         config:
             doc_comment_fixes:
                 enabled:    true
+
+    sensiolabs_security_checker: true
 
 changetracking:
     bug_patterns: ["\bfix(?:es|ed)?\b"]
