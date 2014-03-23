@@ -95,7 +95,7 @@ class Underscore
      *
      * $iterator = function($value, $key, $collection)
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @return Underscore
      */
     public function invoke($iterator)
@@ -112,7 +112,7 @@ class Underscore
      *
      * $iterator = function($value, $key, $collection)
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @return Underscore
      */
     public function map($iterator)
@@ -133,7 +133,7 @@ class Underscore
      *
      * $iterator = function($accumulator, $value)
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @param mixed    $initial
      * @return Underscore
      */
@@ -155,7 +155,7 @@ class Underscore
      *
      * $iterator = function($accumulator, $value)
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @param mixed    $initial
      * @return Underscore
      */
@@ -221,7 +221,7 @@ class Underscore
     /**
      * Iterates over elements of a collection, returning an array of all elements the callback returns truey for.
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @return Underscore
      */
     public function filter($iterator)
@@ -243,7 +243,7 @@ class Underscore
      * The opposite of filter(). This method returns the elements of a collection that the callback
      * does **not** return truey for.
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @return Underscore
      */
     public function reject($iterator)
@@ -268,7 +268,7 @@ class Underscore
      *
      * Returns boolean
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @return Underscore
      */
     public function any($iterator)
@@ -293,7 +293,7 @@ class Underscore
      *
      * Returns boolean
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @return Underscore
      */
     public function all($iterator)
@@ -314,7 +314,7 @@ class Underscore
      *
      * Returns mixed
      *
-     * @param \Closure $iterator
+     * @param callable $iterator
      * @return Underscore
      */
     public function find($iterator)
@@ -535,7 +535,7 @@ class Underscore
      * Creates an object composed of keys generated from the results
      * of running each element of a collection through the callback
      *
-     * @param \Closure $callback
+     * @param callable $callback
      *
      * @return Underscore
      */
@@ -561,7 +561,7 @@ class Underscore
      * When values returned by $callback are equal the order is undefined
      * i.e. the sorting is not stable
      *
-     * @param \Closure $callback
+     * @param callable $callback
      *
      * @return Underscore
      */
@@ -611,7 +611,7 @@ class Underscore
      * The purpose of this method is to "tap into" a method chain in order to
      * perform operations on intermediate results within the chain.
      *
-     * @param \Closure $callback
+     * @param callable $callback
      *
      * @return Underscore
      */
