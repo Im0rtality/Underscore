@@ -26,7 +26,7 @@ class Collection implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetExists($offset)
     {
-        return is_object($this->wrapped) ? isset($this->wrapped->{$offset}) : isset($this->wrapped[$offset]);
+        return $this->isObject() ? isset($this->wrapped->{$offset}) : isset($this->wrapped[$offset]);
     }
 
     /**
@@ -36,7 +36,7 @@ class Collection implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetGet($offset)
     {
-        return is_object($this->wrapped) ? $this->wrapped->{$offset} : $this->wrapped[$offset];
+        return $this->isObject() ? $this->wrapped->{$offset} : $this->wrapped[$offset];
     }
 
     /**
@@ -48,13 +48,13 @@ class Collection implements \ArrayAccess, \IteratorAggregate
     public function offsetSet($offset, $value)
     {
         if (null !== $offset) {
-            if (is_object($this->wrapped)) {
+            if ($this->isObject()) {
                 $this->wrapped->{$offset} = $value;
             } else {
                 $this->wrapped[$offset] = $value;
             }
         } else {
-            if (is_object($this->wrapped)) {
+            if ($this->isObject()) {
                 $offset = 0;
                 while ($this->offsetExists($offset)) {
                     $offset++;
@@ -73,7 +73,7 @@ class Collection implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetUnset($offset)
     {
-        if (is_object($this->wrapped)) {
+        if ($this->isObject()) {
             unset($this->wrapped->{$offset});
         } else {
             unset($this->wrapped[$offset]);
@@ -93,7 +93,7 @@ class Collection implements \ArrayAccess, \IteratorAggregate
      */
     public function toArray()
     {
-        return is_object($this->wrapped) ? get_object_vars($this->wrapped) : $this->wrapped;
+        return $this->isObject() ? get_object_vars($this->wrapped) : $this->wrapped;
     }
 
     /**
@@ -123,7 +123,7 @@ class Collection implements \ArrayAccess, \IteratorAggregate
 
     public function __clone()
     {
-        if (is_object($this->wrapped)) {
+        if ($this->isObject()) {
             $this->wrapped = clone $this->wrapped;
         } else {
             $this->wrapped = array_map(
@@ -133,6 +133,15 @@ class Collection implements \ArrayAccess, \IteratorAggregate
                 $this->wrapped
             );
         }
+    }
 
+    /**
+     * Calls is_object on wrapped object
+     *
+     * @return bool
+     */
+    public function isObject()
+    {
+        return is_object($this->wrapped);
     }
 }

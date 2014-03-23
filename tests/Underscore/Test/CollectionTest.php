@@ -105,4 +105,67 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $collection[] = 'foo';
         $this->assertEquals(4, $collection->count());
     }
+
+    /**
+     * @return array
+     */
+    public function getTestCloneData()
+    {
+        $json = '{"foo":"bar", "baz":"qux"}';
+        $out  = array();
+        // case #0
+        $out[] = array(
+            json_decode($json),
+        );
+        // case #1
+        $out[] = array(
+            json_decode($json, true),
+        );
+
+        return $out;
+    }
+
+    /**
+     * @dataProvider getTestCloneData
+     */
+    public function testClone($clonee)
+    {
+        $result = new Collection($clonee);
+
+        $clone = clone $result;
+
+        $value = $clone->value();
+
+        $this->assertEquals($clonee, $value);
+    }
+
+    /**
+     * @return array
+     */
+    public function getTestIsObjectData()
+    {
+        $json = '{"foo":"bar", "baz":"qux"}';
+        $out  = array();
+        // case #0
+        $out[] = array(
+            json_decode($json),
+            true,
+        );
+        // case #1
+        $out[] = array(
+            json_decode($json, true),
+            false
+        );
+
+        return $out;
+    }
+
+    /**
+     * @dataProvider getTestIsObjectData
+     */
+    public function testIsObject($payload, $expected)
+    {
+        $collection = new Collection($payload);
+        $this->assertEquals($expected, $collection->isObject());
+    }
 }
