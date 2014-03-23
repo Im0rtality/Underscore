@@ -36,8 +36,6 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $out[] = array(0, 0, 1, array());
         // case #4
         $out[] = array(1, 2, 0, array(), '\LogicException');
-        // case #4
-        $out[] = array('a', 2, 0, array(), '\InvalidArgumentException');
 
         return $out;
     }

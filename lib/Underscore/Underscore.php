@@ -39,9 +39,6 @@ class Underscore
      */
     public static function range($start, $stop, $step = 1)
     {
-        if (!(is_numeric($start) && is_numeric($stop) && is_numeric($step))) {
-            throw new \InvalidArgumentException('range() only supports numbers as arguments');
-        }
         if (0 == $step) {
             throw new \LogicException('$step have to be non-zero');
         }
@@ -49,7 +46,7 @@ class Underscore
         $array      = array();
         $underscore = new Underscore();
 
-        for ($i = $start; $i < $stop; $i += $step) {
+        for ($i = (int)$start; $i < (int)$stop; $i += (int)$step) {
             $array[] = $i;
         }
 
