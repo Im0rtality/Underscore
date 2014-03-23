@@ -567,11 +567,16 @@ class Underscore
      */
     public function sortBy($callback)
     {
+        $sort = function ($value) {
+            sort($value);
+            return $value;
+        };
+
         $collection = clone $this->groupBy($callback);
         $collection = $collection->value();
         $this
             ->keys()
-            ->tap('sort')
+            ->tap($sort)
             ->map(
                 function ($key) use ($collection) {
                     return $collection[$key];
@@ -614,7 +619,7 @@ class Underscore
     {
         $raw = $this->wrapped->value();
 
-        $callback($raw);
+        $raw = call_user_func($callback, $raw);
 
         $this->wrap($raw);
 
