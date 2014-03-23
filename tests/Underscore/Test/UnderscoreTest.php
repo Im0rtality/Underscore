@@ -20,6 +20,41 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
      */
     abstract protected function getDummy2();
 
+    /**
+     * @return array
+     */
+    public function getTestRangeData()
+    {
+        $out = array();
+        // case #0
+        $out[] = array(0, 4, 1, array(0, 1, 2, 3));
+        // case #1
+        $out[] = array(1, 5, 1, array(1, 2, 3, 4));
+        // case #2
+        $out[] = array(0, 20, 5, array(0, 5, 10, 15));
+        // case #3
+        $out[] = array(0, 0, 1, array());
+        // case #4
+        $out[] = array(1, 2, 0, array(), '\LogicException');
+        // case #4
+        $out[] = array('a', 2, 0, array(), '\InvalidArgumentException');
+
+        return $out;
+    }
+
+    /**
+     * @dataProvider getTestRangeData
+     */
+    public function testRange($start, $stop, $step, $expected, $exception = null)
+    {
+        $exception && $this->setExpectedException($exception);
+
+        $this->assertEquals(
+            $expected,
+            Underscore::range($start, $stop, $step)->toArray()
+        );
+    }
+
     public function testValue()
     {
         $value = Underscore::from($this->getDummy())->value();

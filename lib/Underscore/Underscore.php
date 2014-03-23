@@ -28,6 +28,37 @@ class Underscore
     }
 
     /**
+     * Creates Underscore object containing array of numbers
+     *
+     * @param int $start Start number, inclusive
+     * @param int $stop  Stop number, not inclusive
+     * @param int $step  Step size, non-zero, can be negative
+     *
+     * @throws \LogicException
+     * @return Underscore
+     */
+    public static function range($start, $stop, $step = 1)
+    {
+        if (!(is_numeric($start) && is_numeric($stop) && is_numeric($step))) {
+            throw new \InvalidArgumentException('range() only supports numbers as arguments');
+        }
+        if (0 == $step) {
+            throw new \LogicException('$step have to be non-zero');
+        }
+
+        $array      = array();
+        $underscore = new Underscore();
+
+        for ($i = $start; $i < $stop; $i += $step) {
+            $array[] = $i;
+        }
+
+        $underscore->wrap($array);
+
+        return $underscore;
+    }
+
+    /**
      * @param mixed $item
      */
     protected function wrap($item)
