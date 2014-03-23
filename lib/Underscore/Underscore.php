@@ -568,12 +568,13 @@ class Underscore
     public function sortBy($callback)
     {
         $collection = clone $this->groupBy($callback);
+        $collection = $collection->value();
         $this
             ->keys()
             ->tap('sort')
             ->map(
                 function ($key) use ($collection) {
-                    return $collection->wrapped[$key];
+                    return $collection[$key];
                 }
             )
             ->flatten(true);
