@@ -582,7 +582,7 @@ class Underscore
                     return $collection[$key];
                 }
             )
-            ->flatten(true);
+            ->flatten();
 
         return $this;
     }
