@@ -46,7 +46,7 @@ Composer docs recommend to use specific version. You can look them up in [Releas
 
 # Documentation
 
-Will be added later
+See [wiki](https://github.com/Im0rtality/Underscore/wiki/Intro)
 
 ## TODO
 
