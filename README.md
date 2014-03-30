@@ -40,7 +40,7 @@ There is several PHP ports of UnderscoreJS, however none of those fit my require
 
 Via composer:
 
-    $ composer require im0rtality/underscore:dev-master
+    $ composer require im0rtality/underscore:0.1.*
 
 Composer docs recommend to use specific version. You can look them up in [Releases](https://github.com/Im0rtality/Underscore/releases).
 
