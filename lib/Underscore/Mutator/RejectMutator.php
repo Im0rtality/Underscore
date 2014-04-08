@@ -1,18 +1,19 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
- * Class FilterMethod
- * @package Underscore\Method
+ * Class RejectMethod
+ * @package Underscore\Mutator
  */
-class FilterMethod extends UnderscoreMethod
+class RejectMutator extends Mutator
 {
     /**
-     * Iterates over elements of a collection, returning an array of all elements the callback returns truey for.
+     * The opposite of filter(). This method returns the elements of a collection that the callback
+     * does **not** return truey for.
      *
      * @param Collection $collection
      * @param callable   $iterator
@@ -23,7 +24,7 @@ class FilterMethod extends UnderscoreMethod
         $collection = clone $collection;
 
         foreach ($collection as $k => $v) {
-            if (!call_user_func($iterator, $v, $k)) {
+            if (call_user_func($iterator, $v, $k)) {
                 unset($collection[$k]);
             }
         }

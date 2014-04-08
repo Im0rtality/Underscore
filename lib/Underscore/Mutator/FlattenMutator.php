@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class FlattenMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class FlattenMethod extends UnderscoreMethod
+class FlattenMutator extends Mutator
 {
     /**
      * Performs shallow flatten operation on collection (unwraps first level of array)

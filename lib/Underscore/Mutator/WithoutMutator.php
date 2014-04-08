@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class WithoutMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class WithoutMethod extends UnderscoreMethod
+class WithoutMutator extends Mutator
 {
     /**
      * Removes all provided values using strict comparison.
@@ -21,8 +21,8 @@ class WithoutMethod extends UnderscoreMethod
     public function __invoke($collection, $values)
     {
         $values   = $this->wrap($values);
-        $contains = new ContainsMethod();
-        $reject   = new RejectMethod();
+        $contains = new ContainsMutator();
+        $reject   = new RejectMutator();
 
         $iterator = function ($item) use ($values, $contains) {
             return $contains($values, $item)->value();

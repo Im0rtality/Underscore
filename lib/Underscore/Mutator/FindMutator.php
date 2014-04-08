@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class FindMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class FindMethod extends UnderscoreMethod
+class FindMutator extends Mutator
 {
     /**
      * Iterates over elements of a collection, returning the first element that the callback returns truey for.

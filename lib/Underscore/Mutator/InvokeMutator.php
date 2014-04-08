@@ -1,18 +1,18 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
- * Class MapMethod
- * @package Underscore\Method
+ * Class InvokeMethod
+ * @package Underscore\Mutator
  */
-class MapMethod extends UnderscoreMethod
+class InvokeMutator extends Mutator
 {
     /**
-     * Replaces every element with value returned by individual $iterator call
+     * Call $iterator for each element
      *
      * $iterator = function($value, $key, $collection)
      *
@@ -23,9 +23,8 @@ class MapMethod extends UnderscoreMethod
     public function __invoke($collection, $iterator)
     {
         $collection = clone $collection;
-
         foreach ($collection as $k => $v) {
-            $collection[$k] = call_user_func($iterator, $v, $k, $collection);
+            call_user_func($iterator, $v, $k, $collection);
         }
 
         return $collection;

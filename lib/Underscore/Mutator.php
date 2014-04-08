@@ -6,7 +6,7 @@ namespace Underscore;
  * Class UnderscoreMethod
  * @package Underscore
  */
-class UnderscoreMethod
+class Mutator
 {
     /**
      * @param mixed $item

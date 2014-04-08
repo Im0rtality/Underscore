@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class PickMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class PickMethod extends UnderscoreMethod
+class PickMutator extends Mutator
 {
     /**
      * Serves as shorthand to get list of specific key value from every element
@@ -34,7 +34,7 @@ class PickMethod extends UnderscoreMethod
             }
         };
 
-        $map = new MapMethod();
+        $map = new MapMutator();
 
         return $map($collection, $iterator);
     }

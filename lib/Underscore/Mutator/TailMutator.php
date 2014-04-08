@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class TailMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class TailMethod extends UnderscoreMethod
+class TailMutator extends Mutator
 {
     /**
      * Gets all but the first element or first n elements of collection.

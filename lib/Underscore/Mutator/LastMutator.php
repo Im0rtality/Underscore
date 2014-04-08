@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class LastMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class LastMethod extends UnderscoreMethod
+class LastMutator extends Mutator
 {
     /**
      * Gets the last element or last n elements of collection.

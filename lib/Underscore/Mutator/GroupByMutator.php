@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class GroupByMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class GroupByMethod extends UnderscoreMethod
+class GroupByMutator extends Mutator
 {
     /**
      * Creates an object composed of keys generated from the results

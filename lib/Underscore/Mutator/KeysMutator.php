@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class KeysMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class KeysMethod extends UnderscoreMethod
+class KeysMutator extends Mutator
 {
     /**
      * Creates an collection composed of the enumerable property keys of object.

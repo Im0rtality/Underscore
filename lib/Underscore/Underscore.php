@@ -119,7 +119,7 @@ class Underscore
      */
     public function __call($method, $args)
     {
-        $payloadClass = sprintf('\Underscore\Method\%sMethod', ucfirst($method));
+        $payloadClass = sprintf('\Underscore\Mutator\%sMutator', ucfirst($method));
         /** @var $payload callable */
         $payload = new $payloadClass();
 

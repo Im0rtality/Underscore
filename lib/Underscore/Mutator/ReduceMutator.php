@@ -1,18 +1,18 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
- * Class ReduceRightMethod
- * @package Underscore\Method
+ * Class ReduceMethod
+ * @package Underscore\Mutator
  */
-class ReduceRightMethod extends UnderscoreMethod
+class ReduceMutator extends Mutator
 {
     /**
-     * Reduces collection to single value using $iterator. Reversed direction.
+     * Reduces collection to single value using $iterator
      *
      * $iterator = function($accumulator, $value)
      *
@@ -25,7 +25,7 @@ class ReduceRightMethod extends UnderscoreMethod
     {
         $collection = clone $collection;
 
-        foreach ($collection->getIteratorReversed() as $value) {
+        foreach ($collection as $value) {
             $initial = call_user_func($iterator, $initial, $value);
         }
 

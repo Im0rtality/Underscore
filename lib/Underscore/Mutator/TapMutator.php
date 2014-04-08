@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class TapMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class TapMethod extends UnderscoreMethod
+class TapMutator extends Mutator
 {
     /**
      * Invokes $callback with the wrapped value of collection as the first argument

@@ -1,16 +1,16 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
 use Underscore\Functions;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class CompactMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class CompactMethod extends UnderscoreMethod
+class CompactMutator extends Mutator
 {
     /**
      * Removes all falsey values.
@@ -20,7 +20,7 @@ class CompactMethod extends UnderscoreMethod
      */
     public function __invoke($collection)
     {
-        $filter = new FilterMethod();
+        $filter = new FilterMutator();
 
         return $filter($collection, Functions::nop());
     }

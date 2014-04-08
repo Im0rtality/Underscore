@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class SortByMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class SortByMethod extends UnderscoreMethod
+class SortByMutator extends Mutator
 {
     /**
      * Creates an array of elements, sorted in ascending order by the results
@@ -30,7 +30,7 @@ class SortByMethod extends UnderscoreMethod
 
         /** @var $collection Collection */
         /** @noinspection PhpParamsInspection */
-        $collection = call_user_func(new GroupByMethod(), $collection, $iterator);
+        $collection = call_user_func(new GroupByMutator(), $collection, $iterator);
 
         // read once - for performance
         $val = $collection->value();
@@ -40,13 +40,13 @@ class SortByMethod extends UnderscoreMethod
         };
 
         /** @noinspection PhpParamsInspection */
-        $collection = call_user_func(new KeysMethod(), $collection);
+        $collection = call_user_func(new KeysMutator(), $collection);
         /** @noinspection PhpParamsInspection */
-        $collection = call_user_func(new TapMethod(), $collection, $sortFunc);
+        $collection = call_user_func(new TapMutator(), $collection, $sortFunc);
         /** @noinspection PhpParamsInspection */
-        $collection = call_user_func(new MapMethod(), $collection, $mapFunc);
+        $collection = call_user_func(new MapMutator(), $collection, $mapFunc);
         /** @noinspection PhpParamsInspection */
-        $collection = call_user_func(new FlattenMethod(), $collection);
+        $collection = call_user_func(new FlattenMutator(), $collection);
 
         return $collection;
     }

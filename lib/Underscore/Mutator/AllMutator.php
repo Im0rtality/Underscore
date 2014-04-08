@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class AllMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class AllMethod extends UnderscoreMethod
+class AllMutator extends Mutator
 {
     /**
      * Checks if the $iterator returns a truey value for ALL element of a collection.
@@ -27,7 +27,7 @@ class AllMethod extends UnderscoreMethod
             return $accumulator;
         };
 
-        $reduce = new ReduceMethod();
+        $reduce = new ReduceMutator();
 
         return $reduce($collection, $iterator, true);
     }

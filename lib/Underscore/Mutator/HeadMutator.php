@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class HeadMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class HeadMethod extends UnderscoreMethod
+class HeadMutator extends Mutator
 {
     /**
      * Gets the first element or first n elements of collection.

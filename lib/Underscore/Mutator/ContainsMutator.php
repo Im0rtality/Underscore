@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class ContainsMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class ContainsMethod extends UnderscoreMethod
+class ContainsMutator extends Mutator
 {
     /**
      * Checks if a given value is present in a collection using strict equality for comparisons.
@@ -26,7 +26,7 @@ class ContainsMethod extends UnderscoreMethod
             return $value === $needle;
         };
 
-        $find = new FindMethod();
+        $find = new FindMutator();
 
         return $find($collection, $iterator);
     }

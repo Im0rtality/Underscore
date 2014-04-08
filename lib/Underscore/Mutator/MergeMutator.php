@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class MergeMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class MergeMethod extends UnderscoreMethod
+class MergeMutator extends Mutator
 {
     /**
      * Merges two collections. If keys collide, new value overwrites older.

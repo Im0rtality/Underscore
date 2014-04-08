@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Method;
+namespace Underscore\Mutator;
 
 use Underscore\Collection;
-use Underscore\UnderscoreMethod;
+use Underscore\Mutator;
 
 /**
  * Class ZipMethod
- * @package Underscore\Method
+ * @package Underscore\Mutator
  */
-class ZipMethod extends UnderscoreMethod
+class ZipMutator extends Mutator
 {
     /**
      * Combines current collection values with given keys to produce new collection
@@ -22,9 +22,9 @@ class ZipMethod extends UnderscoreMethod
     public function __invoke($collection, $keys)
     {
         /** @noinspection PhpParamsInspection */
-        $values = call_user_func(new ValuesMethod(), $collection)->toArray();
+        $values = call_user_func(new ValuesMutator(), $collection)->toArray();
         /** @noinspection PhpParamsInspection */
-        $keys = call_user_func(new ValuesMethod(), $this->wrap($keys))->toArray();
+        $keys = call_user_func(new ValuesMutator(), $this->wrap($keys))->toArray();
 
         if (count($values) !== count($keys)) {
             throw new \LogicException('Keys and values count must match');
