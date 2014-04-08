@@ -20,6 +20,7 @@ namespace Underscore;
  * @method Underscore compact()
  * @method Underscore values()
  * @method Underscore keys()
+ * @method Underscore flatten()
  */
 class Underscore
 {
@@ -316,23 +317,6 @@ class Underscore
                 }
             )
             ->flatten();
-
-        return $this;
-    }
-
-    /**
-     * Performs shallow flatten operation on collection (unwraps first level of array)
-     *
-     * @return Underscore
-     */
-    public function flatten()
-    {
-        $result = array();
-        foreach ($this->wrapped as $value) {
-            $result = array_merge($result, is_array($value) ? $value : array($value));
-        }
-
-        $this->wrap($result);
 
         return $this;
     }
