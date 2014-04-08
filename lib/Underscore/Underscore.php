@@ -9,6 +9,7 @@ use Underscore\Initializer\FromInitializer;
  * @package Underscore
  *
  * @method static Underscore from($item)
+ * @method static Underscore range(int $start, int $stop, int $step = 1)
  *
  * @method Underscore invoke(callable $iterator)
  * @method Underscore reduce(callable $iterator, mixed $initial = null)
@@ -50,53 +51,13 @@ class Underscore
     }
 
     /**
-     * Creates Underscore object containing array of numbers
-     *
-     * @param int $start Start number, inclusive
-     * @param int $stop  Stop number, not inclusive
-     * @param int $step  Step size, non-zero, can be negative
-     *
-     * @throws \LogicException
-     * @return Underscore
-     */
-    public static function range($start, $stop, $step = 1)
-    {
-        if (0 == $step) {
-            throw new \LogicException('$step have to be non-zero');
-        }
-
-        $array      = array();
-        $underscore = new Underscore();
-
-        for ($i = (int)$start; $i < (int)$stop; $i += (int)$step) {
-            $array[] = $i;
-        }
-
-        $underscore->wrap($array);
-
-        return $underscore;
-    }
-
-    /**
-     * @param mixed $item
-     */
-    protected function wrap($item)
-    {
-        $this->wrapped = new Collection($item);
-    }
-
-    /**
      * Returns object
      *
      * @return mixed
      */
     public function value()
     {
-        if ($this->wrapped instanceof Collection) {
-            return $this->wrapped->value();
-        } else {
-            return $this->wrapped;
-        }
+        return $this->wrapped->value();
     }
 
     /**
