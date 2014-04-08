@@ -335,11 +335,11 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testClon()
+    public function testClone()
     {
         $original = $this->getDummy();
         $cloned   = Underscore::from($original)
-            ->clon()
+            ->clone()
             ->without(array('dummy'))
             ->value();
 

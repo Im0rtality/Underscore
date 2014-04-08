@@ -2,8 +2,6 @@
 
 namespace Underscore;
 
-use Underscore\Initializer\FromInitializer;
-
 /**
  * Class Underscore
  * @package Underscore
@@ -36,6 +34,7 @@ use Underscore\Initializer\FromInitializer;
  * @method Underscore zip(array $keys)
  * @method Underscore merge($values)
  * @method Underscore without($values)
+ * @method Underscore clone()
  */
 class Underscore
 {
@@ -111,16 +110,5 @@ class Underscore
     public function size()
     {
         return $this->wrapped->count();
-    }
-
-    /**
-     * Clones makes clone of collection
-     *
-     * @return Underscore
-     */
-    public function clon()
-    {
-        /** @noinspection PhpParamsInspection */
-        return call_user_func(new FromInitializer(), unserialize(serialize($this->wrapped->value())));
     }
 }
