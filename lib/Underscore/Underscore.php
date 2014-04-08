@@ -28,6 +28,7 @@ namespace Underscore;
  * @method Underscore tail(int $count = 1)
  * @method Underscore initial(int $count = 1)
  * @method Underscore last(int $count = 1)
+ * @method Underscore zip(array $keys)
  */
 class Underscore
 {
@@ -179,32 +180,5 @@ class Underscore
     public function clon()
     {
         return self::from(unserialize(serialize($this->wrapped->value())));
-    }
-
-    /**
-     * Combines current collection values with given keys to produce new collection
-     *
-     * @param mixed[] $keys
-     *
-     * @throws \LogicException
-     * @return Underscore
-     */
-    public function zip($keys)
-    {
-        $values = $this->values()->toArray();
-        $keys = self::from($keys)->values()->toArray();
-
-        if (count($values) !== count($keys)) {
-            throw new \LogicException('Keys and values count must match');
-        }
-
-        $collection = array();
-        foreach ($values as $index => $value) {
-            $collection[$keys[$index]] = $value;
-        }
-
-        $this->wrap($collection);
-
-        return $this;
     }
 }
