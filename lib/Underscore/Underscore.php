@@ -6,6 +6,10 @@ namespace Underscore;
  * Class Underscore
  * @package Underscore
  * @SuppressWarnings(TooManyMethods) - these methods belong here
+ * @method Underscore invoke(callable $iterator)
+ * @method Underscore reduce(callable $iterator, mixed $initial = null)
+ * @method Underscore reduceRight(callable $iterator, mixed $initial = null)
+ * @method Underscore map(callable $iterator)
  */
 class Underscore
 {
@@ -88,83 +92,18 @@ class Underscore
     }
 
     /**
-     * Call $iterator for each element
-     *
-     * $iterator = function($value, $key, $collection)
-     *
-     * @param callable $iterator
-     * @return Underscore
+     * @param string $method
+     * @param array  $args
+     * @return $this
      */
-    public function invoke($iterator)
+    public function __call($method, $args)
     {
-        foreach ($this->wrapped as $k => $v) {
-            call_user_func($iterator, $v, $k, $this->wrapped);
-        }
+        $payloadClass = sprintf('\Underscore\Method\%sMethod', ucfirst($method));
+        /** @var $payload callable */
+        $payload = new $payloadClass();
 
-        return $this;
-    }
-
-    /**
-     * Replaces every element with value returned by individual $iterator call
-     *
-     * $iterator = function($value, $key, $collection)
-     *
-     * @param callable $iterator
-     * @return Underscore
-     */
-    public function map($iterator)
-    {
-        $collection = clone $this->wrapped;
-
-        foreach ($collection as $k => $v) {
-            $collection[$k] = call_user_func($iterator, $v, $k, $collection);
-        }
-
-        $this->wrapped = $collection;
-
-        return $this;
-    }
-
-    /**
-     * Reduces collection to single value using $iterator
-     *
-     * $iterator = function($accumulator, $value)
-     *
-     * @param callable $iterator
-     * @param mixed    $initial
-     * @return Underscore
-     */
-    public function reduce($iterator, $initial = null)
-    {
-        $collection = clone $this->wrapped;
-
-        foreach ($collection as $value) {
-            $initial = call_user_func($iterator, $initial, $value);
-        }
-
-        $this->wrapped = $initial;
-
-        return $this;
-    }
-
-    /**
-     * Reduces collection to single value using $iterator. Reversed direction.
-     *
-     * $iterator = function($accumulator, $value)
-     *
-     * @param callable $iterator
-     * @param mixed    $initial
-     * @return Underscore
-     */
-    public function reduceRight($iterator, $initial = null)
-    {
-        $collection = clone $this->wrapped;
-
-        foreach ($collection->getIteratorReversed() as $value) {
-            $initial = call_user_func($iterator, $initial, $value);
-        }
-
-        $this->wrapped = $initial;
+        array_unshift($args, $this->wrapped);
+        $this->wrapped = call_user_func_array($payload, $args);
 
         return $this;
     }
