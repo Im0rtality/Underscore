@@ -16,6 +16,7 @@ namespace Underscore;
  * @method Underscore filter(callable $iterator)
  * @method Underscore reject(callable $iterator)
  * @method Underscore find(callable $iterator)
+ * @method Underscore groupBy(callable $iterator)
  * @method Underscore contains(mixed $needle)
  * @method Underscore compact()
  * @method Underscore values()
@@ -261,29 +262,6 @@ class Underscore
         }
 
         $this->wrap($collection);
-
-        return $this;
-    }
-
-    /**
-     * Creates an object composed of keys generated from the results
-     * of running each element of a collection through the callback
-     *
-     * @param callable $callback
-     *
-     * @return Underscore
-     */
-    public function groupBy($callback)
-    {
-        $collection = clone $this->wrapped;
-
-        $result = array();
-        foreach ($collection as $value) {
-            $key            = call_user_func($callback, $value);
-            $result[$key][] = $value;
-        }
-
-        $this->wrap($result);
 
         return $this;
     }
