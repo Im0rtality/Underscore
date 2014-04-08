@@ -17,6 +17,7 @@ namespace Underscore;
  * @method Underscore reject(callable $iterator)
  * @method Underscore find(callable $iterator)
  * @method Underscore groupBy(callable $iterator)
+ * @method Underscore sortBy(callable $iterator)
  * @method Underscore tap(callable $iterator)
  * @method Underscore contains(mixed $needle)
  * @method Underscore compact()
@@ -263,39 +264,6 @@ class Underscore
         }
 
         $this->wrap($collection);
-
-        return $this;
-    }
-
-    /**
-     * Creates an array of elements, sorted in ascending order by the results
-     * of running each element in a collection through the callback
-     *
-     * When values returned by $callback are equal the order is undefined
-     * i.e. the sorting is not stable
-     *
-     * @param callable $callback
-     *
-     * @return Underscore
-     */
-    public function sortBy($callback)
-    {
-        $sort = function ($value) {
-            sort($value);
-            return $value;
-        };
-
-        $collection = clone $this->groupBy($callback);
-        $collection = $collection->value();
-        $this
-            ->keys()
-            ->tap($sort)
-            ->map(
-                function ($key) use ($collection) {
-                    return $collection[$key];
-                }
-            )
-            ->flatten();
 
         return $this;
     }
