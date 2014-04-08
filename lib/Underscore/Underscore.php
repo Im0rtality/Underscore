@@ -14,6 +14,7 @@ namespace Underscore;
  * @method Underscore any(callable $iterator)
  * @method Underscore filter(callable $iterator)
  * @method Underscore reject(callable $iterator)
+ * @method Underscore compact()
  */
 class Underscore
 {
@@ -255,21 +256,6 @@ class Underscore
     {
         $this->wrapped = array_slice($this->wrapped->toArray(), 0, -$count);
 
-        return $this;
-    }
-
-    /**
-     * Removes all falsey values.
-     *
-     * @return Underscore
-     */
-    public function compact()
-    {
-        $this->filter(
-            function ($item) {
-                return $item;
-            }
-        );
         return $this;
     }
 
