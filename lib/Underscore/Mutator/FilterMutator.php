@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class FilterMethod
+ * Class FilterMutator
  * @package Underscore\Mutator
  */
 class FilterMutator extends Mutator

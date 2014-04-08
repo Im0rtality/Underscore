@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class ReduceRightMethod
+ * Class ReduceRightMutator
  * @package Underscore\Mutator
  */
 class ReduceRightMutator extends Mutator

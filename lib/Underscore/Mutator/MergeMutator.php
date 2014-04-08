@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class MergeMethod
+ * Class MergeMutator
  * @package Underscore\Mutator
  */
 class MergeMutator extends Mutator

@@ -6,13 +6,14 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class RejectMethod
+ * Class RejectMutator
  * @package Underscore\Mutator
  */
 class RejectMutator extends Mutator
 {
     /**
-     * The opposite of filter(). This method returns the elements of a collection that the callback
+     * The opposite of filter(). This Mutator
+     * returns the elements of a collection that the callback
      * does **not** return truey for.
      *
      * @param Collection $collection

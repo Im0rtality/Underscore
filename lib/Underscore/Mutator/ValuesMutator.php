@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class ValuesMethod
+ * Class ValuesMutator
  * @package Underscore\Mutator
  */
 class ValuesMutator extends Mutator

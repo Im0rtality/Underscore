@@ -3,7 +3,7 @@
 namespace Underscore;
 
 /**
- * Class UnderscoreMethod
+ * Class Mutator
  * @package Underscore
  */
 class Mutator

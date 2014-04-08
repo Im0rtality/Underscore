@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class SortByMethod
+ * Class SortByMutator
  * @package Underscore\Mutator
  */
 class SortByMutator extends Mutator

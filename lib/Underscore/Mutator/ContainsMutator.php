@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class ContainsMethod
+ * Class ContainsMutator
  * @package Underscore\Mutator
  */
 class ContainsMutator extends Mutator

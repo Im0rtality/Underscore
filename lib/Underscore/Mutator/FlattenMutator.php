@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class FlattenMethod
+ * Class FlattenMutator
  * @package Underscore\Mutator
  */
 class FlattenMutator extends Mutator

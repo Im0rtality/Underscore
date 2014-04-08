@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class ZipMethod
+ * Class ZipMutator
  * @package Underscore\Mutator
  */
 class ZipMutator extends Mutator

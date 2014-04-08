@@ -6,7 +6,7 @@ use Underscore\Collection;
 use Underscore\Mutator;
 
 /**
- * Class TapMethod
+ * Class TapMutator
  * @package Underscore\Mutator
  */
 class TapMutator extends Mutator
@@ -15,7 +15,9 @@ class TapMutator extends Mutator
      * Invokes $callback with the wrapped value of collection as the first argument
      * and then wraps it back.
      *
-     * The purpose of this method is to "tap into" a method chain in order to
+     * The purpose of this Mutator
+     * is to "tap into" a Mutator
+     * chain in order to
      * perform operations on intermediate results within the chain.
      *
      * @param Collection $collection

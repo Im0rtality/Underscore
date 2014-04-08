@@ -7,7 +7,7 @@ use Underscore\Functions;
 use Underscore\Mutator;
 
 /**
- * Class CompactMethod
+ * Class CompactMutator
  * @package Underscore\Mutator
  */
 class CompactMutator extends Mutator
