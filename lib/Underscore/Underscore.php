@@ -17,6 +17,7 @@ namespace Underscore;
  * @method Underscore reject(callable $iterator)
  * @method Underscore find(callable $iterator)
  * @method Underscore groupBy(callable $iterator)
+ * @method Underscore tap(callable $iterator)
  * @method Underscore contains(mixed $needle)
  * @method Underscore compact()
  * @method Underscore values()
@@ -295,28 +296,6 @@ class Underscore
                 }
             )
             ->flatten();
-
-        return $this;
-    }
-
-    /**
-     * Invokes $callback with the wrapped value of collection as the first argument
-     * and then wraps it back.
-     *
-     * The purpose of this method is to "tap into" a method chain in order to
-     * perform operations on intermediate results within the chain.
-     *
-     * @param callable $callback
-     *
-     * @return Underscore
-     */
-    public function tap($callback)
-    {
-        $raw = $this->wrapped->value();
-
-        $raw = call_user_func($callback, $raw);
-
-        $this->wrap($raw);
 
         return $this;
     }
