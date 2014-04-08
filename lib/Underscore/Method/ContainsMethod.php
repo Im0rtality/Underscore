@@ -22,14 +22,12 @@ class ContainsMethod extends UnderscoreMethod
      */
     public function __invoke($collection, $needle)
     {
-        $iterator = function ($needle) {
-            return function ($value) use ($needle) {
-                return $value === $needle;
-            };
+        $iterator = function ($value) use ($needle) {
+            return $value === $needle;
         };
 
         $find = new FindMethod();
 
-        return $find($collection, $iterator($needle));
+        return $find($collection, $iterator);
     }
 }
