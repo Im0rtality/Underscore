@@ -15,6 +15,7 @@ namespace Underscore;
  * @method Underscore any(callable $iterator)
  * @method Underscore filter(callable $iterator)
  * @method Underscore reject(callable $iterator)
+ * @method Underscore find(callable $iterator)
  * @method Underscore compact()
  */
 class Underscore
@@ -131,30 +132,6 @@ class Underscore
         };
 
         $this->find($finder($needle));
-
-        return $this;
-    }
-
-    /**
-     * Iterates over elements of a collection, returning the first element that the callback returns truey for.
-     *
-     * Returns mixed
-     *
-     * @param callable $iterator
-     * @return Underscore
-     */
-    public function find($iterator)
-    {
-        $collection = clone $this->wrapped;
-
-        $found = false;
-        foreach ($collection as $k => $v) {
-            if (call_user_func($iterator, $k, $v, $collection)) {
-                $found = true;
-                break;
-            }
-        }
-        $this->wrapped = $found;
 
         return $this;
     }
