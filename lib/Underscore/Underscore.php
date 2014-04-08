@@ -30,6 +30,7 @@ namespace Underscore;
  * @method Underscore last(int $count = 1)
  * @method Underscore zip(array $keys)
  * @method Underscore merge($values)
+ * @method Underscore without($values)
  */
 class Underscore
 {
@@ -138,23 +139,6 @@ class Underscore
     public function size()
     {
         return $this->wrapped->count();
-    }
-
-    /**
-     * Removes all provided values using strict comparison.
-     *
-     * @param mixed[] $values
-     *
-     * @return Underscore
-     */
-    public function without($values = array())
-    {
-        $this->reject(
-            function ($item) use ($values) {
-                return in_array($item, $values, true);
-            }
-        );
-        return $this;
     }
 
     /**
