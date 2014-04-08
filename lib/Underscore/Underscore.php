@@ -17,6 +17,7 @@ namespace Underscore;
  * @method Underscore reject(callable $iterator)
  * @method Underscore find(callable $iterator)
  * @method Underscore compact()
+ * @method Underscore values()
  */
 class Underscore
 {
@@ -241,24 +242,6 @@ class Underscore
         foreach ($values->wrapped as $key => $value) {
             $this->wrapped[$key] = $value;
         }
-
-        return $this;
-    }
-
-    /**
-     * Creates an collection composed of the enumerable property values of object.
-     *
-     * @return Underscore
-     */
-    public function values()
-    {
-        $collection = array();
-
-        foreach ($this->wrapped as $value) {
-            $collection[] = $value;
-        }
-
-        $this->wrapped = self::from($collection);
 
         return $this;
     }
