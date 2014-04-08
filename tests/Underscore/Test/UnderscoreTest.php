@@ -2,6 +2,7 @@
 
 namespace Underscore\Test;
 
+use Underscore\Collection;
 use Underscore\Underscore;
 
 /**
@@ -286,7 +287,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testMerge()
     {
         $value = Underscore::from($this->getDummy())
-            ->merge(Underscore::from($this->getDummy2()))
+            ->merge(new Collection($this->getDummy2()))
             ->toArray();
 
         $this->assertSame(

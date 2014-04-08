@@ -29,6 +29,7 @@ namespace Underscore;
  * @method Underscore initial(int $count = 1)
  * @method Underscore last(int $count = 1)
  * @method Underscore zip(array $keys)
+ * @method Underscore merge($values)
  */
 class Underscore
 {
@@ -153,22 +154,6 @@ class Underscore
                 return in_array($item, $values, true);
             }
         );
-        return $this;
-    }
-
-    /**
-     * Merges two collections. If keys collide, new value overwrites older.
-     *
-     * @param Underscore $values
-     *
-     * @return Underscore
-     */
-    public function merge(Underscore $values)
-    {
-        foreach ($values->wrapped as $key => $value) {
-            $this->wrapped[$key] = $value;
-        }
-
         return $this;
     }
 
