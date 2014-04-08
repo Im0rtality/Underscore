@@ -26,7 +26,7 @@ class FindMethod extends UnderscoreMethod
 
         $found = false;
         foreach ($collection as $k => $v) {
-            if (call_user_func($iterator, $k, $v, $collection)) {
+            if (call_user_func($iterator, $v, $k, $collection)) {
                 $found = true;
                 break;
             }
