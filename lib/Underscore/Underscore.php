@@ -11,6 +11,7 @@ namespace Underscore;
  * @method Underscore reduceRight(callable $iterator, mixed $initial = null)
  * @method Underscore map(callable $iterator)
  * @method Underscore all(callable $iterator)
+ * @method Underscore any(callable $iterator)
  */
 class Underscore
 {
@@ -194,33 +195,6 @@ class Underscore
         }
 
         $this->wrapped = $collection;
-
-        return $this;
-    }
-
-    /**
-     * Checks if the $iterator returns a truey value for ANY element of a collection.
-     * The function returns as soon as it finds a passing value and does not iterate
-     * over entire collection.
-     *
-     * Returns boolean
-     *
-     * @param callable $iterator
-     * @return Underscore
-     */
-    public function any($iterator)
-    {
-        $collection = clone $this->wrapped;
-
-        $found = false;
-        foreach ($collection as $k => $v) {
-            if (call_user_func($iterator, $v, $k)) {
-                $found = true;
-                break;
-            }
-        }
-
-        $this->wrapped = $found;
 
         return $this;
     }
