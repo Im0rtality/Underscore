@@ -10,6 +10,7 @@ namespace Underscore;
  * @method Underscore reduce(callable $iterator, mixed $initial = null)
  * @method Underscore reduceRight(callable $iterator, mixed $initial = null)
  * @method Underscore map(callable $iterator)
+ * @method Underscore all(callable $iterator)
  */
 class Underscore
 {
@@ -220,27 +221,6 @@ class Underscore
         }
 
         $this->wrapped = $found;
-
-        return $this;
-    }
-
-    /**
-     * Checks if the $iterator returns a truey value for ALL element of a collection.
-     *
-     * Returns boolean
-     *
-     * @param callable $iterator
-     * @return Underscore
-     */
-    public function all($iterator)
-    {
-        $this->reduce(
-            function ($accumulator, $item) use ($iterator) {
-                $accumulator = $accumulator && $iterator($item);
-                return $accumulator;
-            },
-            true
-        );
 
         return $this;
     }
