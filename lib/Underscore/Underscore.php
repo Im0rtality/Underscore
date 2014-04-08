@@ -35,6 +35,8 @@ namespace Underscore;
  * @method Underscore merge($values)
  * @method Underscore without($values)
  * @method Underscore clone()
+ *
+ * @method mixed value()
  */
 class Underscore
 {
@@ -47,16 +49,6 @@ class Underscore
     public function __construct(Collection $wrapped = null)
     {
         $this->wrapped = $wrapped;
-    }
-
-    /**
-     * Returns object
-     *
-     * @return mixed
-     */
-    public function value()
-    {
-        return $this->wrapped->value();
     }
 
     /**
@@ -77,13 +69,22 @@ class Underscore
     public function __call($method, $args)
     {
         $payloadClass = sprintf('\Underscore\Mutator\%sMutator', ucfirst($method));
+        if (!class_exists($payloadClass)) {
+            $payloadClass = sprintf('\Underscore\Accesor\%sAccesor', ucfirst($method));
+        }
+
         /** @var $payload callable */
         $payload = new $payloadClass();
 
         array_unshift($args, $this->wrapped);
-        $this->wrapped = call_user_func_array($payload, $args);
 
-        return $this;
+        if ($payload instanceof Mutator) {
+            $this->wrapped = call_user_func_array($payload, $args);
+
+            return $this;
+        } else {
+            return call_user_func_array($payload, $args);
+        }
     }
 
     /**
