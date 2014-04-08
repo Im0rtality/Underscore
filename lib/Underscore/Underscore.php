@@ -10,6 +10,7 @@ namespace Underscore;
  * @method Underscore reduce(callable $iterator, mixed $initial = null)
  * @method Underscore reduceRight(callable $iterator, mixed $initial = null)
  * @method Underscore map(callable $iterator)
+ * @method Underscore pick(mixed $key)
  * @method Underscore all(callable $iterator)
  * @method Underscore any(callable $iterator)
  * @method Underscore filter(callable $iterator)
@@ -111,31 +112,6 @@ class Underscore
         $this->wrapped = call_user_func_array($payload, $args);
 
         return $this;
-    }
-
-    /**
-     * Serves as shorthand to get list of specific key value from every element
-     *
-     * If key not found returns null
-     *
-     * @param mixed $key
-     * @return Underscore
-     */
-    public function pick($key)
-    {
-        return $this->map(
-            function ($value) use ($key) {
-                if (is_object($value)) {
-                    if (is_callable(array($value, $key))) {
-                        return call_user_func(array($value, $key));
-                    } else {
-                        return isset($value->{$key}) ? $value->{$key} : null;
-                    }
-                } else {
-                    return isset($value[$key]) ? $value[$key] : null;
-                }
-            }
-        );
     }
 
     /**
