@@ -18,6 +18,7 @@ namespace Underscore;
  * @method Underscore find(callable $iterator)
  * @method Underscore compact()
  * @method Underscore values()
+ * @method Underscore keys()
  */
 class Underscore
 {
@@ -242,25 +243,6 @@ class Underscore
         foreach ($values->wrapped as $key => $value) {
             $this->wrapped[$key] = $value;
         }
-
-        return $this;
-    }
-
-    /**
-     * Creates an collection composed of the enumerable property keys of object.
-     *
-     * @return Underscore
-     * @SuppressWarnings(UnusedLocalVariable) - $value in foreach
-     */
-    public function keys()
-    {
-        $collection = array();
-
-        foreach ($this->wrapped as $key => $value) {
-            $collection[] = $key;
-        }
-
-        $this->wrap($collection);
 
         return $this;
     }
