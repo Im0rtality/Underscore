@@ -2,9 +2,13 @@
 
 namespace Underscore;
 
+use Underscore\Initializer\FromInitializer;
+
 /**
  * Class Underscore
  * @package Underscore
+ *
+ * @method static Underscore from($item)
  *
  * @method Underscore invoke(callable $iterator)
  * @method Underscore reduce(callable $iterator, mixed $initial = null)
@@ -38,18 +42,11 @@ class Underscore
     protected $wrapped;
 
     /**
-     * Initializes Underscore object and sets argument as internal collection
-     *
-     * @param mixed $item
-     * @return Underscore
+     * @param Collection $wrapped
      */
-    public static function from($item)
+    public function __construct(Collection $wrapped = null)
     {
-        $underscore = new Underscore();
-
-        $underscore->wrap($item);
-
-        return $underscore;
+        $this->wrapped = $wrapped;
     }
 
     /**
@@ -130,6 +127,20 @@ class Underscore
     }
 
     /**
+     * @param string $method
+     * @param array  $args
+     * @return $this
+     */
+    public static function __callStatic($method, $args)
+    {
+        $payloadClass = sprintf('\Underscore\Initializer\%sInitializer', ucfirst($method));
+        /** @var $payload callable */
+        $payload = new $payloadClass();
+
+        return call_user_func_array($payload, $args);
+    }
+
+    /**
      * Gets the size of the collection by returning length for arrays or number of enumerable properties for objects.
      *
      * Returns int
@@ -148,6 +159,7 @@ class Underscore
      */
     public function clon()
     {
-        return self::from(unserialize(serialize($this->wrapped->value())));
+        /** @noinspection PhpParamsInspection */
+        return call_user_func(new FromInitializer(), unserialize(serialize($this->wrapped->value())));
     }
 }
