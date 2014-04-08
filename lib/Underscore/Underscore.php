@@ -37,6 +37,7 @@ namespace Underscore;
  * @method Underscore clone()
  *
  * @method mixed value()
+ * @method mixed[] toArray()
  */
 class Underscore
 {
@@ -49,16 +50,6 @@ class Underscore
     public function __construct(Collection $wrapped = null)
     {
         $this->wrapped = $wrapped;
-    }
-
-    /**
-     * Returns object as array
-     *
-     * @return mixed[]
-     */
-    public function toArray()
-    {
-        return $this->wrapped->toArray();
     }
 
     /**
