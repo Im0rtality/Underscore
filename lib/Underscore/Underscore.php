@@ -36,8 +36,9 @@ namespace Underscore;
  * @method Underscore without($values)
  * @method Underscore clone()
  *
- * @method mixed value()
- * @method mixed[] toArray()
+ * @method mixed    value()
+ * @method mixed[]  toArray()
+ * @method int      size()
  */
 class Underscore
 {
@@ -90,17 +91,5 @@ class Underscore
         $payload = new $payloadClass();
 
         return call_user_func_array($payload, $args);
-    }
-
-    /**
-     * Gets the size of the collection by returning length for arrays or number of enumerable properties for objects.
-     *
-     * Returns int
-     *
-     * @return Underscore
-     */
-    public function size()
-    {
-        return $this->wrapped->count();
     }
 }
