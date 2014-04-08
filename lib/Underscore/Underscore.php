@@ -12,6 +12,7 @@ namespace Underscore;
  * @method Underscore map(callable $iterator)
  * @method Underscore all(callable $iterator)
  * @method Underscore any(callable $iterator)
+ * @method Underscore filter(callable $iterator)
  * @method Underscore reject(callable $iterator)
  */
 class Underscore
@@ -153,27 +154,6 @@ class Underscore
         };
 
         $this->find($finder($needle));
-
-        return $this;
-    }
-
-    /**
-     * Iterates over elements of a collection, returning an array of all elements the callback returns truey for.
-     *
-     * @param callable $iterator
-     * @return Underscore
-     */
-    public function filter($iterator)
-    {
-        $collection = clone $this->wrapped;
-
-        foreach ($this->wrapped as $k => $v) {
-            if (!call_user_func($iterator, $v, $k)) {
-                unset($collection[$k]);
-            }
-        }
-
-        $this->wrapped = $collection;
 
         return $this;
     }
