@@ -24,16 +24,13 @@ class AnyMethod extends UnderscoreMethod
      */
     public function __invoke($collection, $iterator)
     {
-        $collection = clone $collection;
+        $iterator = function ($accumulator, $item) use ($iterator) {
+            $accumulator = $accumulator || $iterator($item);
+            return $accumulator;
+        };
 
-        $found = false;
-        foreach ($collection as $k => $v) {
-            if (call_user_func($iterator, $v, $k)) {
-                $found = true;
-                break;
-            }
-        }
+        $reduce = new ReduceMethod();
 
-        return $this->wrap($found);
+        return $reduce($collection, $iterator, false);
     }
 }
