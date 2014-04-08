@@ -16,6 +16,7 @@ namespace Underscore;
  * @method Underscore filter(callable $iterator)
  * @method Underscore reject(callable $iterator)
  * @method Underscore find(callable $iterator)
+ * @method Underscore contains(mixed $needle)
  * @method Underscore compact()
  * @method Underscore values()
  * @method Underscore keys()
@@ -113,27 +114,6 @@ class Underscore
 
         array_unshift($args, $this->wrapped);
         $this->wrapped = call_user_func_array($payload, $args);
-
-        return $this;
-    }
-
-    /**
-     * Checks if a given value is present in a collection using strict equality for comparisons.
-     *
-     * Returns bool
-     *
-     * @param mixed $needle
-     * @return Underscore
-     */
-    public function contains($needle)
-    {
-        $finder = function ($needle) {
-            return function ($value) use ($needle) {
-                return $value === $needle;
-            };
-        };
-
-        $this->find($finder($needle));
 
         return $this;
     }
