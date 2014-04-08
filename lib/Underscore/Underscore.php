@@ -24,6 +24,7 @@ namespace Underscore;
  * @method Underscore values()
  * @method Underscore keys()
  * @method Underscore flatten()
+ * @method Underscore head(int $count = 1)
  */
 class Underscore
 {
@@ -132,22 +133,6 @@ class Underscore
     public function size()
     {
         return $this->wrapped->count();
-    }
-
-    /**
-     * Gets the first element or first n elements of collection.
-     *
-     * Returns mixed[]
-     *
-     * @param int $count
-     *
-     * @return Underscore
-     */
-    public function head($count = 1)
-    {
-        $this->wrapped = array_slice($this->wrapped->toArray(), 0, $count);
-
-        return $this;
     }
 
     /**
