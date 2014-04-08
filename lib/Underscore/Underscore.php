@@ -5,7 +5,7 @@ namespace Underscore;
 /**
  * Class Underscore
  * @package Underscore
- * @SuppressWarnings(TooManyMethods) - these methods belong here
+ *
  * @method Underscore invoke(callable $iterator)
  * @method Underscore reduce(callable $iterator, mixed $initial = null)
  * @method Underscore reduceRight(callable $iterator, mixed $initial = null)
