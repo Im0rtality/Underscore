@@ -435,4 +435,12 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         Underscore::from($dummy)->tap(array($mock, 'test'));
     }
+
+    /**
+     * @expectedException \BadMethodCallException
+     */
+    public function testCallUnknownMethod()
+    {
+        Underscore::from([])->foobar();
+    }
 }

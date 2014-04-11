@@ -66,22 +66,14 @@ class Underscore
             $payloadClass = sprintf('\Underscore\Accesor\%sAccesor', ucfirst($method));
         }
 
+        if (!class_exists($payloadClass)) {
+            throw new \BadMethodCallException("Unknown method Underscore->{$method}()");
+        }
+
         /** @var $payload callable */
         $payload = new $payloadClass();
 
-        if (is_callable($payload)) {
-            array_unshift($args, $this->wrapped);
-
-            if ($payload instanceof Mutator) {
-                $this->wrapped = call_user_func_array($payload, $args);
-
-                return $this;
-            } else {
-                return call_user_func_array($payload, $args);
-            }
-        } else {
-            throw new \BadMethodCallException("Unknown method Underscore->{$method}()");
-        }
+        return $this->executePayload($payload, $args);
     }
 
     /**
@@ -96,5 +88,26 @@ class Underscore
         $payload = new $payloadClass();
 
         return call_user_func_array($payload, $args);
+    }
+
+    /**
+     * Payload is either Mutator or Accesor. Both are supposed to be callable.
+     *
+     * @param callable $payload
+     * @param array    $args
+     * @return $this|mixed
+     */
+    protected function executePayload($payload, $args)
+    {
+        array_unshift($args, $this->wrapped);
+
+        if ($payload instanceof Mutator) {
+            /** @var $payload callable */
+            $this->wrapped = call_user_func_array($payload, $args);
+
+            return $this;
+        } else {
+            return call_user_func_array($payload, $args);
+        }
     }
 }
