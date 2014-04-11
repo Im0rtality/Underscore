@@ -14,8 +14,8 @@ class MergeMutator extends Mutator
     /**
      * Merges two collections. If keys collide, new value overwrites older.
      *
-     * @param Collection   $collection
-     * @param \ArrayAccess $values
+     * @param Collection $collection
+     * @param \Iterator  $values
      * @return Collection
      */
     public function __invoke($collection, $values)
