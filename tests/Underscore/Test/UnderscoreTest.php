@@ -441,6 +441,6 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
      */
     public function testCallUnknownMethod()
     {
-        Underscore::from([])->foobar();
+        Underscore::from(array())->foobar();
     }
 }
