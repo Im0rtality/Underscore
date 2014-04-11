@@ -2,6 +2,7 @@
 
 namespace Underscore\Test;
 
+use Underscore\Collection;
 use Underscore\Underscore;
 
 /**
@@ -134,8 +135,8 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
     public function testContains()
     {
-        $this->assertTrue(Underscore::from($this->getDummy())->contains('foo')->value());
-        $this->assertFalse(Underscore::from($this->getDummy())->contains('bar')->value());
+        $this->assertTrue(Underscore::from($this->getDummy())->contains('bar')->value());
+        $this->assertFalse(Underscore::from($this->getDummy())->contains('baz')->value());
     }
 
     public function testFind()
@@ -145,8 +146,8 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
                 return $value === $needle;
             };
         };
-        $this->assertTrue(Underscore::from($this->getDummy())->find($iterator('foo'))->value());
-        $this->assertFalse(Underscore::from($this->getDummy())->find($iterator('bar'))->value());
+        $this->assertTrue(Underscore::from($this->getDummy())->find($iterator('bar'))->value());
+        $this->assertFalse(Underscore::from($this->getDummy())->find($iterator('foo'))->value());
     }
 
     public function testFilter()
@@ -286,7 +287,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testMerge()
     {
         $value = Underscore::from($this->getDummy())
-            ->merge(Underscore::from($this->getDummy2()))
+            ->merge(new Collection($this->getDummy2()))
             ->toArray();
 
         $this->assertSame(
@@ -334,11 +335,11 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testClon()
+    public function testClone()
     {
         $original = $this->getDummy();
         $cloned   = Underscore::from($original)
-            ->clon()
+            ->clone()
             ->without(array('dummy'))
             ->value();
 
@@ -433,5 +434,13 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $mock->expects($this->once())->method('test')->with($dummy);
 
         Underscore::from($dummy)->tap(array($mock, 'test'));
+    }
+
+    /**
+     * @expectedException \BadMethodCallException
+     */
+    public function testCallUnknownMethod()
+    {
+        Underscore::from(array())->foobar();
     }
 }
