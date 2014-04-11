@@ -56,6 +56,7 @@ class Underscore
     /**
      * @param string $method
      * @param array  $args
+     * @throws \BadMethodCallException
      * @return $this
      */
     public function __call($method, $args)
@@ -68,14 +69,18 @@ class Underscore
         /** @var $payload callable */
         $payload = new $payloadClass();
 
-        array_unshift($args, $this->wrapped);
+        if (is_callable($payload)) {
+            array_unshift($args, $this->wrapped);
 
-        if ($payload instanceof Mutator) {
-            $this->wrapped = call_user_func_array($payload, $args);
+            if ($payload instanceof Mutator) {
+                $this->wrapped = call_user_func_array($payload, $args);
 
-            return $this;
+                return $this;
+            } else {
+                return call_user_func_array($payload, $args);
+            }
         } else {
-            return call_user_func_array($payload, $args);
+            throw new \BadMethodCallException("Unknown method Underscore->{$method}()");
         }
     }
 
