@@ -9,8 +9,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Underscore": "lib/"
+        "psr-4": {
+            "Underscore\\": "src/"
         }
     },
     "require":  {
