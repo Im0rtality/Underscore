@@ -161,4 +161,46 @@ class Functions
             return call_user_func_array($wrapper, $args);
         };
     }
+
+    /**
+     * Creates a version of the function that will only be run after first being called count times.
+     *
+     * Useful for grouping asynchronous responses, where you want to be sure that
+     * all the async calls have finished, before proceeding.
+     *
+     * @param integer $count
+     * @param callable $function
+     * @return \Closure
+     */
+    public static function after($count, $function)
+    {
+        return function () use ($function, &$count) {
+            if (--$count < 1) {
+                $args = func_get_args();
+                return call_user_func_array($function, $args);
+            }
+        };
+    }
+
+    /**
+     * Creates a version of the function that can be called no more than count times.
+     *
+     * The result of the last function call is memoized and returned when count has been reached.
+     *
+     * @param integer $count
+     * @param callable $function
+     * @return \Closure
+     */
+    public static function before($count, $function)
+    {
+        $memo = null;
+
+        return function () use ($function, &$count, &$memo) {
+            if (--$count > 0) {
+                $args = func_get_args();
+                $memo = call_user_func_array($function, $args);
+            }
+            return $memo;
+        };
+    }
 }

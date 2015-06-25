@@ -109,4 +109,40 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('before, hello: sue, after', $anon('sue'));
     }
+
+    public function testAfter()
+    {
+        $count = 0;
+
+        $finished = Functions::after(3, function () use (&$count) {
+            return ++$count;
+        });
+
+        $finished();
+        $finished();
+
+        $this->assertEquals(0, $count);
+
+        $finished(); // $count = 1
+        $finished(); // $count = 2
+
+        $this->assertEquals(2, $count);
+    }
+
+    public function testBefore()
+    {
+        $salary = 0;
+
+        $askForRaise = function () use (&$salary) {
+            return ++$salary;
+        };
+
+        $monthlyMeeting = Functions::before(3, $askForRaise);
+
+        $monthlyMeeting();
+        $monthlyMeeting(); // $salary = 2
+        $monthlyMeeting(); // memoized
+
+        $this->assertEquals(2, $salary);
+    }
 }
