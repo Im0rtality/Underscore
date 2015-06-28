@@ -42,4 +42,29 @@ class Functions
             return $item;
         };
     }
+
+    /**
+     * Creates a version of the function that can only be called one time.
+     *
+     * Repeated calls to the modified function will have no effect, returning
+     * the value from the original call. Useful for initialization functions,
+     * instead of having to set a boolean flag and then check it later.
+     *
+     * @param callable $function
+     * @return \Closure
+     */
+    public static function once($function)
+    {
+        $called = false;
+        $value  = null;
+
+        return function ($args = null) use ($function, &$called, &$value) {
+            if (!$called) {
+                $args   = func_get_args();
+                $value  = call_user_func_array($function, $args);
+                $called = true;
+            }
+            return $value;
+        };
+    }
 }

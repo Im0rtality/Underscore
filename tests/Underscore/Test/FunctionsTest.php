@@ -37,4 +37,27 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($ref, $nop($ref));
     }
+
+    public function testOnce()
+    {
+        $counter = 0;
+
+        $initialize = Functions::once(function () use (&$counter) {
+            return ++$counter;
+        });
+
+        $this->assertEquals(0, $counter);
+
+        $initialize(); // $counter = 1
+
+        $this->assertEquals(1, $initialize());
+
+        $another = Functions::once(function () use (&$counter) {
+            return ++$counter;
+        });
+
+        $another(); // $counter = 2
+
+        $this->assertEquals(2, $another());
+    }
 }
