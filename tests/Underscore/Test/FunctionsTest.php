@@ -90,4 +90,23 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('hi: MOE!', $welcome('moe'));
     }
+
+    public function testWrap()
+    {
+        $hello = function ($name) {
+            return "hello: $name";
+        };
+
+        $moe = Functions::wrap($hello, function ($func) {
+            return 'before, ' . $func('moe') . ', after';
+        });
+
+        $this->assertEquals('before, hello: moe, after', $moe());
+
+        $anon = Functions::wrap($hello, function ($func, $name) {
+            return 'before, ' . $func($name) . ', after';
+        });
+
+        $this->assertEquals('before, hello: sue, after', $anon('sue'));
+    }
 }
