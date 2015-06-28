@@ -35,7 +35,6 @@ namespace Underscore;
  * @method Underscore merge($values)
  * @method Underscore without($values)
  * @method Underscore clone()
- * @method Underscore compose(callable $function, ...)
  *
  * @method mixed    value()
  * @method mixed[]  toArray()
