@@ -161,4 +161,51 @@ class Functions
             return call_user_func_array($wrapper, $args);
         };
     }
+
+    /**
+     * Creates and returns a new, throttled version of the passed function.
+     *
+     * When invoked repeatedly, will only actually call the original function at
+     * most once per every wait milliseconds. Useful for rate-limiting events that
+     * occur faster than you can keep up with.
+     *
+     * By default, throttle will execute the function as soon as you call it
+     * for the first time, and, if you call it again any number of times during
+     * the wait period, as soon as that period is over. If you'd like to disable
+     * the leading-edge call, pass `leading => false`.
+     *
+     * NOTE: Does not support the `trailing` option because there is no timeout
+     * functionality in PHP (without using threads).
+     *
+     * NOTE: No arguments are passed to the function on the leading edge call!
+     *
+     * @param callable $function
+     * @param integer  $wait
+     * @param array    $options
+     * @return \Closure
+     */
+    public static function throttle($function, $wait, array $options = array())
+    {
+        $options += array(
+            'leading' => true,
+        );
+
+        $previous = 0;
+
+        $callback = function () use ($function, $wait, &$previous) {
+            $now = floor(microtime(true) * 1000); // convert float to integer
+
+            if (($wait - ($now - $previous)) <= 0) {
+                $args = func_get_args();
+                call_user_func_array($function, $args);
+                $previous = $now;
+            }
+        };
+
+        if ($options['leading'] !== false) {
+            $callback();
+        }
+
+        return $callback;
+    }
 }
