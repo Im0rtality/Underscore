@@ -75,4 +75,19 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(15, $subFrom20(5));
     }
+
+    public function testCompose()
+    {
+        $greet = function ($name) {
+            return "hi: $name";
+        };
+
+        $exclaim = function ($statement) {
+            return strtoupper($statement) . '!';
+        };
+
+        $welcome = Functions::compose($greet, $exclaim);
+
+        $this->assertEquals('hi: MOE!', $welcome('moe'));
+    }
 }
