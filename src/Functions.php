@@ -120,4 +120,26 @@ class Functions
             return call_user_func_array($function, $args);
         };
     }
+
+    /**
+     * Returns the composition of a list of functions.
+     *
+     * Each function consumes the return value of the function that follows.
+     * In math terms, composing the functions f(), g(), and h() produces f(g(h())).
+     *
+     * @param callable $function
+     * @param callable ...
+     * @return \Closure
+     */
+    public static function compose($function)
+    {
+        $functions = array_reverse(func_get_args());
+
+        return function ($value) use ($functions) {
+            foreach ($functions as $function) {
+                $value = $function($value);
+            }
+            return $value;
+        };
+    }
 }
