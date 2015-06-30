@@ -6,6 +6,10 @@
         {
             "name": "Laurynas Veržukauskas",
             "homepage": "https://github.com/im0rtality"
+        },
+        {
+            "name": "Woody Gilk",
+            "email": "woody.gilk@gmail.com"
         }
     ],
     "autoload": {
