@@ -3,10 +3,10 @@
 namespace Underscore;
 
 /**
- * Class Accesor
+ * Class Accessor
  * @package Underscore
  */
-abstract class Accesor
+abstract class Accessor
 {
 
 }

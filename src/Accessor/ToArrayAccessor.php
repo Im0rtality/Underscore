@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Accesor;
+namespace Underscore\Accessor;
 
-use Underscore\Accesor;
+use Underscore\Accessor;
 use Underscore\Collection;
 
 /**
- * Class ToArrayAccesor
- * @package Underscore\Accesor
+ * Class ToArrayAccessor
+ * @package Underscore\Accessor
  */
-class ToArrayAccesor extends Accesor
+class ToArrayAccessor extends Accessor
 {
     /**
      * Returns wrapped object as an array
