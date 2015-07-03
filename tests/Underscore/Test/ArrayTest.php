@@ -43,4 +43,17 @@ class UnderscoreArrayTest extends UnderscoreTest
         $value = Underscore::from($this->getDummy())->toArray();
         $this->assertSame($this->getDummy(), $value);
     }
+
+    public function testTimes()
+    {
+        $value = Underscore::times(4, function ($count) {
+            return pow($count, 3); // cube
+        });
+
+        $this->assertInstanceOf('Underscore\Underscore', $value);
+        $this->assertAttributeInstanceOf('Underscore\Collection', 'wrapped', $value);
+
+        $this->assertSame(array(0, 1, 8, 27), $value->toArray());
+        $this->assertSame(array(0, 1, 8, 27), $value->value());
+    }
 }
