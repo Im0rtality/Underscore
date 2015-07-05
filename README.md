@@ -1,6 +1,6 @@
 # Underscore
 
-[![Build Status](https://travis-ci.org/Im0rtality/Underscore.png?branch=master)](https://travis-ci.org/Im0rtality/Underscore)
+[![Build Status](https://travis-ci.org/Im0rtality/Underscore.svg?branch=master)](https://travis-ci.org/Im0rtality/Underscore)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/Im0rtality/Underscore/badges/quality-score.png?s=a360715f49ea4bba225b7991146981ca80b61337)](https://scrutinizer-ci.com/g/Im0rtality/Underscore/)
 [![Code Coverage](https://scrutinizer-ci.com/g/Im0rtality/Underscore/badges/coverage.png?s=e9c5669f300b4d8cb96d0fa8645119ab546fbd62)](https://scrutinizer-ci.com/g/Im0rtality/Underscore/)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d7ef44af-707d-4638-b91e-8fd043dc99e0/mini.png)](https://insight.sensiolabs.com/projects/d7ef44af-707d-4638-b91e-8fd043dc99e0)
