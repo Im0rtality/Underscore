@@ -109,4 +109,42 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('before, hello: sue, after', $anon('sue'));
     }
+
+    public function testThrottle()
+    {
+        $count = 0;
+
+        $ping = Functions::throttle(function () use (&$count) {
+            return ++$count;
+        }, 100);
+
+        // Creating the throttle calls it once inititally
+        $this->assertEquals(1, $count);
+
+        $ping();
+        $ping();
+        $ping();
+
+        // Should still not be called
+        $this->assertEquals(1, $count);
+
+        usleep(100 * 1000); // convert to ms
+
+        $ping();
+
+        $this->assertEquals(2, $count);
+
+        $ping = Functions::throttle(function () use (&$count) {
+            return ++$count;
+        }, 100, array('leading' => false));
+
+        // Disabled initial call
+        $this->assertEquals(2, $count);
+
+        usleep(100 * 1000); // convert to ms
+
+        $ping();
+
+        $this->assertEquals(3, $count);
+    }
 }
