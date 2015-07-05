@@ -443,4 +443,43 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
     {
         Underscore::from(array())->foobar();
     }
+
+    /**
+     * @return array
+     */
+    public function getTestUniqData()
+    {
+        $out = array();
+        // case #0
+        $out[] = array(
+            array(1, 2, 3, 4, 4, 3),
+            array(1, 2, 3, 4),
+        );
+        // case #1
+        $obj1 = new \StdClass;
+        $obj2 = new \StdClass;
+        $obj3 = $obj1;
+        $out[] = array(
+            array($obj1, $obj1, $obj2, $obj3),
+            array($obj1, $obj2),
+        );
+        // case #2
+        $out[] = array(
+            array(true, false, 1, 0, 0.0, 0.00001),
+            array(true, false, 1, 0, 0.0, 0.00001),
+        );
+        return $out;
+    }
+
+    /**
+     * @dataProvider getTestUniqData
+     */
+    public function testUniq($input, $expected)
+    {
+        $value = Underscore::from($input)
+            ->uniq()
+            ->toArray();
+
+        $this->assertSame(array_values($expected), array_values($value));
+    }
 }
