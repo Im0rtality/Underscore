@@ -58,7 +58,7 @@ class Functions
         $called = false;
         $value  = null;
 
-        return function ($args = null) use ($function, &$called, &$value) {
+        return function () use ($function, &$called, &$value) {
             if (!$called) {
                 $args   = func_get_args();
                 $value  = call_user_func_array($function, $args);
@@ -102,7 +102,7 @@ class Functions
 
         $placeholder = static::p();
 
-        return function ($args = null) use ($function, $bound, $placeholder) {
+        return function () use ($function, $bound, $placeholder) {
             $inject = func_get_args();
 
             $args = array();
@@ -155,8 +155,8 @@ class Functions
      */
     public static function wrap($function, $wrapper)
     {
-        return function ($args = null) use ($function, $wrapper) {
-            $args = func_get_args() ?: array();
+        return function () use ($function, $wrapper) {
+            $args = func_get_args();
             array_unshift($args, $function); // make $function the first argument
             return call_user_func_array($wrapper, $args);
         };
