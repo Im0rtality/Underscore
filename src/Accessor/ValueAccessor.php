@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Accesor;
+namespace Underscore\Accessor;
 
-use Underscore\Accesor;
+use Underscore\Accessor;
 use Underscore\Collection;
 
 /**
- * Class ValueAccesor
- * @package Underscore\Accesor
+ * Class ValueAccessor
+ * @package Underscore\Accessor
  */
-class ValueAccesor extends Accesor
+class ValueAccessor extends Accessor
 {
     /**
      * Returns wrapped object

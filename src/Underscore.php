@@ -64,7 +64,7 @@ class Underscore
     {
         $payloadClass = sprintf('\Underscore\Mutator\%sMutator', ucfirst($method));
         if (!class_exists($payloadClass)) {
-            $payloadClass = sprintf('\Underscore\Accesor\%sAccesor', ucfirst($method));
+            $payloadClass = sprintf('\Underscore\Accessor\%sAccessor', ucfirst($method));
         }
 
         if (!class_exists($payloadClass)) {
@@ -92,7 +92,7 @@ class Underscore
     }
 
     /**
-     * Payload is either Mutator or Accesor. Both are supposed to be callable.
+     * Payload is either Mutator or Accessor. Both are supposed to be callable.
      *
      * @param callable $payload
      * @param array    $args
