@@ -539,4 +539,32 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             'color' => 'blue'
         ), $collection->toArray());
     }
+
+    public function testExtend()
+    {
+        $collection = Underscore::from($this->getDummy())
+            ->extend(array(
+                'name' => 'extended',
+            ));
+
+        $this->assertSame(array(
+            'name' => 'extended',
+            'foo'  => 'bar',
+            'baz'  => 'qux',
+        ), $collection->toArray());
+
+        $collection = $collection->extend((object) array(
+            'name' => 'obj',
+        ), (object) array(
+            'name' => 'test',
+            'add'  => 'multi'
+        ));
+
+        $this->assertSame(array(
+            'name' => 'test',
+            'foo'  => 'bar',
+            'baz'  => 'qux',
+            'add'  => 'multi'
+        ), $collection->toArray());
+    }
 }
