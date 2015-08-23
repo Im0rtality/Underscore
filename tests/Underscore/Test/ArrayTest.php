@@ -56,4 +56,17 @@ class UnderscoreArrayTest extends UnderscoreTest
         $this->assertSame(array(0, 1, 8, 27), $value->toArray());
         $this->assertSame(array(0, 1, 8, 27), $value->value());
     }
+
+    public function testMin()
+    {
+        $collection = Underscore::from(array(5, 11, 2, 1, 6, 9));
+
+        $this->assertInstanceOf('Underscore\Underscore', $collection);
+
+        $this->assertSame(1, $collection->min());
+
+        $collection = Underscore::from(array(0, false, null, ''));
+
+        $this->assertSame(0, $collection->min());
+    }
 }
