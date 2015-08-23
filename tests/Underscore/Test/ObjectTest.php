@@ -37,6 +37,32 @@ class UnderscoreObjectTest extends UnderscoreTest
         return $dummy;
     }
 
+    protected function getDummy3()
+    {
+        $dummy = new \StdClass;
+
+        $dummy->Angela = (object) array(
+            'position' => 'dean',
+            'sex'      => 'female',
+        );
+        $dummy->Bob = (object) array(
+            'position' => 'janitor',
+            'sex'      => 'male',
+        );
+        $dummy->Mark = (object) array(
+            'position' => 'teacher',
+            'sex'      => 'male',
+            'tenured'  => true,
+        );
+        $dummy->Wendy = (object) array(
+            'position' => 'teacher',
+            'sex'      => 'female',
+            'tenured'  => 1,
+        );
+
+        return $dummy;
+    }
+
     public function testToArray()
     {
         $value = Underscore::from($this->getDummy())->toArray();

@@ -36,6 +36,7 @@ namespace Underscore;
  * @method Underscore values()
  * @method Underscore without($values)
  * @method Underscore zip(array $keys)
+ * @method Underscore where(array $properties, $strict = true)
  *
  * @method mixed    value()
  * @method mixed[]  toArray()
