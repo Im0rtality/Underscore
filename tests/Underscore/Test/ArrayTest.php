@@ -69,4 +69,17 @@ class UnderscoreArrayTest extends UnderscoreTest
 
         $this->assertSame(0, $collection->min());
     }
+
+    public function testMax()
+    {
+        $collection = Underscore::from(array(5, 11, 2, 1, 6, 9));
+
+        $this->assertInstanceOf('Underscore\Underscore', $collection);
+
+        $this->assertSame(11, $collection->max());
+
+        $collection = Underscore::from(array(0, false, null, ''));
+
+        $this->assertSame(0, $collection->max());
+    }
 }
