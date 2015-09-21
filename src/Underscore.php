@@ -40,6 +40,7 @@ namespace Underscore;
  * @method mixed    value()
  * @method mixed[]  toArray()
  * @method int      size()
+ * @method mixed    min()
  */
 class Underscore
 {
