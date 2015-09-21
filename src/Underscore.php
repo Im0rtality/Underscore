@@ -42,6 +42,7 @@ namespace Underscore;
  * @method int      size()
  * @method mixed    min()
  * @method mixed    max()
+ * @method boolean  has($key)
  */
 class Underscore
 {
