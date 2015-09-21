@@ -41,6 +41,7 @@ namespace Underscore;
  * @method mixed[]  toArray()
  * @method int      size()
  * @method mixed    min()
+ * @method mixed    max()
  */
 class Underscore
 {
