@@ -5,14 +5,14 @@ namespace Underscore\Test\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
-class SizeAccessorTest extends BaseAccessorTest
+class AllAccessorTest extends BaseAccessorTest
 {
     /**
      * @inheritDoc
      */
     protected function getInstance()
     {
-        return new Accessor\SizeAccessor();
+        return new Accessor\AllAccessor();
     }
 
     /**
@@ -20,16 +20,19 @@ class SizeAccessorTest extends BaseAccessorTest
      */
     public function getTestInvokeData()
     {
+        $func = function ($value) {
+            return 3 <= strlen($value);
+        };
         $ret = [];
 
         $ret[] = [
-            3,
-            [new Collection($this->getDummy1())],
+            true,
+            [new Collection($this->getDummy1()), $func],
         ];
 
         $ret[] = [
-            6,
-            [new Collection($this->getDummy2())],
+            false,
+            [new Collection($this->getDummy2()), $func],
         ];
 
         return $ret;

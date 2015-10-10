@@ -251,27 +251,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(false, $value);
     }
 
-    public function testAll()
-    {
-        $value = Underscore::from($this->getDummy())
-            ->all(
-                function ($value) {
-                    return 3 <= strlen($value);
-                }
-            );
-
-        $this->assertSame(true, $value);
-
-        $value = Underscore::from($this->getDummy())
-            ->all(
-                function ($value) {
-                    return 3 < strlen($value);
-                }
-            );
-
-        $this->assertSame(false, $value);
-    }
-
     public function testHead()
     {
         $value = Underscore::from($this->getDummy())

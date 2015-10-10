@@ -3,7 +3,6 @@
 namespace Underscore\Test\Accessor;
 
 use Underscore\Accessor;
-use Underscore\Collection;
 
 abstract class BaseAccessorTest extends \PHPUnit_Framework_TestCase
 {
@@ -57,7 +56,7 @@ abstract class BaseAccessorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return Accessor
+     * @return Accessor|callable
      */
     abstract protected function getInstance();
 
@@ -67,12 +66,12 @@ abstract class BaseAccessorTest extends \PHPUnit_Framework_TestCase
     abstract protected function getTestInvokeData();
 
     /**
-     * @param mixed $data
      * @param mixed $expected
+     * @param mixed $args
      * @dataProvider getTestInvokeData
      */
-    public function testInvoke($data, $expected)
+    public function testInvoke($expected, $args)
     {
-        $this->assertSame($expected, $this->getInstance()->__invoke(new Collection($data)));
+        $this->assertSame($expected, call_user_func_array($this->getInstance(), $args));
     }
 }
