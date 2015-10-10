@@ -7,13 +7,13 @@ use Underscore\Mutator;
 
 /**
  * Class RejectMutator
+ *
  * @package Underscore\Mutator
  */
 class RejectMutator extends Mutator
 {
     /**
-     * The opposite of filter(). This Mutator
-     * returns the elements of a collection that the callback
+     * The opposite of filter(). This mutator returns the elements of a collection that the callback
      * does **not** return truey for.
      *
      * @param Collection $collection
@@ -22,14 +22,12 @@ class RejectMutator extends Mutator
      */
     public function __invoke($collection, $iterator)
     {
-        $collection = clone $collection;
+        $not = function ($iterator) {
+            return function () use ($iterator) {
+                return !call_user_func_array($iterator, func_get_args());
+            };
+        };
 
-        foreach ($collection as $k => $v) {
-            if (call_user_func($iterator, $v, $k)) {
-                unset($collection[$k]);
-            }
-        }
-
-        return $collection;
+        return $this->wrap(array_filter((array)$collection, $not($iterator)));
     }
 }

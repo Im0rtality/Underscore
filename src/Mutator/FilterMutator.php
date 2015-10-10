@@ -7,6 +7,7 @@ use Underscore\Mutator;
 
 /**
  * Class FilterMutator
+ *
  * @package Underscore\Mutator
  */
 class FilterMutator extends Mutator
@@ -20,14 +21,6 @@ class FilterMutator extends Mutator
      */
     public function __invoke($collection, $iterator)
     {
-        $collection = clone $collection;
-
-        foreach ($collection as $k => $v) {
-            if (!call_user_func($iterator, $v, $k)) {
-                unset($collection[$k]);
-            }
-        }
-
-        return $collection;
+        return $this->wrap(array_filter((array)$collection, $iterator));
     }
 }
