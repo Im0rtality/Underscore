@@ -118,15 +118,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('name:dummy|foo:bar|baz:qux|', $buffer);
     }
 
-    public function testLast()
-    {
-        $value = Underscore::from($this->getDummy())
-            ->last(2)
-            ->value();
-
-        $this->assertSame(['foo' => 'bar', 'baz' => 'qux'], $value);
-    }
-
     public function testCompact()
     {
         $value = Underscore::from($this->getDummy2())
