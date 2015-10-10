@@ -53,6 +53,35 @@ class Underscore
      */
     protected static $mixins = [];
 
+    /** @var Registry */
+    protected static $registry;
+
+    /**
+     * Set the registry singleton.
+     *
+     * @param  Registry $registry
+     * @return void
+     */
+    public static function setRegistry(Registry $registry)
+    {
+        static::$registry = $registry;
+    }
+
+    /**
+     * Get the registry singleton.
+     *
+     * Creates a new registry if none exists.
+     *
+     * @return Registry
+     */
+    public static function getRegistry()
+    {
+        if (!static::$registry) {
+            static::$registry = new Registry;
+        }
+        return static::$registry;
+    }
+
     /**
      * Allows you to extend Underscore with your own utility functions.
      *
@@ -98,18 +127,8 @@ class Underscore
      */
     public function __call($method, $args)
     {
-        $payload = static::fromMixin($method);
-        if (empty($payload)) {
-            $payloadClass = sprintf('\Underscore\Mutator\%sMutator', ucfirst($method));
-            if (!class_exists($payloadClass)) {
-                $payloadClass = sprintf('\Underscore\Accessor\%sAccessor', ucfirst($method));
-            }
-            if (!class_exists($payloadClass)) {
-                throw new \BadMethodCallException("Unknown method Underscore->{$method}()");
-            }
-            /** @var $payload callable */
-            $payload = new $payloadClass();
-        }
+        /** @var $payload callable */
+        $payload = static::getRegistry()->instance($method);
 
         return $this->executePayload($payload, $args);
     }
@@ -121,13 +140,8 @@ class Underscore
      */
     public static function __callStatic($method, $args)
     {
-        $payload = static::fromMixin($method);
-        if (empty($payload)) {
-
-            $payloadClass = sprintf('\Underscore\Initializer\%sInitializer', ucfirst($method));
-            /** @var $payload callable */
-            $payload = new $payloadClass();
-        }
+        /** @var $payload callable */
+        $payload = static::getRegistry()->instance($method);
 
         return call_user_func_array($payload, $args);
     }

@@ -81,6 +81,23 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         return $out;
     }
 
+    public function testRegistry()
+    {
+        // Get current registry
+        $registry = Underscore::getRegistry();
+
+        $this->assertInstanceOf('Underscore\Registry', $registry);
+
+        $mocked = $this->getMockBuilder('Underscore\Registry')->getMock();
+
+        Underscore::setRegistry($mocked);
+
+        $this->assertSame($mocked, Underscore::getRegistry());
+
+        // Restore original registry
+        Underscore::setRegistry($registry);
+    }
+
     /**
      * @dataProvider getTestRangeData
      */
