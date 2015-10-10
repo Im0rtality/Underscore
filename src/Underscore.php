@@ -48,9 +48,10 @@ namespace Underscore;
  */
 class Underscore
 {
-    /**
-     * @var array
-     */
+    /** @var  Collection */
+    protected $wrapped;
+
+    /** @var array */
     protected static $mixins = [];
 
     /** @var Registry */
@@ -79,6 +80,7 @@ class Underscore
         if (!static::$registry) {
             static::$registry = new Registry;
         }
+
         return static::$registry;
     }
 
@@ -93,7 +95,7 @@ class Underscore
      */
     public static function mixin(array $functions)
     {
-        foreach($functions as $name => $function) {
+        foreach ($functions as $name => $function) {
             static::$registry->alias($name, $function);
         }
     }
@@ -109,9 +111,6 @@ class Underscore
             return static::$mixins[$method];
         }
     }
-
-    /** @var  Collection */
-    protected $wrapped;
 
     /**
      * @param Collection $wrapped
@@ -129,10 +128,7 @@ class Underscore
      */
     public function __call($method, $args)
     {
-        /** @var $payload callable */
-        $payload = static::getRegistry()->instance($method);
-
-        return $this->executePayload($payload, $args);
+        return $this->executePayload(static::getRegistry()->instance($method), $args);
     }
 
     /**
@@ -142,10 +138,7 @@ class Underscore
      */
     public static function __callStatic($method, $args)
     {
-        /** @var $payload callable */
-        $payload = static::getRegistry()->instance($method);
-
-        return call_user_func_array($payload, $args);
+        return call_user_func_array(static::getRegistry()->instance($method), $args);
     }
 
     /**
