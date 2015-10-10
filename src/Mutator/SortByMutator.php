@@ -29,7 +29,6 @@ class SortByMutator extends Mutator
         };
 
         /** @var $collection Collection */
-        /** @noinspection PhpParamsInspection */
         $collection = call_user_func(new GroupByMutator(), $collection, $iterator);
 
         // read once - for performance
@@ -39,13 +38,9 @@ class SortByMutator extends Mutator
             return $val[$key];
         };
 
-        /** @noinspection PhpParamsInspection */
         $collection = call_user_func(new KeysMutator(), $collection);
-        /** @noinspection PhpParamsInspection */
-        $collection = call_user_func(new TapMutator(), $collection, $sortFunc);
-        /** @noinspection PhpParamsInspection */
+        $collection = call_user_func(new ThruMutator(), $collection, $sortFunc);
         $collection = call_user_func(new MapMutator(), $collection, $mapFunc);
-        /** @noinspection PhpParamsInspection */
         $collection = call_user_func(new FlattenMutator(), $collection);
 
         return $collection;
