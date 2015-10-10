@@ -141,26 +141,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testZip()
-    {
-        $value = Underscore::from($this->getDummy())
-            ->zip(['a', 1, '42'])
-            ->toArray();
-
-        $this->assertSame(
-            [
-                'a'  => 'dummy',
-                1    => 'bar',
-                '42' => 'qux',
-            ],
-            $value
-        );
-
-        $this->setExpectedException('\LogicException');
-        Underscore::from($this->getDummy())
-            ->zip(['a']);
-    }
-
     public function testGroupBy()
     {
         $value = Underscore::from($this->getDummy())
