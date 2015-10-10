@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Mutator;
+namespace Underscore\Accessor;
 
+use Underscore\Accessor;
 use Underscore\Collection;
-use Underscore\Mutator;
 
 /**
  * Class ReduceRightMutator
  * @package Underscore\Mutator
  */
-class ReduceRightMutator extends Mutator
+class ReduceRightAccessor extends Accessor
 {
     /**
      * Reduces collection to single value using $iterator. Reversed direction.
@@ -29,6 +29,6 @@ class ReduceRightMutator extends Mutator
             $initial = call_user_func($iterator, $initial, $value);
         }
 
-        return $this->wrap($initial);
+        return $initial;
     }
 }

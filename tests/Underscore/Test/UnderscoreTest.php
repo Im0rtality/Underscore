@@ -132,7 +132,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
                     return $accu;
                 },
                 ''
-            )->value();
+            );
 
         $this->assertSame('dummy bar qux ', $value);
     }
@@ -146,7 +146,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
                     return $accumulator;
                 },
                 ''
-            )->value();
+            );
 
         $this->assertSame('qux bar dummy ', $value);
     }

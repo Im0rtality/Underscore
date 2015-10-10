@@ -1,15 +1,15 @@
 <?php
 
-namespace Underscore\Mutator;
+namespace Underscore\Accessor;
 
+use Underscore\Accessor;
 use Underscore\Collection;
-use Underscore\Mutator;
 
 /**
  * Class AnyMutator
  * @package Underscore\Mutator
  */
-class AnyMutator extends Mutator
+class AnyAccessor extends Accessor
 {
     /**
      * Checks if the $iterator returns a truey value for ANY element of a collection.
@@ -29,7 +29,7 @@ class AnyMutator extends Mutator
             return $accumulator;
         };
 
-        $reduce = new ReduceMutator();
+        $reduce = new ReduceAccessor();
 
         return $reduce($collection, $iterator, false);
     }
