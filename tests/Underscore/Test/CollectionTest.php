@@ -74,18 +74,15 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
         // toArray & value
         $this->assertSame(array('name' => 'dummy', 'answer' => 42), $collection->toArray());
-        $this->assertSame($item, $collection->value());
+        $this->assertSame($collection->toArray(), $collection->value());
 
         $collection['foo'] = 'baz';
         // here we have one extra key-value pair
         $this->assertSame(array('name' => 'dummy', 'answer' => 42, 'foo' => 'baz'), $collection->toArray());
-        // however this is added to original object due to not using clone
-        // ONLY when item was object
-        if (is_object($item)) {
-            $this->assertSame($item, $collection->value());
-        } else {
-            $this->assertNotEquals($item, $collection->value());
-        }
+
+        // collection wrapping
+        $wrapped = new Collection($collection);
+        $this->assertSame($collection->toArray(), $wrapped->toArray());
     }
 
     /**
@@ -115,10 +112,6 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $out  = array();
         // case #0
         $out[] = array(
-            json_decode($json),
-        );
-        // case #1
-        $out[] = array(
             json_decode($json, true),
         );
 
@@ -137,35 +130,5 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $value = $clone->value();
 
         $this->assertEquals($clonee, $value);
-    }
-
-    /**
-     * @return array
-     */
-    public function getTestIsObjectData()
-    {
-        $json = '{"foo":"bar", "baz":"qux"}';
-        $out  = array();
-        // case #0
-        $out[] = array(
-            json_decode($json),
-            true,
-        );
-        // case #1
-        $out[] = array(
-            json_decode($json, true),
-            false
-        );
-
-        return $out;
-    }
-
-    /**
-     * @dataProvider getTestIsObjectData
-     */
-    public function testIsObject($payload, $expected)
-    {
-        $collection = new Collection($payload);
-        $this->assertEquals($expected, $collection->isObject());
     }
 }
