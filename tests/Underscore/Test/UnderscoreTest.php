@@ -551,4 +551,65 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
             'color' => 'blue'
         ), $collection->toArray());
     }
+
+    public function testWhere()
+    {
+        $found = Underscore::from($this->getDummy3())
+            ->where(array(
+                'sex' => 'female',
+            ))
+            ->keys()
+            ->toArray();
+
+        $this->assertSame(array('Angela', 'Wendy'), $found);
+
+        $found = Underscore::from($this->getDummy3())
+            ->where(array(
+                'position' => 'teacher',
+            ))
+            ->keys()
+            ->toArray();
+
+        $this->assertSame(array('Mark', 'Wendy'), $found);
+
+        $found = Underscore::from($this->getDummy3())
+            ->where(array(
+                'position' => 'teacher',
+                'tenured'  => true,
+            ))
+            ->keys()
+            ->toArray();
+
+        $this->assertSame(array('Mark'), $found);
+
+        $found = Underscore::from($this->getDummy3())
+            ->where(array(
+                'position' => 'teacher',
+                'tenured'  => true,
+            ), $strict = false)
+            ->keys()
+            ->toArray();
+
+        $this->assertSame(array('Mark', 'Wendy'), $found);
+
+        $found = Underscore::from($this->getDummy3())
+            ->where(array(
+                'sex' => 'female',
+                'position' => 'teacher',
+            ))
+            ->keys()
+            ->toArray();
+
+        $this->assertSame(array('Wendy'), $found);
+
+        $found = Underscore::from($this->getDummy3())
+            ->where(array(
+                'sex' => 'male',
+                'position' => 'dean',
+            ))
+            ->keys()
+            ->toArray();
+
+        $this->assertSame(array(), $found);
+    }
 }
