@@ -83,7 +83,7 @@ class Registry
     /**
      * Define a default mutator, accessor, or initializer for a method name.
      *
-     * @throws BadMethodCallException If no default can be located.
+     * @throws \BadMethodCallException If no default can be located.
      * @param  string $name
      * @return void
      */

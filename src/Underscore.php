@@ -93,7 +93,9 @@ class Underscore
      */
     public static function mixin(array $functions)
     {
-        static::$mixins = array_merge(static::$mixins, $functions);
+        foreach($functions as $name => $function) {
+            static::$registry->alias($name, $function);
+        }
     }
 
     /**
