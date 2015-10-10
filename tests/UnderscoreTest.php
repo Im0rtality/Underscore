@@ -118,24 +118,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('name:dummy|foo:bar|baz:qux|', $buffer);
     }
 
-    public function testPick()
-    {
-        $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
-            ->pick('foo')
-            ->toArray();
-
-        $this->assertSame(['bar', 'bar', 'bar'], $value);
-    }
-
-    public function testPickGetter()
-    {
-        $value = Underscore::from([new Dummy()])
-            ->pick('getFoo')
-            ->toArray();
-
-        $this->assertSame(['foo'], $value);
-    }
-
     public function testFilter()
     {
         $value = Underscore::from($this->getDummy())
