@@ -482,7 +482,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $dummy = $this->getDummy();
 
         $mock = $this->getMock('stdClass', ['test']);
-        $mock->expects($this->once())->method('test')->with($dummy);
+        $mock->expects($this->once())->method('test')->with((array)$dummy);
 
         Underscore::from($dummy)->tap([$mock, 'test']);
     }
@@ -532,7 +532,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->uniq()
             ->toArray();
 
-        $this->assertSame(array_values($expected), array_values($value));
+        $this->assertEquals(array_values($expected), array_values($value));
     }
 
     public function testExtend()

@@ -5,10 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class UniqMutator
- * @package Underscore\Mutator
- */
 class UniqMutator extends Mutator
 {
     /**
@@ -19,17 +15,13 @@ class UniqMutator extends Mutator
      */
     public function __invoke($collection)
     {
-        $collection = clone $collection;
-
-        $seen = array();
+        $seen = [];
         foreach ($collection as $k => $v) {
-            if (in_array($v, $seen, true)) {
-                unset($collection[$k]);
-            } else {
-                $seen[] = $v;
+            if (!in_array($v, $seen, true)) {
+                $seen[$k] = $v;
             }
         }
 
-        return $collection;
+        return $this->wrap($seen);
     }
 }
