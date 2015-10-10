@@ -5,6 +5,9 @@ namespace Underscore\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
+/**
+ * @deprecated Use toArray() instead. Will be removed in later releases
+ */
 class ValueAccessor extends Accessor
 {
     /**

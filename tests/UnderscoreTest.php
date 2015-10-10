@@ -106,12 +106,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testValue()
-    {
-        $value = Underscore::from($this->getDummy())->value();
-        $this->assertEquals((array)$this->getDummy(), $value);
-    }
-
     public function testInvoke()
     {
         $buffer = '';

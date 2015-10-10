@@ -29,6 +29,7 @@ class Collection extends \ArrayObject
 
     /**
      * @return mixed
+     * @deprecated Use toArray() instead. Will be removed in later releases
      */
     public function value()
     {
