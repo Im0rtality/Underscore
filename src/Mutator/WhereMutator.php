@@ -5,10 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class WhereMutator
- * @package Underscore\Mutator
- */
 class WhereMutator extends Mutator
 {
     /**
@@ -17,27 +13,23 @@ class WhereMutator extends Mutator
      * By default strict comparison is used.
      *
      * @param Collection $collection
-     * @param array $properties
-     * @param boolean $strict
+     * @param array      $properties
+     * @param boolean    $strict
      * @return Collection
      */
     public function __invoke($collection, array $properties, $strict = true)
     {
-        $collection = clone $collection;
-
-        // This can be refactored to use array_filter once #54 is merged.
-        foreach ($collection as $index => $item) {
-            $item = new Collection($item);
+        return $this->wrap(array_filter((array)$collection, function ($item) use ($properties, $strict) {
             foreach ($properties as $key => $value) {
                 if (empty($item[$key])
                     || ($strict && $item[$key] !== $value)
                     || (!$strict && $item[$key] != $value)
                 ) {
-                    unset($collection[$index]);
+                    return false;
                 }
             }
-        }
 
-        return $collection;
+            return true;
+        }));
     }
 }
