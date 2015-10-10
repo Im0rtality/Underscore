@@ -55,6 +55,20 @@ abstract class BaseAccessorTest extends \PHPUnit_Framework_TestCase
         return $dummy;
     }
 
+
+    /**
+     * @return object
+     */
+    protected static function getDummy4()
+    {
+        $dummy = self::getDummy2();
+        $dummy->false = false;
+        $dummy->null = null;
+        $dummy->zero = 0;
+        $dummy->one = 1;
+
+        return $dummy;
+    }
     /**
      * @return Accessor|callable
      */
