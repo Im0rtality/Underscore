@@ -141,21 +141,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testGroupBy()
-    {
-        $value = Underscore::from($this->getDummy())
-            ->groupBy('strlen')
-            ->toArray();
-
-        $this->assertSame(
-            [
-                5 => ['dummy'],
-                3 => ['bar', 'qux'],
-            ],
-            $value
-        );
-    }
-
     public function testSortBy()
     {
         $value = Underscore::from($this->getDummy())
