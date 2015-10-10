@@ -318,18 +318,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testHas()
-    {
-        $collection = Underscore::from($this->getDummy());
-
-        $this->assertTrue($collection->has('name'));
-        $this->assertTrue($collection->has('foo'));
-        $this->assertTrue($collection->has('baz'));
-
-        $this->assertFalse($collection->has('nope'));
-        $this->assertFalse($collection->has('missing'));
-    }
-
     public function testClone()
     {
         $original = $this->getDummy();

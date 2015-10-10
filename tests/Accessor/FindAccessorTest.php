@@ -35,7 +35,7 @@ class FindAccessorTest extends BaseAccessorTest
 
         $ret[] = [
             true,
-            [new Collection($this->getDummy2()), $func('bar')],
+            [new Collection($this->getDummy1()), $func('bar')],
         ];
 
         return $ret;
