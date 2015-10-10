@@ -5,14 +5,14 @@ namespace Underscore\Test\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
-class MaxAccessorTest extends BaseAccessorTest
+class MinAccessorTest extends BaseAccessorTest
 {
     /**
      * @inheritDoc
      */
     protected function getInstance()
     {
-        return new Accessor\MaxAccessor();
+        return new Accessor\MinAccessor();
     }
 
     /**
@@ -23,7 +23,7 @@ class MaxAccessorTest extends BaseAccessorTest
         $ret = [];
 
         $ret[] = [
-            2,
+            0,
             [new Collection([0, 1, 2])],
         ];
 
