@@ -5,11 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class RejectMutator
- *
- * @package Underscore\Mutator
- */
 class RejectMutator extends Mutator
 {
     /**

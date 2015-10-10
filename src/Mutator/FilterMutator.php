@@ -5,11 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class FilterMutator
- *
- * @package Underscore\Mutator
- */
 class FilterMutator extends Mutator
 {
     /**

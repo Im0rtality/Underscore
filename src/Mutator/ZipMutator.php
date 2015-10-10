@@ -5,10 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class ZipMutator
- * @package Underscore\Mutator
- */
 class ZipMutator extends Mutator
 {
     /**
@@ -21,9 +17,7 @@ class ZipMutator extends Mutator
      */
     public function __invoke($collection, $keys)
     {
-        /** @noinspection PhpParamsInspection */
         $values = call_user_func(new ValuesMutator(), $collection)->toArray();
-        /** @noinspection PhpParamsInspection */
         $keys = call_user_func(new ValuesMutator(), $this->wrap($keys))->toArray();
 
         if (count($values) !== count($keys)) {

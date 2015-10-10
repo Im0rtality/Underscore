@@ -6,10 +6,6 @@ use Underscore\Accessor\ContainsAccessor;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class WithoutMutator
- * @package Underscore\Mutator
- */
 class WithoutMutator extends Mutator
 {
     /**

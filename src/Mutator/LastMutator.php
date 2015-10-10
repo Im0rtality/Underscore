@@ -5,10 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class LastMutator
- * @package Underscore\Mutator
- */
 class LastMutator extends Mutator
 {
     /**

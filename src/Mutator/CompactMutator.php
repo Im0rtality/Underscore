@@ -6,10 +6,6 @@ use Underscore\Collection;
 use Underscore\Functions;
 use Underscore\Mutator;
 
-/**
- * Class CompactMutator
- * @package Underscore\Mutator
- */
 class CompactMutator extends Mutator
 {
     /**

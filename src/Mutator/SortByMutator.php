@@ -5,10 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class SortByMutator
- * @package Underscore\Mutator
- */
 class SortByMutator extends Mutator
 {
     /**

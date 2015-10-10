@@ -6,10 +6,6 @@ use Underscore\Collection;
 use Underscore\Initializer;
 use Underscore\Underscore;
 
-/**
- * Class RangeInitializer
- * @package Underscore\Initializer
- */
 class RangeInitializer extends Initializer
 {
     /**

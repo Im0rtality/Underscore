@@ -4,10 +4,6 @@ namespace Underscore\Test;
 
 use Underscore\Collection;
 
-/**
- * Class CollectionTest
- * @package Underscore\Test
- */
 class CollectionTest extends \PHPUnit_Framework_TestCase
 {
 

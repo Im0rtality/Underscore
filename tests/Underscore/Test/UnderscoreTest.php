@@ -5,11 +5,6 @@ namespace Underscore\Test;
 use Underscore\Collection;
 use Underscore\Underscore;
 
-/**
- * Class MasterTest
- *
- * @package Underscore\Test
- */
 class UnderscoreTest extends \PHPUnit_Framework_TestCase
 {
     protected function getDummy()

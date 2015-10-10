@@ -5,10 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class HeadMutator
- * @package Underscore\Mutator
- */
 class HeadMutator extends Mutator
 {
     /**

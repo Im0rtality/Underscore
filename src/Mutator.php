@@ -2,10 +2,6 @@
 
 namespace Underscore;
 
-/**
- * Class Mutator
- * @package Underscore
- */
 abstract class Mutator
 {
     /**

@@ -2,10 +2,6 @@
 
 namespace Underscore\Test;
 
-/**
- * Class Dummy
- * @package Underscore\Test
- */
 class Dummy
 {
     public $name = 'dummy';

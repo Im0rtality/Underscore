@@ -2,10 +2,6 @@
 
 namespace Underscore;
 
-/**
- * Class Collection
- * @package Underscore
- */
 class Collection extends \ArrayObject
 {
     public function __construct($input)

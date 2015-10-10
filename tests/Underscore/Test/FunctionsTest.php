@@ -4,10 +4,6 @@ namespace Underscore\Test;
 
 use Underscore\Functions;
 
-/**
- * Class FunctionsTest
- * @package Underscore\Test
- */
 class FunctionsTest extends \PHPUnit_Framework_TestCase
 {
     public function testMemoize()

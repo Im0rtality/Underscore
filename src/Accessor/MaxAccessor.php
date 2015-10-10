@@ -5,10 +5,6 @@ namespace Underscore\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
-/**
- * Class MaxAccessor
- * @package Underscore\Accessor
- */
 class MaxAccessor extends Accessor
 {
     /**

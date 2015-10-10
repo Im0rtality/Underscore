@@ -2,10 +2,6 @@
 
 namespace Underscore;
 
-/**
- * Class Functions
- * @package Underscore
- */
 class Functions
 {
     /**

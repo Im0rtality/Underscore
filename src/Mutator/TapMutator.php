@@ -5,11 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class TapMutator
- *
- * @package Underscore\Mutator
- */
 class TapMutator extends Mutator
 {
     /**

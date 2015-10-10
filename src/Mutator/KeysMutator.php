@@ -5,10 +5,6 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-/**
- * Class KeysMutator
- * @package Underscore\Mutator
- */
 class KeysMutator extends Mutator
 {
     /**

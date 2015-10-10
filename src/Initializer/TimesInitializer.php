@@ -6,10 +6,6 @@ use Underscore\Collection;
 use Underscore\Initializer;
 use Underscore\Underscore;
 
-/**
- * Class TimesInitializer
- * @package Underscore\Initializer
- */
 class TimesInitializer extends Initializer
 {
     /**

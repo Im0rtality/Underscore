@@ -5,10 +5,6 @@ namespace Underscore\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
-/**
- * Class HasAccessor
- * @package Underscore\Accessor
- */
 class HasAccessor extends Accessor
 {
     /**

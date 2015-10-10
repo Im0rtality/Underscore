@@ -5,10 +5,6 @@ namespace Underscore\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
-/**
- * Class ToArrayAccessor
- * @package Underscore\Accessor
- */
 class ToArrayAccessor extends Accessor
 {
     /**
