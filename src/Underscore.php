@@ -34,9 +34,9 @@ namespace Underscore;
  * @method Underscore tap(callable $iterator)
  * @method Underscore uniq()
  * @method Underscore values()
+ * @method Underscore where(array $properties, $strict = true)
  * @method Underscore without($values)
  * @method Underscore zip(array $keys)
- * @method Underscore where(array $properties, $strict = true)
  *
  * @method mixed    value()
  * @method mixed[]  toArray()
@@ -47,6 +47,37 @@ namespace Underscore;
  */
 class Underscore
 {
+    /**
+     * @var array
+     */
+    protected static $mixins = [];
+
+    /**
+     * Allows you to extend Underscore with your own utility functions.
+     *
+     * Pass a hash of {name: function} definitions to have your functions added
+     * to the Underscore object, as well as the OOP wrapper.
+     *
+     * @param  array $functions
+     * @return void
+     */
+    public static function mixin(array $functions)
+    {
+        static::$mixins = array_merge(static::$mixins, $functions);
+    }
+
+    /**
+     * Fetch a callable payload from mixins.
+     *
+     * @return callable|null
+     */
+    protected static function fromMixin($method)
+    {
+        if (!empty(static::$mixins[$method])) {
+            return static::$mixins[$method];
+        }
+    }
+
     /** @var  Collection */
     protected $wrapped;
 
@@ -66,17 +97,18 @@ class Underscore
      */
     public function __call($method, $args)
     {
-        $payloadClass = sprintf('\Underscore\Mutator\%sMutator', ucfirst($method));
-        if (!class_exists($payloadClass)) {
-            $payloadClass = sprintf('\Underscore\Accessor\%sAccessor', ucfirst($method));
+        $payload = static::fromMixin($method);
+        if (empty($payload)) {
+            $payloadClass = sprintf('\Underscore\Mutator\%sMutator', ucfirst($method));
+            if (!class_exists($payloadClass)) {
+                $payloadClass = sprintf('\Underscore\Accessor\%sAccessor', ucfirst($method));
+            }
+            if (!class_exists($payloadClass)) {
+                throw new \BadMethodCallException("Unknown method Underscore->{$method}()");
+            }
+            /** @var $payload callable */
+            $payload = new $payloadClass();
         }
-
-        if (!class_exists($payloadClass)) {
-            throw new \BadMethodCallException("Unknown method Underscore->{$method}()");
-        }
-
-        /** @var $payload callable */
-        $payload = new $payloadClass();
 
         return $this->executePayload($payload, $args);
     }
@@ -88,9 +120,13 @@ class Underscore
      */
     public static function __callStatic($method, $args)
     {
-        $payloadClass = sprintf('\Underscore\Initializer\%sInitializer', ucfirst($method));
-        /** @var $payload callable */
-        $payload = new $payloadClass();
+        $payload = static::fromMixin($method);
+        if (empty($payload)) {
+
+            $payloadClass = sprintf('\Underscore\Initializer\%sInitializer', ucfirst($method));
+            /** @var $payload callable */
+            $payload = new $payloadClass();
+        }
 
         return call_user_func_array($payload, $args);
     }

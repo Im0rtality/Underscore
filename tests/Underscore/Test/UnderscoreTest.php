@@ -612,4 +612,36 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(array(), $found);
     }
+
+    public function testMixin()
+    {
+        Underscore::mixin(array(
+            'falsey' => function ($collection) {
+                $collection = clone $collection;
+
+                foreach ($collection as $k => $v) {
+                    if (!empty($v)) {
+                        unset($collection[$k]);
+                    }
+                }
+
+                return $collection;
+            }
+        ));
+
+        $value = Underscore::from($this->getDummy2())
+            ->falsey()
+            ->toArray();
+
+        $this->assertSame($value, array(
+            'false' => false,
+            'null'  => null,
+            'zero'  => 0,
+        ));
+        $value = Underscore::from($this->getDummy())
+            ->falsey()
+            ->toArray();
+
+        $this->assertSame($value, array());
+    }
 }
