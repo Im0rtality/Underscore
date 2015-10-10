@@ -7,53 +7,57 @@ use Underscore\Underscore;
 
 /**
  * Class MasterTest
+ *
  * @package Underscore\Test
  */
 class UnderscoreTest extends \PHPUnit_Framework_TestCase
 {
     protected function getDummy()
     {
-        $dummy       = new \stdClass();
+        $dummy = new \stdClass();
         $dummy->name = 'dummy';
-        $dummy->foo  = 'bar';
-        $dummy->baz  = 'qux';
+        $dummy->foo = 'bar';
+        $dummy->baz = 'qux';
+
         return $dummy;
     }
+
     /**
-    * @return object
-    */
+     * @return object
+     */
     protected function getDummy2()
     {
         $dummy = $this->getDummy();
         $dummy->false = false;
-        $dummy->null  = null;
-        $dummy->zero  = 0;
+        $dummy->null = null;
+        $dummy->zero = 0;
+
         return $dummy;
     }
 
-
     protected function getDummy3()
     {
-        $dummy = array(
-            'Angela' => array(
+        $dummy = [
+            'Angela' => [
                 'position' => 'dean',
                 'sex'      => 'female',
-            ),
-            'Bob' => array(
+            ],
+            'Bob'    => [
                 'position' => 'janitor',
                 'sex'      => 'male',
-            ),
-            'Mark' => array(
+            ],
+            'Mark'   => [
                 'position' => 'teacher',
                 'sex'      => 'male',
                 'tenured'  => true,
-            ),
-            'Wendy' => array(
+            ],
+            'Wendy'  => [
                 'position' => 'teacher',
                 'sex'      => 'female',
                 'tenured'  => 1,
-            ),
-        );
+            ],
+        ];
+
         return $dummy;
     }
 
@@ -62,17 +66,17 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
      */
     public function getTestRangeData()
     {
-        $out = array();
+        $out = [];
         // case #0
-        $out[] = array(0, 4, 1, array(0, 1, 2, 3));
+        $out[] = [0, 4, 1, [0, 1, 2, 3]];
         // case #1
-        $out[] = array(1, 5, 1, array(1, 2, 3, 4));
+        $out[] = [1, 5, 1, [1, 2, 3, 4]];
         // case #2
-        $out[] = array(0, 20, 5, array(0, 5, 10, 15));
+        $out[] = [0, 20, 5, [0, 5, 10, 15]];
         // case #3
-        $out[] = array(0, 0, 1, array());
+        $out[] = [0, 0, 1, []];
         // case #4
-        $out[] = array(1, 2, 0, array(), '\LogicException');
+        $out[] = [1, 2, 0, [], '\LogicException'];
 
         return $out;
     }
@@ -118,7 +122,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             )->toArray();
 
         $this->assertSame(
-            array('name' => 'name:dummy', 'foo' => 'foo:bar', 'baz' => 'baz:qux'),
+            ['name' => 'name:dummy', 'foo' => 'foo:bar', 'baz' => 'baz:qux'],
             $value
         );
     }
@@ -129,6 +133,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->reduce(
                 function ($accu, $value) {
                     $accu .= $value . ' ';
+
                     return $accu;
                 },
                 ''
@@ -143,6 +148,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->reduceRight(
                 function ($accumulator, $value) {
                     $accumulator .= $value . ' ';
+
                     return $accumulator;
                 },
                 ''
@@ -153,20 +159,20 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
     public function testPick()
     {
-        $value = Underscore::from(array($this->getDummy(), $this->getDummy(), $this->getDummy()))
+        $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
             ->pick('foo')
             ->toArray();
 
-        $this->assertSame(array('bar', 'bar', 'bar'), $value);
+        $this->assertSame(['bar', 'bar', 'bar'], $value);
     }
 
     public function testPickGetter()
     {
-        $value = Underscore::from(array(new Dummy()))
+        $value = Underscore::from([new Dummy()])
             ->pick('getFoo')
             ->toArray();
 
-        $this->assertSame(array('foo'), $value);
+        $this->assertSame(['foo'], $value);
     }
 
     public function testContains()
@@ -196,7 +202,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             )
             ->toArray();
 
-        $this->assertSame(array('name' => 'dummy'), $value);
+        $this->assertSame(['name' => 'dummy'], $value);
     }
 
     public function testReject()
@@ -209,7 +215,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             )
             ->toArray();
 
-        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
+        $this->assertSame(['foo' => 'bar', 'baz' => 'qux'], $value);
     }
 
     public function testAny()
@@ -268,7 +274,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->head(2)
             ->value();
 
-        $this->assertSame(array('name' => 'dummy', 'foo' => 'bar'), $value);
+        $this->assertSame(['name' => 'dummy', 'foo' => 'bar'], $value);
     }
 
     public function testTail()
@@ -277,7 +283,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->tail(1)
             ->value();
 
-        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
+        $this->assertSame(['foo' => 'bar', 'baz' => 'qux'], $value);
     }
 
     public function testInitial()
@@ -286,7 +292,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->initial(2)
             ->value();
 
-        $this->assertSame(array('name' => 'dummy'), $value);
+        $this->assertSame(['name' => 'dummy'], $value);
     }
 
     public function testLast()
@@ -295,7 +301,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->last(2)
             ->value();
 
-        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
+        $this->assertSame(['foo' => 'bar', 'baz' => 'qux'], $value);
     }
 
     public function testCompact()
@@ -304,16 +310,16 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->compact()
             ->toArray();
 
-        $this->assertSame(array('name' => 'dummy', 'foo' => 'bar', 'baz' => 'qux'), $value);
+        $this->assertSame(['name' => 'dummy', 'foo' => 'bar', 'baz' => 'qux'], $value);
     }
 
     public function testWithout()
     {
         $value = Underscore::from($this->getDummy())
-            ->without(array('dummy'))
+            ->without(['dummy'])
             ->toArray();
 
-        $this->assertSame(array('foo' => 'bar', 'baz' => 'qux'), $value);
+        $this->assertSame(['foo' => 'bar', 'baz' => 'qux'], $value);
     }
 
     public function testMerge()
@@ -323,14 +329,14 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->toArray();
 
         $this->assertSame(
-            array(
+            [
                 'name'  => 'dummy',
                 'foo'   => 'bar',
                 'baz'   => 'qux',
                 'false' => false,
                 'null'  => null,
                 'zero'  => 0,
-            ),
+            ],
             $value
         );
     }
@@ -342,11 +348,11 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->toArray();
 
         $this->assertSame(
-            array(
+            [
                 'dummy',
                 'bar',
                 'qux',
-            ),
+            ],
             $value
         );
     }
@@ -358,11 +364,11 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->toArray();
 
         $this->assertSame(
-            array(
+            [
                 'name',
                 'foo',
                 'baz',
-            ),
+            ],
             $value
         );
     }
@@ -382,9 +388,9 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testClone()
     {
         $original = $this->getDummy();
-        $cloned   = Underscore::from($original)
+        $cloned = Underscore::from($original)
             ->clone()
-            ->without(array('dummy'))
+            ->without(['dummy'])
             ->value();
 
         $this->assertNotEquals(
@@ -396,21 +402,21 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testZip()
     {
         $value = Underscore::from($this->getDummy())
-            ->zip(array('a', 1, '42'))
+            ->zip(['a', 1, '42'])
             ->toArray();
 
         $this->assertSame(
-            array(
+            [
                 'a'  => 'dummy',
                 1    => 'bar',
                 '42' => 'qux',
-            ),
+            ],
             $value
         );
 
         $this->setExpectedException('\LogicException');
         Underscore::from($this->getDummy())
-            ->zip(array('a'));
+            ->zip(['a']);
     }
 
     public function testGroupBy()
@@ -420,10 +426,10 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->toArray();
 
         $this->assertSame(
-            array(
-                5 => array('dummy'),
-                3 => array('bar', 'qux'),
-            ),
+            [
+                5 => ['dummy'],
+                3 => ['bar', 'qux'],
+            ],
             $value
         );
     }
@@ -435,11 +441,11 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->toArray();
 
         $this->assertSame(
-            array(
+            [
                 'bar',
                 'qux',
                 'dummy',
-            ),
+            ],
             $value
         );
     }
@@ -449,12 +455,13 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
      */
     public function getTestFlattenData()
     {
-        $out = array();
+        $out = [];
         // case #0
-        $out[] = array(
-            array(1, 2, array(3, 4)),
-            array(1, 2, 3, 4),
-        );
+        $out[] = [
+            [1, 2, [3, 4]],
+            [1, 2, 3, 4],
+        ];
+
         return $out;
     }
 
@@ -474,10 +481,10 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
     {
         $dummy = $this->getDummy();
 
-        $mock = $this->getMock('stdClass', array('test'));
+        $mock = $this->getMock('stdClass', ['test']);
         $mock->expects($this->once())->method('test')->with($dummy);
 
-        Underscore::from($dummy)->tap(array($mock, 'test'));
+        Underscore::from($dummy)->tap([$mock, 'test']);
     }
 
     /**
@@ -485,7 +492,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
      */
     public function testCallUnknownMethod()
     {
-        Underscore::from(array())->foobar();
+        Underscore::from([])->foobar();
     }
 
     /**
@@ -493,25 +500,26 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
      */
     public function getTestUniqData()
     {
-        $out = array();
+        $out = [];
         // case #0
-        $out[] = array(
-            array(1, 2, 3, 4, 4, 3),
-            array(1, 2, 3, 4),
-        );
+        $out[] = [
+            [1, 2, 3, 4, 4, 3],
+            [1, 2, 3, 4],
+        ];
         // case #1
         $obj1 = new \StdClass;
         $obj2 = new \StdClass;
         $obj3 = $obj1;
-        $out[] = array(
-            array($obj1, $obj1, $obj2, $obj3),
-            array($obj1, $obj2),
-        );
+        $out[] = [
+            [$obj1, $obj1, $obj2, $obj3],
+            [$obj1, $obj2],
+        ];
         // case #2
-        $out[] = array(
-            array(true, false, 1, 0, 0.0, 0.00001),
-            array(true, false, 1, 0, 0.0, 0.00001),
-        );
+        $out[] = [
+            [true, false, 1, 0, 0.0, 0.00001],
+            [true, false, 1, 0, 0.0, 0.00001],
+        ];
+
         return $out;
     }
 
@@ -530,124 +538,124 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testExtend()
     {
         $collection = Underscore::from($this->getDummy())
-            ->extend(array(
+            ->extend([
                 'name' => 'extended',
-            ));
+            ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'name' => 'extended',
             'foo'  => 'bar',
             'baz'  => 'qux',
-        ), $collection->toArray());
+        ], $collection->toArray());
 
-        $collection = $collection->extend((object) array(
+        $collection = $collection->extend((object)[
             'name' => 'obj',
-        ), (object) array(
+        ], (object)[
             'name' => 'test',
             'add'  => 'multi'
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'name' => 'test',
             'foo'  => 'bar',
             'baz'  => 'qux',
             'add'  => 'multi'
-        ), $collection->toArray());
+        ], $collection->toArray());
     }
 
     public function testDefaults()
     {
         $collection = Underscore::from($this->getDummy())
-            ->defaults(array(
+            ->defaults([
                 'name' => 'extended',
-            ));
+            ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'name' => 'dummy',
             'foo'  => 'bar',
             'baz'  => 'qux',
-        ), $collection->toArray());
+        ], $collection->toArray());
 
-        $collection = $collection->defaults((object) array(
-            'bar'   => 'gold',
-        ), (object) array(
+        $collection = $collection->defaults((object)[
+            'bar' => 'gold',
+        ], (object)[
             'bar'   => 'silver',
             'color' => 'blue'
-        ));
+        ]);
 
-        $this->assertSame(array(
+        $this->assertSame([
             'name'  => 'dummy',
             'foo'   => 'bar',
             'baz'   => 'qux',
             'bar'   => 'gold',
             'color' => 'blue'
-        ), $collection->toArray());
+        ], $collection->toArray());
     }
 
     public function testWhere()
     {
         $found = Underscore::from($this->getDummy3())
-            ->where(array(
+            ->where([
                 'sex' => 'female',
-            ))
+            ])
             ->keys()
             ->toArray();
 
-        $this->assertSame(array('Angela', 'Wendy'), $found);
+        $this->assertSame(['Angela', 'Wendy'], $found);
 
         $found = Underscore::from($this->getDummy3())
-            ->where(array(
+            ->where([
                 'position' => 'teacher',
-            ))
+            ])
             ->keys()
             ->toArray();
 
-        $this->assertSame(array('Mark', 'Wendy'), $found);
+        $this->assertSame(['Mark', 'Wendy'], $found);
 
         $found = Underscore::from($this->getDummy3())
-            ->where(array(
+            ->where([
                 'position' => 'teacher',
                 'tenured'  => true,
-            ))
+            ])
             ->keys()
             ->toArray();
 
-        $this->assertSame(array('Mark'), $found);
+        $this->assertSame(['Mark'], $found);
 
         $found = Underscore::from($this->getDummy3())
-            ->where(array(
+            ->where([
                 'position' => 'teacher',
                 'tenured'  => true,
-            ), $strict = false)
+            ], $strict = false)
             ->keys()
             ->toArray();
 
-        $this->assertSame(array('Mark', 'Wendy'), $found);
+        $this->assertSame(['Mark', 'Wendy'], $found);
 
         $found = Underscore::from($this->getDummy3())
-            ->where(array(
-                'sex' => 'female',
+            ->where([
+                'sex'      => 'female',
                 'position' => 'teacher',
-            ))
+            ])
             ->keys()
             ->toArray();
 
-        $this->assertSame(array('Wendy'), $found);
+        $this->assertSame(['Wendy'], $found);
 
         $found = Underscore::from($this->getDummy3())
-            ->where(array(
-                'sex' => 'male',
+            ->where([
+                'sex'      => 'male',
                 'position' => 'dean',
-            ))
+            ])
             ->keys()
             ->toArray();
 
-        $this->assertSame(array(), $found);
+        $this->assertSame([], $found);
     }
 
     public function testMixin()
     {
-        Underscore::mixin(array(
+        Underscore::mixin([
             'falsey' => function ($collection) {
                 $collection = clone $collection;
 
@@ -659,21 +667,21 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
                 return $collection;
             }
-        ));
+        ]);
 
         $value = Underscore::from($this->getDummy2())
             ->falsey()
             ->toArray();
 
-        $this->assertSame($value, array(
+        $this->assertSame($value, [
             'false' => false,
             'null'  => null,
             'zero'  => 0,
-        ));
+        ]);
         $value = Underscore::from($this->getDummy())
             ->falsey()
             ->toArray();
 
-        $this->assertSame($value, array());
+        $this->assertSame($value, []);
     }
 }
