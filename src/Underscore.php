@@ -26,6 +26,7 @@ namespace Underscore;
  * @method Underscore sortBy(callable $iterator)
  * @method Underscore tail(int $count = 1)
  * @method Underscore tap(callable $iterator)
+ * @method Underscore thru(callable $iterator)
  * @method Underscore uniq()
  * @method Underscore values()
  * @method Underscore where(array $properties, $strict = true)

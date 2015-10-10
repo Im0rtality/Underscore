@@ -487,6 +487,17 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         Underscore::from($dummy)->tap([$mock, 'test']);
     }
 
+
+    public function testThru()
+    {
+        $dummy = $this->getDummy();
+
+        $mock = $this->getMock('stdClass', ['test']);
+        $mock->expects($this->once())->method('test')->with((array)$dummy)->willReturn([123]);
+
+        $this->assertEquals([123], Underscore::from($dummy)->thru([$mock, 'test'])->value());
+    }
+
     /**
      * @expectedException \BadMethodCallException
      */
