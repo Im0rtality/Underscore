@@ -7,6 +7,7 @@ use Underscore\Mutator;
 
 /**
  * Class TapMutator
+ *
  * @package Underscore\Mutator
  */
 class TapMutator extends Mutator
@@ -26,6 +27,7 @@ class TapMutator extends Mutator
      */
     public function __invoke($collection, $iterator)
     {
-        return $this->wrap(call_user_func($iterator, $collection->value()));
+        call_user_func($iterator, $collection->toArray());
+        return $collection;
     }
 }
