@@ -219,8 +219,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
                 function ($value) {
                     return 3 < strlen($value);
                 }
-            )
-            ->value();
+            );
 
         $this->assertSame(true, $value);
 
@@ -229,8 +228,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
                 function ($value) {
                     return strlen($value) < 2;
                 }
-            )
-            ->value();
+            );
 
         $this->assertSame(false, $value);
     }
@@ -242,8 +240,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
                 function ($value) {
                     return 3 <= strlen($value);
                 }
-            )
-            ->value();
+            );
 
         $this->assertSame(true, $value);
 
@@ -252,8 +249,7 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
                 function ($value) {
                     return 3 < strlen($value);
                 }
-            )
-            ->value();
+            );
 
         $this->assertSame(false, $value);
     }
