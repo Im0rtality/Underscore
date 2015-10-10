@@ -31,6 +31,32 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         return $dummy;
     }
 
+
+    protected function getDummy3()
+    {
+        $dummy = array(
+            'Angela' => array(
+                'position' => 'dean',
+                'sex'      => 'female',
+            ),
+            'Bob' => array(
+                'position' => 'janitor',
+                'sex'      => 'male',
+            ),
+            'Mark' => array(
+                'position' => 'teacher',
+                'sex'      => 'male',
+                'tenured'  => true,
+            ),
+            'Wendy' => array(
+                'position' => 'teacher',
+                'sex'      => 'female',
+                'tenured'  => 1,
+            ),
+        );
+        return $dummy;
+    }
+
     /**
      * @return array
      */
