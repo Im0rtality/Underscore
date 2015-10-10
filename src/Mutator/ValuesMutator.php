@@ -15,7 +15,7 @@ class ValuesMutator extends Mutator
      */
     public function __invoke($collection)
     {
-        $newCollection = array();
+        $newCollection = [];
 
         foreach ($collection as $value) {
             $newCollection[] = $value;

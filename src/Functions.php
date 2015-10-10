@@ -14,13 +14,14 @@ class Functions
     public static function memoize($payload)
     {
         $function = function () use ($payload) {
-            static $cache = array();
+            static $cache = [];
             $args = func_get_args();
             $hash = md5(serialize($args));
 
             if (!array_key_exists($hash, $cache)) {
                 $cache[$hash] = call_user_func_array($payload, $args);
             }
+
             return $cache[$hash];
         };
 
@@ -52,14 +53,15 @@ class Functions
     public static function once($function)
     {
         $called = false;
-        $value  = null;
+        $value = null;
 
         return function () use ($function, &$called, &$value) {
             if (!$called) {
-                $args   = func_get_args();
-                $value  = call_user_func_array($function, $args);
+                $args = func_get_args();
+                $value = call_user_func_array($function, $args);
                 $called = true;
             }
+
             return $value;
         };
     }
@@ -77,6 +79,7 @@ class Functions
                 return 'placeholder for partial';
             };
         }
+
         return $function;
     }
 
@@ -87,8 +90,8 @@ class Functions
      * should not be pre-filled, but left open to supply at call-time.
      *
      * @param callable $function
-     * @param mixed $arg
-     * @param mixed ...
+     * @param mixed    $arg
+     * @param          mixed ...
      * @return \Closure
      */
     public static function partial($function, $arg)
@@ -101,7 +104,7 @@ class Functions
         return function () use ($function, $bound, $placeholder) {
             $inject = func_get_args();
 
-            $args = array();
+            $args = [];
             foreach ($bound as $value) {
                 if ($value === $placeholder) {
                     $args[] = array_shift($inject);
@@ -124,7 +127,7 @@ class Functions
      * In math terms, composing the functions f(), g(), and h() produces f(g(h())).
      *
      * @param callable $function
-     * @param callable ...
+     * @param          callable ...
      * @return \Closure
      */
     public static function compose($function)
@@ -135,6 +138,7 @@ class Functions
             foreach ($functions as $function) {
                 $value = $function($value);
             }
+
             return $value;
         };
     }
@@ -180,11 +184,11 @@ class Functions
      * @param array    $options
      * @return \Closure
      */
-    public static function throttle($function, $wait, array $options = array())
+    public static function throttle($function, $wait, array $options = [])
     {
-        $options += array(
+        $options += [
             'leading' => true,
-        );
+        ];
 
         $previous = 0;
 
@@ -211,7 +215,7 @@ class Functions
      * Useful for grouping asynchronous responses, where you want to be sure that
      * all the async calls have finished, before proceeding.
      *
-     * @param integer $count
+     * @param integer  $count
      * @param callable $function
      * @return \Closure
      */
@@ -220,6 +224,7 @@ class Functions
         return function () use ($function, &$count) {
             if (--$count < 1) {
                 $args = func_get_args();
+
                 return call_user_func_array($function, $args);
             }
         };
@@ -230,7 +235,7 @@ class Functions
      *
      * The result of the last function call is memoized and returned when count has been reached.
      *
-     * @param integer $count
+     * @param integer  $count
      * @param callable $function
      * @return \Closure
      */
@@ -243,6 +248,7 @@ class Functions
                 $args = func_get_args();
                 $memo = call_user_func_array($function, $args);
             }
+
             return $memo;
         };
     }

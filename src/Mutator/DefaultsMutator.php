@@ -13,7 +13,7 @@ class DefaultsMutator extends Mutator
      * Uses the first value present in any of the defaults.
      *
      * @param Collection $collection
-     * @param mixed $default
+     * @param mixed      $default
      * @param ...
      * @return Collection
      */

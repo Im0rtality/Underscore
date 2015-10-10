@@ -15,10 +15,10 @@ class FlattenMutator extends Mutator
      */
     public function __invoke($collection)
     {
-        $newCollection = array();
+        $newCollection = [];
 
         foreach ($collection as $value) {
-            $newCollection = array_merge($newCollection, is_array($value) ? $value : array($value));
+            $newCollection = array_merge($newCollection, is_array($value) ? $value : [$value]);
         }
 
         return $this->wrap($newCollection);

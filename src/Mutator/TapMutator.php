@@ -23,6 +23,7 @@ class TapMutator extends Mutator
     public function __invoke($collection, $iterator)
     {
         call_user_func($iterator, $collection->toArray());
+
         return $collection;
     }
 }

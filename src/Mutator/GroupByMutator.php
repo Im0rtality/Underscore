@@ -17,7 +17,7 @@ class GroupByMutator extends Mutator
      */
     public function __invoke($collection, $iterator)
     {
-        $newCollection = array();
+        $newCollection = [];
 
         foreach ($collection as $value) {
             $newCollection[call_user_func($iterator, $value)][] = $value;

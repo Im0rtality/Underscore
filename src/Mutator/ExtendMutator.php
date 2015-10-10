@@ -14,7 +14,7 @@ class ExtendMutator extends Mutator
      * in previous arguments.
      *
      * @param Collection $collection
-     * @param mixed $source
+     * @param mixed      $source
      * @param ...
      * @return Collection
      */

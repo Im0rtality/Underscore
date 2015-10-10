@@ -39,7 +39,8 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     {
         $registry = new Registry();
 
-        $accessor = function ($collection) {};
+        $accessor = function ($collection) {
+        };
 
         $registry->alias('fin', $accessor);
 

@@ -22,6 +22,7 @@ class AnyAccessor extends Accessor
     {
         $iterator = function ($accumulator, $item) use ($iterator) {
             $accumulator = $accumulator || $iterator($item);
+
             return $accumulator;
         };
 

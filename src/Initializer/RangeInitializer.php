@@ -24,7 +24,7 @@ class RangeInitializer extends Initializer
             throw new \LogicException('$step have to be non-zero');
         }
 
-        $array = array();
+        $array = [];
 
         for ($i = (int)$start; $i < (int)$stop; $i += (int)$step) {
             $array[] = $i;

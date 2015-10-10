@@ -21,6 +21,7 @@ class SortByMutator extends Mutator
     {
         $sortFunc = function ($value) {
             sort($value);
+
             return $value;
         };
 

@@ -13,11 +13,11 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     public function getTestCollectionData()
     {
         $dummy = new Dummy();
-        $data  = array();
+        $data = [];
         // case #0
-        $data[] = array($dummy);
+        $data[] = [$dummy];
         // case #1
-        $data[] = array(get_object_vars($dummy));
+        $data[] = [get_object_vars($dummy)];
 
         return $data;
     }
@@ -53,28 +53,28 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         // Iterator test
         $this->assertInstanceOf('\Traversable', $collection->getIterator());
 
-        $out = array();
+        $out = [];
         foreach ($collection as $key => $value) {
             $out[$key] = $value;
         }
-        $this->assertSame(array('name' => 'dummy', 'answer' => 42), $out);
+        $this->assertSame(['name' => 'dummy', 'answer' => 42], $out);
 
         // Reversed iterator test
         $this->assertInstanceOf('\Traversable', $collection->getIteratorReversed());
 
-        $out = array();
+        $out = [];
         foreach ($collection->getIteratorReversed() as $key => $value) {
             $out[$key] = $value;
         }
-        $this->assertSame(array('answer' => 42, 'name' => 'dummy'), $out);
+        $this->assertSame(['answer' => 42, 'name' => 'dummy'], $out);
 
         // toArray & value
-        $this->assertSame(array('name' => 'dummy', 'answer' => 42), $collection->toArray());
+        $this->assertSame(['name' => 'dummy', 'answer' => 42], $collection->toArray());
         $this->assertSame($collection->toArray(), $collection->value());
 
         $collection['foo'] = 'baz';
         // here we have one extra key-value pair
-        $this->assertSame(array('name' => 'dummy', 'answer' => 42, 'foo' => 'baz'), $collection->toArray());
+        $this->assertSame(['name' => 'dummy', 'answer' => 42, 'foo' => 'baz'], $collection->toArray());
 
         // collection wrapping
         $wrapped = new Collection($collection);
@@ -105,11 +105,11 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
     public function getTestCloneData()
     {
         $json = '{"foo":"bar", "baz":"qux"}';
-        $out  = array();
+        $out = [];
         // case #0
-        $out[] = array(
+        $out[] = [
             json_decode($json, true),
-        );
+        ];
 
         return $out;
     }

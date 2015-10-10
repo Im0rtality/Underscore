@@ -21,7 +21,7 @@ class Collection extends \ArrayObject
      */
     public function getIteratorReversed()
     {
-        $iterator   = $this->getIteratorClass();
+        $iterator = $this->getIteratorClass();
         $collection = array_reverse($this->getArrayCopy());
 
         return new $iterator($collection);

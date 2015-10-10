@@ -132,7 +132,7 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
         $ping = Functions::throttle(function () use (&$count) {
             return ++$count;
-        }, 100, array('leading' => false));
+        }, 100, ['leading' => false]);
 
         // Disabled initial call
         $this->assertEquals(2, $count);

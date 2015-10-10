@@ -14,7 +14,7 @@ class TimesInitializer extends Initializer
      * Each invocation of iteratee is called with an index argument. Produces a
      * Collection of the returned values.
      *
-     * @param integer $count
+     * @param integer  $count
      * @param callable $function
      * @return Underscore
      */
@@ -22,7 +22,7 @@ class TimesInitializer extends Initializer
     {
         // Context switching is possible in PHP 5.4 by using Closure::bind.
 
-        $results = array();
+        $results = [];
         for ($i = 0; $i < $count; $i++) {
             $results[] = $function($i);
         }

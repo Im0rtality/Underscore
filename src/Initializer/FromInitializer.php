@@ -10,6 +10,7 @@ class FromInitializer extends Initializer
 {
     /**
      * Initializes Underscore object and sets argument as internal collection
+     *
      * @param mixed $item
      * @return Underscore
      */

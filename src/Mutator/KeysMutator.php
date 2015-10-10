@@ -17,7 +17,7 @@ class KeysMutator extends Mutator
      */
     public function __invoke($collection)
     {
-        $newCollection = array();
+        $newCollection = [];
 
         foreach ($collection as $key => $value) {
             $newCollection[] = $key;

@@ -13,6 +13,7 @@ class ChefMutator extends Mutator
     {
         $collection = clone $collection;
         $collection['chef'] = 'Bork! Bork! Bork!';
+
         return $collection;
     }
 }

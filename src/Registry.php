@@ -64,7 +64,7 @@ class Registry
     /**
      * Alias method name to a callable.
      *
-     * @param  string $name
+     * @param  string   $name
      * @param  callable $spec
      * @return void
      */

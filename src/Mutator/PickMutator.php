@@ -20,8 +20,8 @@ class PickMutator extends Mutator
     {
         $iterator = function ($value) use ($key) {
             if (is_object($value)) {
-                if (is_callable(array($value, $key))) {
-                    return call_user_func(array($value, $key));
+                if (is_callable([$value, $key])) {
+                    return call_user_func([$value, $key]);
                 } else {
                     return isset($value->{$key}) ? $value->{$key} : null;
                 }

@@ -24,7 +24,7 @@ class ZipMutator extends Mutator
             throw new \LogicException('Keys and values count must match');
         }
 
-        $newCollection = array();
+        $newCollection = [];
 
         foreach ($values as $index => $value) {
             $newCollection[$keys[$index]] = $value;
