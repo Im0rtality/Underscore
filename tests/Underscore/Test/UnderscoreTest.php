@@ -487,7 +487,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         Underscore::from($dummy)->tap([$mock, 'test']);
     }
 
-
     public function testThru()
     {
         $dummy = $this->getDummy();
@@ -668,15 +667,15 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
     {
         Underscore::mixin([
             'falsey' => function ($collection) {
-                $collection = clone $collection;
+                $output = clone $collection;
 
                 foreach ($collection as $k => $v) {
                     if (!empty($v)) {
-                        unset($collection[$k]);
+                        unset($output[$k]);
                     }
                 }
 
-                return $collection;
+                return $output;
             }
         ]);
 
