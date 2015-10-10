@@ -17,6 +17,11 @@
             "Underscore\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Underscore\\Test\\": "tests/"
+        }
+    },
     "require":  {
         "php": ">=5.4"
     },
