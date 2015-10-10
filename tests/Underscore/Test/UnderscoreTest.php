@@ -9,17 +9,27 @@ use Underscore\Underscore;
  * Class MasterTest
  * @package Underscore\Test
  */
-abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
+class UnderscoreTest extends \PHPUnit_Framework_TestCase
 {
+    protected function getDummy()
+    {
+        $dummy       = new \stdClass();
+        $dummy->name = 'dummy';
+        $dummy->foo  = 'bar';
+        $dummy->baz  = 'qux';
+        return $dummy;
+    }
     /**
-     * @return mixed
-     */
-    abstract protected function getDummy();
-
-    /**
-     * @return mixed
-     */
-    abstract protected function getDummy2();
+    * @return object
+    */
+    protected function getDummy2()
+    {
+        $dummy = $this->getDummy();
+        $dummy->false = false;
+        $dummy->null  = null;
+        $dummy->zero  = 0;
+        return $dummy;
+    }
 
     /**
      * @return array
@@ -57,7 +67,7 @@ abstract class UnderscoreTest extends \PHPUnit_Framework_TestCase
     public function testValue()
     {
         $value = Underscore::from($this->getDummy())->value();
-        $this->assertEquals($this->getDummy(), $value);
+        $this->assertEquals((array)$this->getDummy(), $value);
     }
 
     public function testInvoke()
