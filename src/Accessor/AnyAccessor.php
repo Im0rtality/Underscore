@@ -5,10 +5,6 @@ namespace Underscore\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
-/**
- * Class AnyMutator
- * @package Underscore\Mutator
- */
 class AnyAccessor extends Accessor
 {
     /**

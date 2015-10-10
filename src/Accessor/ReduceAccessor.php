@@ -5,10 +5,6 @@ namespace Underscore\Accessor;
 use Underscore\Accessor;
 use Underscore\Collection;
 
-/**
- * Class ReduceMutator
- * @package Underscore\Mutator
- */
 class ReduceAccessor extends Accessor
 {
     /**

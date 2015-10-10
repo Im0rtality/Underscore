@@ -1,15 +1,11 @@
 <?php
 
-namespace Underscore\Mutator;
+namespace Underscore\Accessor;
 
+use Underscore\Accessor;
 use Underscore\Collection;
-use Underscore\Mutator;
 
-/**
- * Class ContainsMutator
- * @package Underscore\Mutator
- */
-class ContainsMutator extends Mutator
+class ContainsAccessor extends Accessor
 {
     /**
      * Checks if a given value is present in a collection using strict equality for comparisons.
@@ -26,7 +22,7 @@ class ContainsMutator extends Mutator
             return $value === $needle;
         };
 
-        $find = new FindMutator();
+        $find = new FindAccessor();
 
         return $find($collection, $iterator);
     }

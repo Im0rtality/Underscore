@@ -2,6 +2,7 @@
 
 namespace Underscore\Mutator;
 
+use Underscore\Accessor\ContainsAccessor;
 use Underscore\Collection;
 use Underscore\Mutator;
 
@@ -21,11 +22,11 @@ class WithoutMutator extends Mutator
     public function __invoke($collection, $values)
     {
         $values   = $this->wrap($values);
-        $contains = new ContainsMutator();
+        $contains = new ContainsAccessor();
         $reject   = new RejectMutator();
 
         $iterator = function ($item) use ($values, $contains) {
-            return $contains($values, $item)->value();
+            return $contains($values, $item);
         };
 
         return $reject($collection, $iterator);

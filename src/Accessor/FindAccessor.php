@@ -1,15 +1,11 @@
 <?php
 
-namespace Underscore\Mutator;
+namespace Underscore\Accessor;
 
+use Underscore\Accessor;
 use Underscore\Collection;
-use Underscore\Mutator;
 
-/**
- * Class FindMutator
- * @package Underscore\Mutator
- */
-class FindMutator extends Mutator
+class FindAccessor extends Accessor
 {
     /**
      * Iterates over elements of a collection, returning the first element that the callback returns truey for.
@@ -32,6 +28,6 @@ class FindMutator extends Mutator
             }
         }
 
-        return $this->wrap($found);
+        return $found;
     }
 }

@@ -177,8 +177,8 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
     public function testContains()
     {
-        $this->assertTrue(Underscore::from($this->getDummy())->contains('bar')->value());
-        $this->assertFalse(Underscore::from($this->getDummy())->contains('baz')->value());
+        $this->assertTrue(Underscore::from($this->getDummy())->contains('bar'));
+        $this->assertFalse(Underscore::from($this->getDummy())->contains('baz'));
     }
 
     public function testFind()
@@ -188,8 +188,8 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
                 return $value === $needle;
             };
         };
-        $this->assertTrue(Underscore::from($this->getDummy())->find($iterator('bar'))->value());
-        $this->assertFalse(Underscore::from($this->getDummy())->find($iterator('foo'))->value());
+        $this->assertTrue(Underscore::from($this->getDummy())->find($iterator('bar')));
+        $this->assertFalse(Underscore::from($this->getDummy())->find($iterator('foo')));
     }
 
     public function testFilter()
