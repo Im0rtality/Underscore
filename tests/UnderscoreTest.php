@@ -139,21 +139,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testReduce()
-    {
-        $value = Underscore::from($this->getDummy())
-            ->reduce(
-                function ($accu, $value) {
-                    $accu .= $value . ' ';
-
-                    return $accu;
-                },
-                ''
-            );
-
-        $this->assertSame('dummy bar qux ', $value);
-    }
-
     public function testReduceRight()
     {
         $value = Underscore::from($this->getDummy())
