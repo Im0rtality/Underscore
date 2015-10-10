@@ -118,21 +118,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('name:dummy|foo:bar|baz:qux|', $buffer);
     }
 
-    public function testMap()
-    {
-        $value = Underscore::from($this->getDummy())
-            ->map(
-                function ($value, $key) use (&$buffer) {
-                    return sprintf('%s:%s', $key, $value);
-                }
-            )->toArray();
-
-        $this->assertSame(
-            ['name' => 'name:dummy', 'foo' => 'foo:bar', 'baz' => 'baz:qux'],
-            $value
-        );
-    }
-
     public function testPick()
     {
         $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
