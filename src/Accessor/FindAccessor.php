@@ -14,7 +14,7 @@ class FindAccessor extends Accessor
      *
      * @param Collection $collection
      * @param callable   $iterator
-     * @return Collection
+     * @return bool
      */
     public function __invoke($collection, $iterator)
     {

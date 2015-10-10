@@ -187,17 +187,6 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(['foo'], $value);
     }
 
-    public function testFind()
-    {
-        $iterator = function ($needle) {
-            return function ($value) use ($needle) {
-                return $value === $needle;
-            };
-        };
-        $this->assertTrue(Underscore::from($this->getDummy())->find($iterator('bar')));
-        $this->assertFalse(Underscore::from($this->getDummy())->find($iterator('foo')));
-    }
-
     public function testFilter()
     {
         $value = Underscore::from($this->getDummy())
