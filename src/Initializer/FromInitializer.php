@@ -16,6 +16,11 @@ class FromInitializer extends Initializer
      */
     public function __invoke($item)
     {
-        return new Underscore(new Collection($item));
+        if ($item instanceof Collection) {
+            $item = clone $item;
+        } else {
+            $item = new Collection($item);
+        }
+        return new Underscore($item);
     }
 }
