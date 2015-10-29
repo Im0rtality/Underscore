@@ -80,4 +80,23 @@ class CollectionCopyTest extends \PHPUnit_Framework_TestCase
         // But should be the same type
         $this->assertInstanceOf(get_class($collection), $modified);
     }
+
+    public function testWrapAndUnwrap()
+    {
+        $collection = new TestCollection([
+            'a', 'b', 'c'
+        ]);
+
+        // Wrap and unwrap the collection
+        $unwrapped = Underscore::from($collection)->collection();
+
+        // The collection should a clone
+        $this->assertNotSame($collection, $unwrapped);
+
+        // But should be the same type
+        $this->assertInstanceOf(get_class($collection), $unwrapped);
+
+        // And have the same values
+        $this->assertSame($collection->toArray(), $unwrapped->toArray());
+    }
 }
