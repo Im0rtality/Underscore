@@ -23,6 +23,6 @@ class GroupByMutator extends Mutator
             $newCollection[call_user_func($iterator, $value)][] = $value;
         }
 
-        return $this->wrap($newCollection);
+        return $this->copyCollectionWith($collection, $newCollection);
     }
 }

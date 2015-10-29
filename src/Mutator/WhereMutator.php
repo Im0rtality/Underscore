@@ -19,7 +19,9 @@ class WhereMutator extends Mutator
      */
     public function __invoke($collection, array $properties, $strict = true)
     {
-        return $this->wrap(array_filter((array)$collection, function ($item) use ($properties, $strict) {
+        $filter = new FilterMutator;
+
+        return $filter($collection, function ($item) use ($properties, $strict) {
             foreach ($properties as $key => $value) {
                 if (empty($item[$key])
                     || ($strict && $item[$key] !== $value)
@@ -30,6 +32,6 @@ class WhereMutator extends Mutator
             }
 
             return true;
-        }));
+        });
     }
 }

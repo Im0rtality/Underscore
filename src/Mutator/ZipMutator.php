@@ -17,8 +17,8 @@ class ZipMutator extends Mutator
      */
     public function __invoke($collection, $keys)
     {
-        $values = call_user_func(new ValuesMutator(), $collection)->toArray();
-        $keys = call_user_func(new ValuesMutator(), $this->wrap($keys))->toArray();
+        $values = call_user_func(new ValuesMutator, $collection)->toArray();
+        $keys = call_user_func(new ValuesMutator, new Collection($keys))->toArray();
 
         if (count($values) !== count($keys)) {
             throw new \LogicException('Keys and values count must match');
@@ -30,6 +30,6 @@ class ZipMutator extends Mutator
             $newCollection[$keys[$index]] = $value;
         }
 
-        return $this->wrap($newCollection);
+        return $this->copyCollectionWith($collection, $newCollection);
     }
 }

@@ -17,7 +17,7 @@ class WithoutMutator extends Mutator
      */
     public function __invoke($collection, $values)
     {
-        $values = $this->wrap($values);
+        $values = new Collection($values);
         $contains = new ContainsAccessor();
         $reject = new RejectMutator();
 

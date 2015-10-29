@@ -15,12 +15,8 @@ class ValuesMutator extends Mutator
      */
     public function __invoke($collection)
     {
-        $newCollection = [];
+        $values = array_values($collection->toArray());
 
-        foreach ($collection as $value) {
-            $newCollection[] = $value;
-        }
-
-        return $this->wrap($newCollection);
+        return $this->copyCollectionWith($collection, $values);
     }
 }

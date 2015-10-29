@@ -17,12 +17,10 @@ class RejectMutator extends Mutator
      */
     public function __invoke($collection, $iterator)
     {
-        $not = function ($iterator) {
-            return function () use ($iterator) {
-                return !call_user_func_array($iterator, func_get_args());
-            };
-        };
+        $filter = new FilterMutator;
 
-        return $this->wrap(array_filter((array)$collection, $not($iterator)));
+        return $filter($collection, function () use ($iterator) {
+            return !call_user_func_array($iterator, func_get_args());
+        });
     }
 }

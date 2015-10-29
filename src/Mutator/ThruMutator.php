@@ -16,6 +16,8 @@ class ThruMutator extends Mutator
      */
     public function __invoke($collection, $iterator)
     {
-        return $this->wrap(call_user_func($iterator, $collection->toArray()));
+        $values = call_user_func($iterator, $collection->toArray());
+
+        return $this->copyCollectionWith($collection, $values);
     }
 }

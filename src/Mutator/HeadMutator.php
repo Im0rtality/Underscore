@@ -18,6 +18,8 @@ class HeadMutator extends Mutator
      */
     public function __invoke($collection, $count = 1)
     {
-        return $this->wrap(array_slice($collection->toArray(), 0, $count));
+        $values = array_slice($collection->toArray(), 0, $count);
+
+        return $this->copyCollectionWith($collection, $values);
     }
 }

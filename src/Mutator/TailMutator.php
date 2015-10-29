@@ -18,6 +18,8 @@ class TailMutator extends Mutator
      */
     public function __invoke($collection, $count = 1)
     {
-        return $this->wrap(array_slice($collection->toArray(), $count));
+        $values = array_slice($collection->toArray(), $count);
+
+        return $this->copyCollectionWith($collection, $values);
     }
 }

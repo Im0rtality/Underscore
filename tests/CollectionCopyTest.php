@@ -2,21 +2,11 @@
 
 namespace Underscore\Test;
 
-use Underscore\Mutator;
+use Underscore\Underscore;
 use Underscore\Test\Fixture\Collection\TestCollection;
 
 class CollectionCopyTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var TestCollection
-     */
-    private $collection;
-
-    public function setUp()
-    {
-        $this->collection = new TestCollection([]);
-    }
-
     public function dataMutate()
     {
         return [
@@ -75,16 +65,19 @@ class CollectionCopyTest extends \PHPUnit_Framework_TestCase
         $mutator = array_shift($args);
         $mutator = new $mutator;
 
+        // Create a new (empty) collection
+        $collection = new TestCollection([]);
+
         // Set the first argument to be the collection
-        array_unshift($args, new TestCollection([]));
+        array_unshift($args, $collection);
 
         // Call the mutator to create a new collection
-        $collection = call_user_func_array($mutator, $args);
+        $modified = call_user_func_array($mutator, $args);
 
         // The collection should not be the same
-        $this->assertNotSame($this->collection, $collection);
+        $this->assertNotSame($collection, $modified);
 
         // But should be the same type
-        $this->assertInstanceOf(get_class($this->collection), $collection);
+        $this->assertInstanceOf(get_class($collection), $modified);
     }
 }
