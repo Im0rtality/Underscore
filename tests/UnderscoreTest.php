@@ -106,6 +106,21 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testTimes()
+    {
+        $fib = function ($n) {
+            // http://stackoverflow.com/a/27190248/49146
+            return (int) round(pow((sqrt(5) + 1) / 2, $n) / sqrt(5));
+        };
+
+        $expected = [0, 1, 1, 2, 3, 5, 8, 13];
+
+        $this->assertSame(
+            $expected,
+            Underscore::times(8, $fib)->toArray()
+        );
+    }
+
     public function testValue()
     {
         $value = Underscore::from($this->getDummy())->value();
