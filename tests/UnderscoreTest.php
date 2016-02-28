@@ -754,4 +754,17 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($value, []);
     }
+
+    public function testShuffle()
+    {
+        $original = $this->getDummy3();
+        $values = Underscore::from($original)
+            ->shuffle()
+            ->toArray();
+
+        // Not necessarily the same, but contains the same values.
+        // We cannot check the sorting of the keys because it is entirely
+        // possible that keys were not randomized at all!
+        $this->assertEquals($original, $values);
+    }
 }
