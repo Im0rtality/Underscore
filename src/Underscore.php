@@ -42,6 +42,7 @@ namespace Underscore;
  * @method bool       contains(mixed $needle)
  * @method bool       find(callable $iterator)
  * @method mixed      indexOf(mixed $needle)
+ * @method mixed      lastIndexOf(mixed $needle)
  * @method mixed      value()
  * @method mixed[]    toArray()
  * @method int        size()
