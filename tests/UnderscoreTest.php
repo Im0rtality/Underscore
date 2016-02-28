@@ -201,6 +201,22 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(2, $value);
     }
 
+    public function testMin()
+    {
+        $value = Underscore::from([1, 5, 1, 100, 8, 3])
+            ->min();
+
+        $this->assertSame(1, $value);
+    }
+
+    public function testMax()
+    {
+        $value = Underscore::from([1, 5, 1, 100, 8, 3])
+            ->max();
+
+        $this->assertSame(100, $value);
+    }
+
     public function testPick()
     {
         $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
