@@ -14,7 +14,7 @@ install:
     - composer install --prefer-source
 
 after_script:
-    - bash -c '[[ -f "build/logs/clover.xml" ]] && wget https://scrutinizer-ci.com/ocular.phar'
-    - bash -c '[[ -f "build/logs/clover.xml" ]] && php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml'
+    - bash -c '[[ -f "build/clover.xml" ]] && wget https://scrutinizer-ci.com/ocular.phar'
+    - bash -c '[[ -f "build/clover.xml" ]] && php ocular.phar code-coverage:upload --format=php-clover build/clover.xml'
 
 sudo: false
