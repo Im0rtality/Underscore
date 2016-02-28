@@ -169,6 +169,19 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('qux bar dummy ', $value);
     }
 
+    public function testIndexOf()
+    {
+        $value = Underscore::from($this->getDummy())
+            ->indexOf('dummy');
+
+        $this->assertSame('name', $value);
+
+        $value = Underscore::from($this->getDummy2())
+            ->indexOf(false);
+
+        $this->assertSame('false', $value);
+    }
+
     public function testPick()
     {
         $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
