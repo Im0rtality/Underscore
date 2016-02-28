@@ -16,7 +16,7 @@
 
         <filter>
             <whitelist>
-                <directory>./lib/Underscore/</directory>
+                <directory>./src</directory>
                 <exclude>
                     <directory>./tests/Underscore/Test/Fixture</directory>
                 </exclude>
