@@ -353,6 +353,54 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testIntersection()
+    {
+        $one = ['yellow', 'pink', 'white'];
+        $two = ['red', 'white', 'blue'];
+
+        $value = Underscore::from($one)
+            ->intersection($two)
+            ->toArray();
+
+        // Intersection will preserve keys, but we do not need to verify that.
+        $this->assertSame(array_values($value), [
+            'white',
+        ]);
+
+        // Run the same test, but with an array instead of a collection.
+        $value = Underscore::from($one)
+            ->intersection(new Collection($two))
+            ->toArray();
+
+        $this->assertSame(array_values($value), [
+            'white',
+        ]);
+
+        $one = [
+            'name'  => 'John',
+            'food'  => 'bacon',
+            'sport' => 'tennis',
+            'color' => 'red',
+        ];
+
+        $two = [
+            'name'  => 'John',
+            'color' => 'gray',
+            'food'  => 'tofu',
+            'sport' => 'tennis',
+        ];
+
+        $value = Underscore::from($one)
+            ->intersection($two)
+            ->toArray();
+
+        // In this scenario, preserving keys is important.
+        $this->assertSame($value, [
+            'name'  => 'John',
+            'sport' => 'tennis',
+        ]);
+    }
+
     public function testValues()
     {
         $value = Underscore::from($this->getDummy())
