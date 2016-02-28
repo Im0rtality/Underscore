@@ -182,6 +182,25 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('false', $value);
     }
 
+    public function testLastIndexOf()
+    {
+        $value = Underscore::from([1, 2, 3])
+            ->lastIndexOf(2);
+
+        $this->assertSame(1, $value);
+
+        $value = Underscore::from([1, 2, 3, 4, 2])
+            ->lastIndexOf(2);
+
+        $this->assertSame(4, $value);
+
+        $object = new \stdClass;
+        $value = Underscore::from([clone $object, clone $object, $object])
+            ->lastIndexOf($object);
+
+        $this->assertSame(2, $value);
+    }
+
     public function testPick()
     {
         $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
