@@ -464,7 +464,20 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             'food'  => 'bacon',
             'color' => 'red',
         ]);
+
+        // No difference, with a Traversable
+        $values = new \ArrayObject([
+            'foo' => 'bar',
+            'fizz' => 'bizz',
+        ]);
+
+        $value = Underscore::from($values)
+            ->difference($values)
+            ->toArray();
+
+        $this->assertEmpty($value);
     }
+
     public function testIntersection()
     {
         $one = ['yellow', 'pink', 'white'];
