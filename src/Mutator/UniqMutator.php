@@ -22,6 +22,6 @@ class UniqMutator extends Mutator
             }
         }
 
-        return $this->wrap($seen);
+        return $this->copyCollectionWith($collection, $seen);
     }
 }

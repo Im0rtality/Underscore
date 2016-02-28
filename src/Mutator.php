@@ -5,11 +5,18 @@ namespace Underscore;
 abstract class Mutator
 {
     /**
-     * @param mixed $item
+     * Get a copy of a collection with new values.
+     *
+     * @param Collection $collection
+     * @param array $values
      * @return Collection
      */
-    protected function wrap($item)
+    protected function copyCollectionWith(Collection $collection, array $values)
     {
-        return new Collection($item);
+        $collection = clone $collection;
+
+        $collection->exchangeArray($values);
+
+        return $collection;
     }
 }

@@ -16,6 +16,9 @@ class FilterMutator extends Mutator
      */
     public function __invoke($collection, $iterator)
     {
-        return $this->wrap(array_filter((array)$collection, $iterator));
+        return $this->copyCollectionWith($collection, array_filter(
+            $collection->toArray(),
+            $iterator
+        ));
     }
 }

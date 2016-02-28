@@ -21,6 +21,6 @@ class FlattenMutator extends Mutator
             $newCollection = array_merge($newCollection, is_array($value) ? $value : [$value]);
         }
 
-        return $this->wrap($newCollection);
+        return $this->copyCollectionWith($collection, $newCollection);
     }
 }
