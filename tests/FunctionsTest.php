@@ -59,6 +59,9 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 
     public function testPartial()
     {
+        $const = Functions::p();
+        $this->assertSame('placeholder for partial', $const());
+
         $subtract = function ($a, $b) {
             return $b - $a;
         };
