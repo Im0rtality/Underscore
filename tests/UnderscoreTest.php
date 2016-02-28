@@ -224,6 +224,17 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
             ->toArray();
 
         $this->assertSame(['bar', 'bar', 'bar'], $value);
+
+        $value = Underscore::from($this->getDummy3())
+            ->pick('position')
+            ->toArray();
+
+        $this->assertSame([
+            'Angela' => 'dean',
+            'Bob' => 'janitor',
+            'Mark' => 'teacher',
+            'Wendy' => 'teacher',
+        ], $value);
     }
 
     public function testPickGetter()
