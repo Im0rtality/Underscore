@@ -24,6 +24,7 @@ namespace Underscore;
  * @method Underscore merge($values)
  * @method Underscore intersection($values)
  * @method Underscore reject(callable $iterator)
+ * @method Underscore shuffle()
  * @method Underscore sortBy(callable $iterator)
  * @method Underscore tail(int $count = 1)
  * @method Underscore tap(callable $iterator)
