@@ -188,7 +188,7 @@ class Functions
     {
         $options += [
             'leading' => true,
-        ];
+        ]; // @codeCoverageIgnore
 
         $previous = 0;
 
