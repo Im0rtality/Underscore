@@ -107,18 +107,6 @@ class Underscore
     }
 
     /**
-     * Fetch a callable payload from mixins.
-     *
-     * @return callable|null
-     */
-    protected static function fromMixin($method)
-    {
-        if (!empty(static::$mixins[$method])) {
-            return static::$mixins[$method];
-        }
-    }
-
-    /**
      * @param Collection $wrapped
      */
     public function __construct(Collection $wrapped = null)
