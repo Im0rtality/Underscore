@@ -10,6 +10,7 @@ namespace Underscore;
  * @method Underscore clone()
  * @method Underscore compact()
  * @method Underscore defaults(mixed $default, ...)
+ * @method Underscore difference($values)
  * @method Underscore extend(mixed $source, ...)
  * @method Underscore filter(callable $iterator)
  * @method Underscore flatten()

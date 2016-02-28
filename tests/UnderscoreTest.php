@@ -353,6 +353,44 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testDifference()
+    {
+        $one = ['yellow', 'pink', 'red', 'white', 'blue'];
+        $two = ['red', 'white', 'blue'];
+
+        $value = Underscore::from($one)
+            ->difference($two)
+            ->toArray();
+
+        $this->assertSame(array_values($value), [
+            'yellow',
+            'pink',
+        ]);
+
+        $one = [
+            'name'  => 'John',
+            'food'  => 'bacon',
+            'sport' => 'tennis',
+            'color' => 'red',
+        ];
+
+        $two = [
+            'name'  => 'John',
+            'color' => 'gray',
+            'food'  => 'tofu',
+            'sport' => 'tennis',
+        ];
+
+        $value = Underscore::from($one)
+            ->difference($two)
+            ->toArray();
+
+        // In this scenario, preserving keys is important.
+        $this->assertSame($value, [
+            'food'  => 'bacon',
+            'color' => 'red',
+        ]);
+    }
     public function testIntersection()
     {
         $one = ['yellow', 'pink', 'white'];
