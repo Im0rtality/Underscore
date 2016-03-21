@@ -21,7 +21,7 @@ namespace Underscore;
  * @method Underscore keys()
  * @method Underscore last(int $count = 1)
  * @method Underscore map(callable $iterator)
- * @method Underscore pick(mixed $key)
+ * @method Underscore pluck(mixed $key)
  * @method Underscore merge($values)
  * @method Underscore intersection($values)
  * @method Underscore reject(callable $iterator)

@@ -232,16 +232,16 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(100, $value);
     }
 
-    public function testPick()
+    public function testpluck()
     {
         $value = Underscore::from([$this->getDummy(), $this->getDummy(), $this->getDummy()])
-            ->pick('foo')
+            ->pluck('foo')
             ->toArray();
 
         $this->assertSame(['bar', 'bar', 'bar'], $value);
 
         $value = Underscore::from($this->getDummy3())
-            ->pick('position')
+            ->pluck('position')
             ->toArray();
 
         $this->assertSame([
@@ -252,10 +252,10 @@ class UnderscoreTest extends \PHPUnit_Framework_TestCase
         ], $value);
     }
 
-    public function testPickGetter()
+    public function testpluckGetter()
     {
         $value = Underscore::from([new Dummy()])
-            ->pick('getFoo')
+            ->pluck('getFoo')
             ->toArray();
 
         $this->assertSame(['foo'], $value);

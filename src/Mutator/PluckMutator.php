@@ -5,7 +5,7 @@ namespace Underscore\Mutator;
 use Underscore\Collection;
 use Underscore\Mutator;
 
-class PickMutator extends Mutator
+class PluckMutator extends Mutator
 {
     /**
      * Serves as shorthand to get list of specific key value from every element
