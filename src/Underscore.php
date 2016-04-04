@@ -102,7 +102,7 @@ class Underscore
     public static function mixin(array $functions)
     {
         foreach ($functions as $name => $function) {
-            static::$registry->alias($name, $function);
+            static::getRegistry()->alias($name, $function);
         }
     }
 
